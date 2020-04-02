@@ -10,18 +10,18 @@ import 'CommonUtils.dart';
 
 class BaseJumpUtils {
   static void jumpSettingsPage(BuildContext context,
-      {String app_name,
-      String share_content,
-      String download_url,
-      String rate_url,
-      String icon_path}) {
+      {String appName,
+      String shareContent,
+      String downloadUrl,
+      String rateUrl,
+      String iconPath}) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => new SettingsPage(
-              app_name: app_name,
-              share_content: share_content,
-              download_url: download_url,
-              rate_url: rate_url,
-              icon_path: icon_path,
+              app_name: appName,
+              share_content: shareContent,
+              download_url: downloadUrl,
+              rate_url: rateUrl,
+              icon_path: iconPath,
             )));
   }
 
