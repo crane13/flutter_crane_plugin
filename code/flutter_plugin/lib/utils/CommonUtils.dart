@@ -5,6 +5,7 @@ import 'package:craneplugin/K.dart';
 import 'package:craneplugin/utils/track/TrackUtils.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:toast/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -69,13 +70,7 @@ class CommonUtils {
 //    TrackUtils.trackEvent('openMoreApp');
 //  }
 //
-  static void rate() async {
-    String url = K.getRateUrl();
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {}
-    TrackUtils.trackEvent('rate');
-  }
+
 //
 //  static void feedback() async {
 //    String url = Const.getFeedbackUrl();
@@ -92,15 +87,16 @@ class CommonUtils {
     } else {}
   }
 
-  static void shareApp(BuildContext context) {
-//    Share.share(
+  static void shareApp(BuildContext context, String app_name,
+      String share_content, String download_url) {
+    Share.share(
 //        S.of(context).app_name +
 //            ' - ' +
 //            S.of(context).share_content +
 //            Const.getDownloadUrl(),
-//        icon: S.of(context).app_name,
-//        url: K.getDownloadUrl());
-//    TrackUtils.trackEvent('share');
+        '$app_name - $share_content $download_url',
+        icon: app_name,
+        url: download_url);
+    TrackUtils.trackEvent('share');
   }
-
 }

@@ -12,6 +12,13 @@ class ConfigUtils {
 
   static Locale _locale;
 
+  static Size screenSize;
+
+  static setScreenSize(Size size) {
+    screenSize = size;
+  }
+
+
   static setLocale(Locale locale) {
     _locale = locale;
   }

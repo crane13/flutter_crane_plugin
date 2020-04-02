@@ -9,9 +9,20 @@ import 'package:flutter/material.dart';
 import 'CommonUtils.dart';
 
 class BaseJumpUtils {
-  static void jumpSettingsPage(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => new SettingsPage()));
+  static void jumpSettingsPage(BuildContext context,
+      {String app_name,
+      String share_content,
+      String download_url,
+      String rate_url,
+      String icon_path}) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => new SettingsPage(
+              app_name: app_name,
+              share_content: share_content,
+              download_url: download_url,
+              rate_url: rate_url,
+              icon_path: icon_path,
+            )));
   }
 
   static void jumpTOSPage(BuildContext context) {

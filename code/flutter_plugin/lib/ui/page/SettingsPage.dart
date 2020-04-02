@@ -5,18 +5,31 @@ import 'package:craneplugin/bean/app_list_entity.dart';
 import 'package:craneplugin/generated/i18n.dart';
 import 'package:craneplugin/ui/page/BaseState.dart';
 import 'package:craneplugin/utils/AUtils.dart';
+import 'package:craneplugin/utils/BaseColors.dart';
+import 'package:craneplugin/utils/BaseJumpUtils.dart';
 import 'package:craneplugin/utils/CommonUtils.dart';
 import 'package:craneplugin/utils/ConfigUtils.dart';
 import 'package:craneplugin/utils/FlutterGG.dart';
-import 'package:craneplugin/utils/BaseJumpUtils.dart';
-import 'package:craneplugin/utils/BaseColors.dart';
 import 'package:craneplugin/utils/theme/ThemeType.dart';
 import 'package:craneplugin/utils/track/TrackUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  SettingsPage({Key key}) : super(key: key);
+  String app_name;
+  String share_content;
+  String download_url;
+  String rate_url;
+  String icon_path;
+
+  SettingsPage(
+      {Key key,
+      this.app_name,
+      this.share_content,
+      this.download_url,
+      this.rate_url,
+      this.icon_path = ''})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -84,7 +97,7 @@ class _SettingsPageState extends BaseState<SettingsPage> {
           color: Colors.transparent,
         ),
         Image.asset(
-          'assets/icon_1024_border.png',
+          widget.icon_path,
           height: 100,
           width: 100,
           fit: BoxFit.cover,
@@ -94,7 +107,7 @@ class _SettingsPageState extends BaseState<SettingsPage> {
           color: Colors.transparent,
         ),
         Text(
-          S.of(context).app_name + '${appVersion}',
+          widget.app_name + '${appVersion}',
           style: TextStyle(
               color: ThemeType.isDarkMode() ? Colors.white54 : Colors.grey[350],
               fontSize: 15),
@@ -115,11 +128,12 @@ class _SettingsPageState extends BaseState<SettingsPage> {
     }
 
     arrWidgets.add(getItem(S.of(context).rate, Icons.star, () {
-      CommonUtils.rate();
+      CommonUtils.openUrl(widget.rate_url);
     }));
 
     arrWidgets.add(getItem(S.of(context).share, Icons.share, () {
-      CommonUtils.shareApp(context);
+      CommonUtils.shareApp(
+          context, widget.app_name, widget.share_content, widget.download_url);
     }));
 
 //    arrWidgets.add(getItem(S.of(context).feedback, Icons.feedback, () {
