@@ -1,0 +1,75 @@
+import 'dart:ui';
+
+import 'package:craneplugin/generated/i18n.dart';
+import 'package:craneplugin/utils/cache/CacheUtils.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class ThemeType {
+  static const KEY_THEME = 'key_theme';
+
+  static const THEME_LIGHT = 1;
+  static const THEME_DARK = 2;
+  static const THEME_SYSTERM = 0;
+
+  static Brightness brightnessValue;
+
+  static int themeType = ThemeType.THEME_SYSTERM;
+
+  static void setBrightness(Brightness brightness) {
+    brightnessValue = brightness;
+  }
+
+  static void setThemeType(int type) {
+    themeType = type;
+    saveThemeType(type);
+  }
+
+  static bool isDarkMode() {
+    return THEME_DARK == themeType ||
+        (THEME_SYSTERM == themeType && brightnessValue == Brightness.dark);
+  }
+
+  static String getThemeStr(BuildContext context) {
+    switch (themeType) {
+      case THEME_LIGHT:
+        return S.of(context).theme_light;
+      case THEME_DARK:
+        return S.of(context).theme_dark;
+      case THEME_SYSTERM:
+        return S.of(context).theme_systerm;
+    }
+    return '';
+  }
+
+  static IconData getThemeIcon() {
+    switch (themeType) {
+      case THEME_LIGHT:
+        return Icons.brightness_7;
+      case THEME_DARK:
+        return Icons.brightness_4;
+      case THEME_SYSTERM:
+        return Icons.settings;
+    }
+    return Icons.brightness_4;
+  }
+
+  static bool isSystermDarkMode(BuildContext context) {
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    print('isSystermDarkMode brightnessValue : ${brightnessValue}');
+    return brightnessValue == Brightness.dark;
+  }
+
+  static Future<int> saveThemeType(int theme) async {
+    return await CacheUtils.setIntWithKey(KEY_THEME, theme);
+  }
+
+  static Future<int> readThemeType() async {
+    int theme = await CacheUtils.getIntByKey(KEY_THEME);
+    if (theme == null) {
+      theme = ThemeType.THEME_SYSTERM;
+    }
+    return theme;
+  }
+}

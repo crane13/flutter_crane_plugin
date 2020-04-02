@@ -1,0 +1,32 @@
+{
+  "appList": [
+    {
+      "name": "Crazy Sudoku",
+      "name_zh": "一起来数独",
+      "package": "cn.crane.myapp.flutterSudoku",
+      "icon": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/4e/c6/fe/4ec6fe35-0343-3cce-b6bf-ab3f6710d663/AppIcon-0-1x_U007emarketing-0-0-85-220-10.png/230x0w.jpg",
+      "link": "https://itunes.apple.com/app/id1465370843"
+    },
+    {
+      "name": "Jigsaw World",
+      "name_zh": "多多数字拼图",
+      "package": "cn.crane.flutter.puzzle.jigsaw",
+      "icon": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/57/e3/5f/57e35f71-9796-ebc6-e119-ce61e33fd07a/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/738x0w.jpg",
+      "link": "https://itunes.apple.com/app/id1477751457"
+    },
+    {
+      "name": "Dance Up",
+      "name_zh": "一起来跳舞",
+      "package": "cn.crane.flutter.danceup",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/e8/1a/1a/e81a1a2d-a106-1892-6091-3d54d30b8619/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.jpg",
+      "link": "https://itunes.apple.com/app/id1475789889"
+    },
+    {
+      "name": "Touch Number",
+      "name_zh": "按数字",
+      "package": "cn.crane.game.flutter.findx",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/e4/58/0a/e4580aa1-6848-78bb-2f47-0f69bf69cbc5/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/651x0w.jpg",
+      "link": "https://itunes.apple.com/app/id1481699832"
+    }
+  ]
+}
