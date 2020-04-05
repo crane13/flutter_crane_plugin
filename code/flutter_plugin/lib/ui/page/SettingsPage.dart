@@ -19,6 +19,7 @@ class SettingsPage extends StatefulWidget {
   String app_name;
   String share_content;
   String download_url;
+  String share_image;
   String rate_url;
   String icon_path;
 
@@ -27,17 +28,18 @@ class SettingsPage extends StatefulWidget {
       this.app_name,
       this.share_content,
       this.download_url,
+      this.share_image,
       this.rate_url,
       this.icon_path = ''})
       : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new _SettingsPageState();
+    return new SettingsPageState();
   }
 }
 
-class _SettingsPageState extends BaseState<SettingsPage> {
+class SettingsPageState extends BaseState<SettingsPage> {
   List<AppItem> appList = [];
 
   String appVersion = '';
@@ -102,6 +104,20 @@ class _SettingsPageState extends BaseState<SettingsPage> {
           width: 100,
           fit: BoxFit.cover,
         ),
+//        Container(
+//            height: 100,
+//            width: 100,
+//            padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+//            decoration: BoxDecoration(
+//                border: Border.all(color: Colors.grey[200], width: 1.0),
+//                borderRadius: BorderRadius.circular(16.0)),
+//            child: Image.asset(
+//              widget.icon_path,
+//              height: 100,
+//              width: 100,
+//              fit: BoxFit.cover,
+//            )),
+
         Divider(
           height: 30,
           color: Colors.transparent,
@@ -121,6 +137,20 @@ class _SettingsPageState extends BaseState<SettingsPage> {
 
     arrWidgets.add(buildThemeView(S.of(context).theme, iconTheme, () {}));
 
+    List<Widget> custormWidgets = getCustormWidgets();
+    if (custormWidgets != null && custormWidgets.length > 0) {
+      arrWidgets.addAll(custormWidgets);
+    }
+//    if (Platform.isIOS) {
+//      arrWidgets.add(getItem(S.of(context).restore, Icons.refresh, () {
+//        BaseJumpUtils.jumpLoadingPage(context);
+//        FlutterGG.restoreByPage(context).then((complete) {
+//          Navigator.of(context).pop();
+//          CommonUtils.showToast(context, S.of(context).complete);
+//        });
+//      }));
+//    }
+
     if (appList == null || appList.length <= 0) {
       arrWidgets.add(getItem(S.of(context).more_games, Icons.more_horiz, () {
         BaseJumpUtils.jumpMoreAppPage(context);
@@ -132,8 +162,8 @@ class _SettingsPageState extends BaseState<SettingsPage> {
     }));
 
     arrWidgets.add(getItem(S.of(context).share, Icons.share, () {
-      CommonUtils.shareApp(
-          context, widget.app_name, widget.share_content, widget.download_url);
+      CommonUtils.shareApp(context, widget.app_name, widget.share_content,
+          widget.download_url, widget.share_image);
     }));
 
 //    arrWidgets.add(getItem(S.of(context).feedback, Icons.feedback, () {
@@ -169,6 +199,10 @@ class _SettingsPageState extends BaseState<SettingsPage> {
 //      crossAxisAlignment: CrossAxisAlignment.center,
           children: arrWidgets,
         ));
+  }
+
+  List<Widget> getCustormWidgets() {
+    return [];
   }
 
   Widget getAppListView() {

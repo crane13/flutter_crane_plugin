@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:craneplugin/ui/page/LoadingPage.dart';
 import 'package:craneplugin/ui/page/MoreGamePage.dart';
 import 'package:craneplugin/ui/page/SettingsPage.dart';
 import 'package:craneplugin/ui/page/TosPage.dart';
@@ -12,6 +13,7 @@ class BaseJumpUtils {
   static void jumpSettingsPage(BuildContext context,
       {String appName,
       String shareContent,
+      String shareImage,
       String downloadUrl,
       String rateUrl,
       String iconPath}) {
@@ -20,6 +22,7 @@ class BaseJumpUtils {
               app_name: appName,
               share_content: shareContent,
               download_url: downloadUrl,
+              share_image: shareImage,
               rate_url: rateUrl,
               icon_path: iconPath,
             )));
@@ -38,5 +41,15 @@ class BaseJumpUtils {
           .push(MaterialPageRoute(builder: (context) => new MoreGamePage()));
     }
     TrackUtils.trackEvent('jumpMoreAppPage');
+  }
+
+  static void jumpLoadingPage(BuildContext context) {
+    Navigator.of(context).push(PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return LoadingPage();
+        }));
+//    Navigator.of(context)
+//        .push(MaterialPageRoute(builder: (context) => new LoadingPage()));
   }
 }

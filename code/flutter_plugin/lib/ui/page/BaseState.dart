@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:craneplugin/utils/AUtils.dart';
 import 'package:craneplugin/utils/ConfigUtils.dart';
 import 'package:craneplugin/utils/theme/ThemeType.dart';
 import 'package:craneplugin/utils/track/TrackUtils.dart';
@@ -82,6 +83,10 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   }
 
   void onCreate() {}
+
+  void setBannerVisible(bool visible) {
+    AUtils.showBannerEnable(visible);
+  }
 
   double getPaddingTop() => MediaQuery.of(context).padding.top;
 

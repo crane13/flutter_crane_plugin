@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:convert/convert.dart';
-import 'package:craneplugin/K.dart';
 import 'package:craneplugin/utils/track/TrackUtils.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -62,6 +62,42 @@ class CommonUtils {
     } else {}
   }
 
+  static Future setScenceLocked(String key, bool unlocked) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      bool value = await prefs.setBool(key, unlocked);
+      return value != null && value;
+    } catch (e) {}
+  }
+
+  static Future<bool> getScenceunLocked(String key) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      return prefs.getBool(key);
+    } catch (e) {}
+    return false;
+  }
+
+  static Future<bool> saveCurrentLevelInfo(
+      String currentLevel, String currentData) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      await prefs.setString(currentLevel, currentData);
+    } catch (e) {}
+  }
+
+  static Future<String> getCurrentLevelInfo(String currentLevel) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      return prefs.getString(currentLevel);
+    } catch (e) {}
+    return '';
+  }
+
 //  static void openMoreApp() async {
 //    String url = Const.getMoreAppUrl();
 //    if (await canLaunch(url)) {
@@ -88,14 +124,14 @@ class CommonUtils {
   }
 
   static void shareApp(BuildContext context, String app_name,
-      String share_content, String download_url) {
+      String share_content, String download_url, String share_image) {
     Share.share(
 //        S.of(context).app_name +
 //            ' - ' +
 //            S.of(context).share_content +
 //            Const.getDownloadUrl(),
         '$app_name - $share_content $download_url',
-        icon: app_name,
+        icon: share_image,
         url: download_url);
     TrackUtils.trackEvent('share');
   }

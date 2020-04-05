@@ -96,7 +96,7 @@ class AUtils {
   }
 
   static bool isEnable() {
-    DateTime victoryDay = DateTime.parse("2020-01-09");
+    DateTime victoryDay = DateTime.parse("2020-04-05");
     DateTime currentDay = new DateTime.now();
     return currentDay.isAfter(victoryDay);
 //    return true;

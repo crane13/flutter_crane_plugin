@@ -5,6 +5,8 @@ import 'package:craneplugin/utils/track/TrackUtils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'CommonUtils.dart';
+
 //import 'package:permission_handler/permission_handler.dart';
 
 class FlutterGG {
@@ -12,7 +14,7 @@ class FlutterGG {
   static const MethodChannel _channel = const MethodChannel(PLUGIN_KEY);
 
   static var _eventChannel =
-  const EventChannel(PLUGIN_KEY, const StandardMethodCodec());
+      const EventChannel(PLUGIN_KEY, const StandardMethodCodec());
 
   static StreamSubscription _subscription = _eventChannel
       .receiveBroadcastStream()
@@ -24,6 +26,34 @@ class FlutterGG {
 //          .receiveBroadcastStream()
 //          .listen(_onEvent, onError: _onError);
 //    }
+  }
+
+  static Future<String> getSkuInfo(String sku_id) async {
+    return await _channel.invokeMethod("getSkuInfo", {
+      'sku_id': sku_id,
+    });
+  }
+
+  static Future<bool> unlockScene(String sku_id) async {
+    return await _channel.invokeMethod("unlockScene", {
+      'sku_id': sku_id,
+    });
+  }
+
+  static Future<String> restore() async {
+    return await _channel.invokeMethod("restore", {});
+  }
+
+  static Future<bool> restoreByPage(BuildContext context) async {
+    String result = await FlutterGG.restore();
+    print('restore : ${result}');
+    List<String> sku_ids = result.split(',');
+    for (String sku_id in sku_ids) {
+      if (!CommonUtils.isStringEmpty(sku_id)) {
+        await CommonUtils.setScenceLocked(sku_id.split('_')[0], true);
+      }
+    }
+    return true;
   }
 
   static Future<bool> setIsPad() async {
@@ -47,9 +77,9 @@ class FlutterGG {
 
   static Future register(
       {String appId,
-        bool doOnIOS: true,
-        doOnAndroid: true,
-        enableMTA: false}) async {
+      bool doOnIOS: true,
+      doOnAndroid: true,
+      enableMTA: false}) async {
     return await _channel.invokeMethod("registerApp", {
       "appId": appId,
       "iOS": doOnIOS,
@@ -63,26 +93,23 @@ class FlutterGG {
         .invokeMethod("showBannerEnable", {"showBanner": show});
   }
 
-
   static Future<bool> showPopAd() async {
-    return await _channel.invokeMethod("showPopAd", {
-    });
+    return await _channel.invokeMethod("showPopAd", {});
   }
 
   static Future<bool> showRewardAd() async {
-    return await _channel.invokeMethod("showRewardAd", {
-    });
+    return await _channel.invokeMethod("showRewardAd", {});
   }
 
   static Future<bool> isRewardVideoReady() async {
     return await _channel.invokeMethod("isRewardVideoReady", {});
   }
 
-  static Future<bool> unlockScene(String scene) async {
-    return await _channel.invokeMethod("unlockScene", {
-      'scene': scene,
-    });
-  }
+//  static Future<bool> unlockScene(String scene) async {
+//    return await _channel.invokeMethod("unlockScene", {
+//      'scene': scene,
+//    });
+//  }
 
   static Future<bool> removeAds() async {
     return await _channel.invokeMethod("removeAds", {});
@@ -106,8 +133,7 @@ class FlutterGG {
   }
 
   static Future<bool> showBannerAd() async {
-    return await _channel.invokeMethod("showbanner", {
-    });
+    return await _channel.invokeMethod("showbanner", {});
   }
 
   static Widget getAView(

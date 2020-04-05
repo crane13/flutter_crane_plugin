@@ -11,5 +11,7 @@
   "rate": "Rate",
   "share": "Share",
   "settings": "Settings",
-  "other_works": "Other Works"
+  "other_works": "Other Works",
+  "restore": "Restore",
+  "complete": "Restore Completed"
 }
