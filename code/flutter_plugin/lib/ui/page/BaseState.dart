@@ -32,6 +32,9 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
         screenSize = MediaQuery.of(context).size;
         ConfigUtils.setScreenSize(screenSize);
         computeScreenHW();
+        final Brightness brightness =
+            WidgetsBinding.instance.window.platformBrightness;
+        ThemeType.brightnessValue = brightness;
       });
     });
   }
