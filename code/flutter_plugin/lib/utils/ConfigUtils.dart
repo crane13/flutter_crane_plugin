@@ -14,6 +14,8 @@ class ConfigUtils {
 
   static Size screenSize;
 
+  static var isScreenH = false;
+
   static setScreenSize(Size size) {
     screenSize = size;
   }

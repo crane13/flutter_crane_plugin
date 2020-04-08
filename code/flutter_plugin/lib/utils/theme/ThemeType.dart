@@ -14,24 +14,26 @@ class ThemeType {
 
   static Brightness brightnessValue;
 
-  static int themeType = ThemeType.THEME_SYSTERM;
+  static int _themeType = THEME_SYSTERM;
 
   static void setBrightness(Brightness brightness) {
     brightnessValue = brightness;
   }
 
+  static void initTheme(int themeType) {}
+
   static void setThemeType(int type) {
-    themeType = type;
+    _themeType = type;
     saveThemeType(type);
   }
 
   static bool isDarkMode() {
-    return THEME_DARK == themeType ||
-        (THEME_SYSTERM == themeType && brightnessValue == Brightness.dark);
+    return THEME_DARK == _themeType ||
+        (THEME_SYSTERM == _themeType && brightnessValue == Brightness.dark);
   }
 
   static String getThemeStr(BuildContext context) {
-    switch (themeType) {
+    switch (_themeType) {
       case THEME_LIGHT:
         return S.of(context).theme_light;
       case THEME_DARK:
@@ -43,7 +45,7 @@ class ThemeType {
   }
 
   static IconData getThemeIcon() {
-    switch (themeType) {
+    switch (_themeType) {
       case THEME_LIGHT:
         return Icons.brightness_7;
       case THEME_DARK:
@@ -71,5 +73,13 @@ class ThemeType {
       theme = ThemeType.THEME_SYSTERM;
     }
     return theme;
+  }
+
+  static Future<bool> hasSetTheme() async {
+    int theme = await CacheUtils.getIntByKey(KEY_THEME);
+    if (theme == null || theme < 0) {
+      return false;
+    }
+    return true;
   }
 }

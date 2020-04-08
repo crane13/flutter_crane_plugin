@@ -135,4 +135,18 @@ class CommonUtils {
         url: download_url);
     TrackUtils.trackEvent('share');
   }
+
+  static int parseInt(String str, {int defaultValue = 0}) {
+    try {
+      return int.parse(str);
+    } catch (e) {}
+    return defaultValue;
+  }
+
+  static double parseDouble(String str, {double defaultValue = 0}) {
+    try {
+      return double.parse(str);
+    } catch (e) {}
+    return defaultValue;
+  }
 }

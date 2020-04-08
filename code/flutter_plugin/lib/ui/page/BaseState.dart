@@ -40,8 +40,13 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
     if (screenSize != null) {
       double h = screenSize.height;
       double w = screenSize.width;
-      screenH = math.min(h, w);
-      screenW = math.max(h, w);
+      if (ConfigUtils.isScreenH) {
+        screenH = math.min(h, w);
+        screenW = math.max(h, w);
+      } else {
+        screenH = math.max(h, w);
+        screenW = math.min(h, w);
+      }
     }
   }
 
