@@ -19,4 +19,20 @@ class CacheUtils {
     return 0;
   }
 
+  static Future setBoolWithKey(String key, bool v) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(key, v);
+    } catch (e) {}
+  }
+
+  static Future<bool> getBoolByKey(String key) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      return prefs.getBool(key);
+    } catch (e) {}
+    return false;
+  }
+
 }
