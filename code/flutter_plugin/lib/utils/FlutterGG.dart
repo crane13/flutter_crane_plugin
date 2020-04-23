@@ -97,6 +97,10 @@ class FlutterGG {
     return await _channel.invokeMethod("showPopAd", {});
   }
 
+  static Future<String> getChannel() async {
+    return await _channel.invokeMethod("getChannel", {});
+  }
+
   static Future<bool> showRewardAd() async {
     return await _channel.invokeMethod("showRewardAd", {});
   }

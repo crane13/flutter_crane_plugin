@@ -6,8 +6,19 @@ class K {
   static var ANDROID_PACKAGE = '';
   static var IOS_PACKAGE = '';
   static var IOS_APPID = '';
+  static var _channel = '';
 
-  static init(bool is_googleplay, String android_package, String ios_package, String ios_appid) {
+  static setChannel(String channel) {
+    K._channel = channel;
+    IS_GOOGLEPLAY = channel != null && channel.contains('google');
+  }
+
+  static getChannel() {
+    return _channel;
+  }
+
+  static init(bool is_googleplay, String android_package, String ios_package,
+      String ios_appid) {
     IS_GOOGLEPLAY = is_googleplay;
     ANDROID_PACKAGE = android_package;
     IOS_PACKAGE = ios_package;
