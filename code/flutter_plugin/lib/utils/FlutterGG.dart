@@ -97,6 +97,10 @@ class FlutterGG {
     return await _channel.invokeMethod("showPopAd", {});
   }
 
+  static Future<bool> showScoreView() async {
+    return await _channel.invokeMethod("showScoreView", {});
+  }
+
   static Future<String> getChannel() async {
     return await _channel.invokeMethod("getChannel", {});
   }
@@ -139,10 +143,10 @@ class FlutterGG {
   static Future<bool> setWallPaperParams() async {
     return await _channel.invokeMethod("setWallPaperParams", {});
   }
+
   static Future<bool> setWallPaper() async {
     return await _channel.invokeMethod("setWallPaper", {});
   }
-
 
   static Future<bool> showBannerAd() async {
     return await _channel.invokeMethod("showbanner", {});
