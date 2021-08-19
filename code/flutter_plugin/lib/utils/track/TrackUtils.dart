@@ -6,7 +6,7 @@ import 'UmengUtils.dart';
 class TrackUtils {
   static void initTrackSDK() {
     UmengUtils.initUmeng();
-    AppCenterUtils.initAppCenter();
+//    AppCenterUtils.initAppCenter();
   }
 
   static void onPause(String page) {
@@ -23,7 +23,7 @@ class TrackUtils {
 
   static void trackEvent(String event) {
     if (!CommonUtils.isStringEmpty(event)) {
-      AppCenterUtils.trackEventerAppCenter(event);
+//      AppCenterUtils.trackEventerAppCenter(event);
       UmengUtils.trackEventUmeng(event);
     }
   }

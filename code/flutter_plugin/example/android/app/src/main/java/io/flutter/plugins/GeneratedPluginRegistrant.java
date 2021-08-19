@@ -14,9 +14,6 @@ import io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry;
 public final class GeneratedPluginRegistrant {
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
     ShimPluginRegistry shimPluginRegistry = new ShimPluginRegistry(flutterEngine);
-      com.aloisdeniel.flutter.appcenter_analytics.AppcenterAnalyticsPlugin.registerWith(shimPluginRegistry.registrarFor("com.aloisdeniel.flutter.appcenter_analytics.AppcenterAnalyticsPlugin"));
-      com.aloisdeniel.flutter.appcenter.AppcenterPlugin.registerWith(shimPluginRegistry.registrarFor("com.aloisdeniel.flutter.appcenter.AppcenterPlugin"));
-      com.aloisdeniel.flutter.appcenter_crashes.AppcenterCrashesPlugin.registerWith(shimPluginRegistry.registrarFor("com.aloisdeniel.flutter.appcenter_crashes.AppcenterCrashesPlugin"));
     flutterEngine.getPlugins().add(new cn.crane.flutter.craneplugin.CranepluginPlugin());
       pedia.flutterumenganalytics.FlutterUmengAnalyticsPlugin.registerWith(shimPluginRegistry.registrarFor("pedia.flutterumenganalytics.FlutterUmengAnalyticsPlugin"));
     flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());

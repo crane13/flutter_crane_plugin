@@ -4,24 +4,6 @@
 
 #import "GeneratedPluginRegistrant.h"
 
-#if __has_include(<appcenter_analytics/AppcenterAnalyticsPlugin.h>)
-#import <appcenter_analytics/AppcenterAnalyticsPlugin.h>
-#else
-@import appcenter_analytics;
-#endif
-
-#if __has_include(<appcenter_base/AppcenterPlugin.h>)
-#import <appcenter_base/AppcenterPlugin.h>
-#else
-@import appcenter_base;
-#endif
-
-#if __has_include(<appcenter_crashes/AppcenterCrashesPlugin.h>)
-#import <appcenter_crashes/AppcenterCrashesPlugin.h>
-#else
-@import appcenter_crashes;
-#endif
-
 #if __has_include(<craneplugin/CranepluginPlugin.h>)
 #import <craneplugin/CranepluginPlugin.h>
 #else
@@ -61,9 +43,6 @@
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
-  [AppcenterAnalyticsPlugin registerWithRegistrar:[registry registrarForPlugin:@"AppcenterAnalyticsPlugin"]];
-  [AppcenterPlugin registerWithRegistrar:[registry registrarForPlugin:@"AppcenterPlugin"]];
-  [AppcenterCrashesPlugin registerWithRegistrar:[registry registrarForPlugin:@"AppcenterCrashesPlugin"]];
   [CranepluginPlugin registerWithRegistrar:[registry registrarForPlugin:@"CranepluginPlugin"]];
   [FlutterUmengAnalyticsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterUmengAnalyticsPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];

@@ -8,6 +8,7 @@ import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:math' as math;
 
 class CommonUtils {
   static const MINITES = 60;
@@ -148,5 +149,14 @@ class CommonUtils {
       return double.parse(str);
     } catch (e) {}
     return defaultValue;
+  }
+
+  static double splitAndRound_2(double value) {
+    return splitAndRound(value, 2);
+  }
+
+  static double splitAndRound(double a, int n) {
+    a = a * math.pow(10, n);
+    return (a.round()) / (math.pow(10, n));
   }
 }

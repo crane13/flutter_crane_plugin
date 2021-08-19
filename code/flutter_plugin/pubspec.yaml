@@ -13,18 +13,22 @@ dependencies:
 
   flutter_umeng_analytics_fork: ^0.0.3
 
-  appcenter_base:
-    git:
-      url: https://github.com/crane13/flutter_plugin_appcenter
-      path: src/appcenter_base
-  appcenter_analytics:
-    git:
-      url: https://github.com/crane13/flutter_plugin_appcenter
-      path: src/appcenter_analytics
-  appcenter_crashes:
-    git:
-      url: https://github.com/crane13/flutter_plugin_appcenter
-      path: src/appcenter_crashes
+#  appcenter_base:
+#    git:
+#      url: https://github.com/crane13/flutter_plugin_appcenter
+#      path: src/appcenter_base
+#  appcenter_analytics:
+#    git:
+#      url: https://github.com/crane13/flutter_plugin_appcenter
+#      path: src/appcenter_analytics
+#  appcenter_crashes:
+#    git:
+#      url: https://github.com/crane13/flutter_plugin_appcenter
+#      path: src/appcenter_crashes
+
+#  appcenter_base: ^0.2.1
+#  appcenter_analytics: ^0.2.1
+#  appcenter_crashes: ^0.2.1
   share:
     git:
       url: https://github.com/crane13/plugins
