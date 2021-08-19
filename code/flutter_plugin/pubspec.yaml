@@ -33,15 +33,15 @@ dependencies:
     git:
       url: https://github.com/crane13/plugins
       path: packages/share
-  url_launcher: ^5.4.10
+  url_launcher: ^6.0.9
   toast: ^0.1.5
 
-  path_provider: ^1.6.9
+  path_provider: ^2.0.2
 
-  shared_preferences: ^0.5.7+3
+  shared_preferences: ^2.0.6
 
-  http: ^0.12.1
-  flutter_spinkit: ^4.1.2+1
+  http: ^0.13.3
+  flutter_spinkit: ^5.0.0
 
 dev_dependencies:
   flutter_test:

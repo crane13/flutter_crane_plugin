@@ -1,10 +1,10 @@
-//import 'dart:io';
+// import 'dart:io';
 //
-//import 'package:appcenter_analytics/appcenter_analytics.dart';
-//import 'package:appcenter_base/appcenter.dart';
-//import 'package:appcenter_crashes/appcenter_crashes.dart';
+// import 'package:appcenter_analytics/appcenter_analytics.dart';
+// import 'package:appcenter_base/appcenter.dart';
+// import 'package:appcenter_crashes/appcenter_crashes.dart';
 //
-//class AppCenterUtils {
+// class AppCenterUtils {
 //  static var APPCENTER_SECRET_IOS = '';
 //  static var APPCENTER_SECRET_ANDROID = '';
 //
@@ -21,12 +21,12 @@
 //        app_secret, [AppCenterAnalytics.id, AppCenterCrashes.id]);
 //
 //    await AppCenter.setEnabled(true); // global
-////  await AppCenterAnalytics.setEnabled(false); // just a service
-////  await AppCenterCrashes.setEnabled(false); // just a service
+// //  await AppCenterAnalytics.setEnabled(false); // just a service
+// //  await AppCenterCrashes.setEnabled(false); // just a service
 //  }
 //
 //  static void trackEventerAppCenter(String event) {
 //    AppCenterAnalytics.trackEvent(event);
-////  AppCenterAnalytics.trackEvent("casino", { "dollars" : "10" }); // with
+// //  AppCenterAnalytics.trackEvent("casino", { "dollars" : "10" }); // with
 //  }
-//}
+// }

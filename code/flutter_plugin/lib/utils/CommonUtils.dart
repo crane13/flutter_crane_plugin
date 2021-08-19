@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:convert/convert.dart';
+// import 'package:convert/convert.dart';
 import 'package:craneplugin/utils/track/TrackUtils.dart';
-import 'package:crypto/crypto.dart';
+// import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,17 +14,17 @@ class CommonUtils {
   static const MINITES = 60;
   static const HOUR = 60 * MINITES;
 
-  static String generateMd5(String data) {
-    var content = new Utf8Encoder().convert(data);
-    var digest = md5.convert(content);
-    return hex.encode(digest.bytes);
-  }
+  // static String generateMd5(String data) {
+  //   var content = new Utf8Encoder().convert(data);
+  //   var digest = md5.convert(content);
+  //   return hex.encode(digest.bytes);
+  // }
 
-  static String generateMd5WithSalt(String data, {salt = '123456'}) {
-    var content = new Utf8Encoder().convert(data + salt);
-    var digest = md5.convert(content);
-    return hex.encode(digest.bytes);
-  }
+  // static String generateMd5WithSalt(String data, {salt = '123456'}) {
+  //   var content = new Utf8Encoder().convert(data + salt);
+  //   var digest = md5.convert(content);
+  //   return hex.encode(digest.bytes);
+  // }
 
   static bool isStringEmpty(String str) {
     return str == null || str.trim().length <= 0;

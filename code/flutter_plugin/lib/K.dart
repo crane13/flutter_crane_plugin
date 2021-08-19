@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:craneplugin/utils/ConfigUtils.dart';
+
 class K {
   static var IS_GOOGLEPLAY = true;
 
@@ -31,7 +33,11 @@ class K {
 
   static String getMoreListUrl() {
     if (Platform.isIOS) {
-      return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps_ios.json';
+      if (ConfigUtils.isChinese()) {
+        return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps_ios_zh.json';
+      } else {
+        return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps_ios.json';
+      }
     } else {
       if (IS_GOOGLEPLAY) {
         return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps_google_play.json';
@@ -39,6 +45,26 @@ class K {
         return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps.json';
       }
     }
+  }
+
+  static Uri getMoreListUrlForHttp() {
+    String unencodedPath = '';
+    if (Platform.isIOS) {
+      if (ConfigUtils.isChinese()) {
+        unencodedPath = '/more_apps_ios_zh.json';
+      } else {
+        unencodedPath = '/more_apps_ios.json';
+      }
+    } else {
+      if (IS_GOOGLEPLAY) {
+        unencodedPath = '/more_apps_google_play.json';
+      } else {
+        unencodedPath = '/more_apps.json';
+      }
+    }
+
+    return Uri.https(
+        'configs-1253122004.cos.ap-chengdu.myqcloud.com', unencodedPath, {});
   }
 
   static String getMoreListLocal() {

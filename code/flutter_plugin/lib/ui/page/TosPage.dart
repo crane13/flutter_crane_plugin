@@ -33,7 +33,6 @@ class _TosPageState extends BaseState<TosPage> {
       backgroundColor: BaseColors.getBgSettingColor(),
       navigationBar: CupertinoNavigationBar(
         backgroundColor: BaseColors.getNavBarBgColor(),
-        actionsForegroundColor: BaseColors.getNavBarColor(),
         previousPageTitle: S.of(context).back,
         middle: Text(
           S.of(context).tos,

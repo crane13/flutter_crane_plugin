@@ -34,7 +34,6 @@ class _MoreGamePageState extends BaseState<MoreGamePage> {
       backgroundColor: BaseColors.getNavBarBgColor(),
       navigationBar: CupertinoNavigationBar(
         backgroundColor: BaseColors.getNavBarBgColor(),
-        actionsForegroundColor: BaseColors.getNavBarColor(),
         previousPageTitle: S.of(context).back,
         middle: Text('More', style: TextStyle(color: BaseColors.getNavBarColor()),),
       ),

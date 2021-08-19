@@ -1,6 +1,6 @@
 import 'package:craneplugin/utils/CommonUtils.dart';
 
-import 'AppCenterUtils.dart';
+// import 'AppCenterUtils.dart';
 import 'UmengUtils.dart';
 
 class TrackUtils {

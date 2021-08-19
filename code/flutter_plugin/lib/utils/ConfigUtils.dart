@@ -66,7 +66,7 @@ class ConfigUtils {
 
   static Future<List<AppItem>> _loadAppListfromServer() async {
     try {
-      var resp = await http.get(K.getMoreListUrl());
+      var resp = await http.get(K.getMoreListUrlForHttp());
       var response = json.decode(
           new Utf8Decoder(allowMalformed: true).convert(resp.bodyBytes));
       print('_loadAppListfromServer === ${response}');

@@ -71,7 +71,6 @@ class SettingsPageState extends BaseState<SettingsPage> {
       backgroundColor: BaseColors.getBgSettingColor(),
       navigationBar: CupertinoNavigationBar(
         backgroundColor: BaseColors.getNavBarBgColor(),
-        actionsForegroundColor: BaseColors.getNavBarColor(),
         previousPageTitle: S.of(context).back,
 //        middle: Text(S.of(context).add_success_diary),
 //        trailing: GestureDetector(
