@@ -10,6 +10,7 @@ import 'package:craneplugin/utils/BaseJumpUtils.dart';
 import 'package:craneplugin/utils/CommonUtils.dart';
 import 'package:craneplugin/utils/ConfigUtils.dart';
 import 'package:craneplugin/utils/FlutterGG.dart';
+import 'package:craneplugin/utils/PlatformUtils.dart';
 import 'package:craneplugin/utils/theme/ThemeType.dart';
 import 'package:craneplugin/utils/track/TrackUtils.dart';
 import 'package:flutter/cupertino.dart';
@@ -150,20 +151,16 @@ class SettingsPageState extends BaseState<SettingsPage> {
 //      }));
 //    }
 
-    if (appList == null || appList.length <= 0) {
-      arrWidgets.add(getItem(S.of(context).more_games, Icons.more_horiz, () {
-        BaseJumpUtils.jumpMoreAppPage(context);
-      }));
-    }
-
     arrWidgets.add(getItem(S.of(context).rate, Icons.star, () {
       CommonUtils.openUrl(widget.rate_url);
     }));
 
-    arrWidgets.add(getItem(S.of(context).share, Icons.share, () {
-      CommonUtils.shareApp(context, widget.app_name, widget.share_content,
-          widget.download_url, widget.share_image);
-    }));
+    if (PlatformUtils.isApp()) {
+      arrWidgets.add(getItem(S.of(context).share, Icons.share, () {
+        CommonUtils.shareApp(context, widget.app_name, widget.share_content,
+            widget.download_url, widget.share_image);
+      }));
+    }
 
 //    arrWidgets.add(getItem(S.of(context).feedback, Icons.feedback, () {
 //      CommonUtils.feedback();
@@ -172,6 +169,24 @@ class SettingsPageState extends BaseState<SettingsPage> {
     arrWidgets.add(getItem(S.of(context).tos, Icons.library_books, () {
       BaseJumpUtils.jumpTOSPage(context);
     }));
+
+    if (appList == null || appList.length <= 0) {
+      bool isShowMore = true;
+      // if (Platform.isMacOS) {
+      //   isShowMore = AUtils.isEnable();
+      // }
+
+      if (isShowMore) {
+        arrWidgets.add(getItem(S.of(context).more_games, Icons.more_horiz, () {
+          BaseJumpUtils.jumpMoreAppPage(context);
+          // if (PlatformUtils.isApp()) {
+          //   BaseJumpUtils.jumpMoreAppPage(context);
+          // } else {
+          //   BaseJumpUtils.jumpStudio();
+          // }
+        }));
+      }
+    }
 
     if (appList != null && appList.length > 0) {
       arrWidgets.add(Container(

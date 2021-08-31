@@ -20,7 +20,6 @@ class ConfigUtils {
     screenSize = size;
   }
 
-
   static setLocale(Locale locale) {
     _locale = locale;
   }
@@ -52,14 +51,16 @@ class ConfigUtils {
   static Future<List<AppItem>> _loadAppListFromAssets(
       BuildContext context) async {
     try {
-      var configJson = await DefaultAssetBundle.of(context)
-          .loadString(K.getMoreListLocal());
+      var configJson =
+          await DefaultAssetBundle.of(context).loadString(K.getMoreListLocal());
       print('_loadAppListFromAssets');
-      var response = json.decode(
-          new Utf8Decoder(allowMalformed: true).convert(configJson.codeUnits));
+      // var response = json.decode(
+      //     new Utf8Decoder(allowMalformed: false).convert(configJson.codeUnits));
+      var response = json.decode(configJson);
 
       return AppListEntity.fromJson(response).appList;
     } catch (e) {
+      print(e);
       return null;
     }
   }

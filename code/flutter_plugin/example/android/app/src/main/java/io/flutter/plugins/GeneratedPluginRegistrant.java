@@ -16,7 +16,6 @@ public final class GeneratedPluginRegistrant {
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
     ShimPluginRegistry shimPluginRegistry = new ShimPluginRegistry(flutterEngine);
     flutterEngine.getPlugins().add(new cn.crane.flutter.craneplugin.CranepluginPlugin());
-      pedia.flutterumenganalytics.FlutterUmengAnalyticsPlugin.registerWith(shimPluginRegistry.registrarFor("pedia.flutterumenganalytics.FlutterUmengAnalyticsPlugin"));
     flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());
       io.flutter.plugins.share.SharePlugin.registerWith(shimPluginRegistry.registrarFor("io.flutter.plugins.share.SharePlugin"));
     flutterEngine.getPlugins().add(new io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin());

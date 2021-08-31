@@ -10,12 +10,6 @@
 @import craneplugin;
 #endif
 
-#if __has_include(<flutter_umeng_analytics_fork/FlutterUmengAnalyticsPlugin.h>)
-#import <flutter_umeng_analytics_fork/FlutterUmengAnalyticsPlugin.h>
-#else
-@import flutter_umeng_analytics_fork;
-#endif
-
 #if __has_include(<path_provider/FLTPathProviderPlugin.h>)
 #import <path_provider/FLTPathProviderPlugin.h>
 #else
@@ -44,7 +38,6 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [CranepluginPlugin registerWithRegistrar:[registry registrarForPlugin:@"CranepluginPlugin"]];
-  [FlutterUmengAnalyticsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterUmengAnalyticsPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
   [FLTSharePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharePlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];

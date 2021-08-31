@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:craneplugin/ui/view/BannerView.dart';
 import 'package:craneplugin/utils/track/TrackUtils.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'CommonUtils.dart';
-
 //import 'package:permission_handler/permission_handler.dart';
 
 class FlutterGG {
@@ -157,6 +157,9 @@ class FlutterGG {
 //    ConfigInfo configInfo = ConfigUtils.getConfigLocal();
     bool enable = true;
 
+    if (!Platform.isAndroid && !Platform.isIOS) {
+      return SizedBox();
+    }
     if (enable) {
       if (size == 'large') {
         return BannerView(

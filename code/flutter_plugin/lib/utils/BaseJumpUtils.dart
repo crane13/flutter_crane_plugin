@@ -34,13 +34,18 @@ class BaseJumpUtils {
   }
 
   static void jumpMoreAppPage(BuildContext context) {
-    if (Platform.isIOS) {
+    if (Platform.isIOS || Platform.isMacOS) {
       CommonUtils.openUrl('https://apps.apple.com/developer/id1061441649');
     } else {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => new MoreGamePage()));
     }
     TrackUtils.trackEvent('jumpMoreAppPage');
+  }
+
+  static void jumpStudio() {
+    String url = 'https://cranedev123.github.io/';
+    CommonUtils.openUrl(url);
   }
 
   static void jumpLoadingPage(BuildContext context) {

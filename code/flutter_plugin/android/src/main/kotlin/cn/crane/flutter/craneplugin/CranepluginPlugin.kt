@@ -45,7 +45,7 @@ public class CranepluginPlugin : FlutterPlugin, MethodCallHandler {
                         .getPackageInfo(context.packageName, 0)
                 appVersionName = packageInfo.versionName
             } catch (e: PackageManager.NameNotFoundException) {
-                Log.e("", e.message)
+//                Log.e("", e.message)
             }
 
             return appVersionName

@@ -55,13 +55,13 @@ class K {
       } else {
         unencodedPath = '/more_apps_ios.json';
       }
-    } else {
+    } else if (Platform.isAndroid) {
       if (IS_GOOGLEPLAY) {
         unencodedPath = '/more_apps_google_play.json';
       } else {
         unencodedPath = '/more_apps.json';
       }
-    }
+    } else if (Platform.isMacOS) {}
 
     return Uri.https(
         'configs-1253122004.cos.ap-chengdu.myqcloud.com', unencodedPath, {});
@@ -70,12 +70,14 @@ class K {
   static String getMoreListLocal() {
     if (Platform.isIOS) {
       return 'assets/more_apps_ios.json';
-    } else {
+    } else if (Platform.isAndroid) {
       if (IS_GOOGLEPLAY) {
         return 'assets/more_apps_google_play.json';
       } else {
         return 'assets/more_apps.json';
       }
+    } else if (Platform.isMacOS) {
+      return '';
     }
   }
 
@@ -90,5 +92,4 @@ class K {
       }
     }
   }
-
 }
