@@ -124,14 +124,15 @@ class CommonUtils {
 
   static void shareApp(BuildContext context, String app_name,
       String share_content, String download_url, String share_image) {
-    Share.share(
-//        S.of(context).app_name +
-//            ' - ' +
-//            S.of(context).share_content +
-//            Const.getDownloadUrl(),
-        '$app_name - $share_content $download_url',
-        icon: share_image,
-        url: download_url);
+    Share.share('$app_name - $share_content $download_url');
+//     Share.share(
+// //        S.of(context).app_name +
+// //            ' - ' +
+// //            S.of(context).share_content +
+// //            Const.getDownloadUrl(),
+//         '$app_name - $share_content $download_url',
+//         icon: share_image,
+//         url: download_url);
     TrackUtils.trackEvent('share');
   }
 

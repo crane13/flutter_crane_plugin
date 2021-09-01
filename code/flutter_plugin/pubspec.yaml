@@ -29,10 +29,12 @@ dependencies:
 #  appcenter_base: ^0.2.1
 #  appcenter_analytics: ^0.2.1
 #  appcenter_crashes: ^0.2.1
-  share:
-    git:
-      url: https://github.com/crane13/plugins
-      path: packages/share
+#  share:
+#    git:
+#      url: https://github.com/crane13/plugins
+#      path: packages/share
+
+  share: ^2.0.4
   url_launcher: ^6.0.9
   toast: ^0.1.5
 
@@ -42,6 +44,8 @@ dependencies:
 
   http: ^0.13.3
   flutter_spinkit: ^5.0.0
+
+  umeng_common_sdk: ^1.2.3
 
 dev_dependencies:
   flutter_test:

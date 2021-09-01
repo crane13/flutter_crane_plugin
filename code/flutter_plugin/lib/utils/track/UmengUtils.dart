@@ -1,4 +1,4 @@
-// import 'package:flutter_umeng_analytics_fork/flutter_umeng_analytics_fork.dart';
+import 'package:umeng_common_sdk/umeng_common_sdk.dart';
 
 class UmengUtils {
   static var UMENG_KEY_ANDROID = '';
@@ -10,23 +10,19 @@ class UmengUtils {
   }
 
   static void initUmeng() {
-    // if (Platform.isAndroid)
-    //   UMengAnalytics.init(UMENG_KEY_ANDROID,
-    //       policy: Policy.BATCH, encrypt: true, reportCrash: false);
-    // else if (Platform.isIOS)
-    //   UMengAnalytics.init(UMENG_KEY_IOS,
-    //       policy: Policy.BATCH, encrypt: true, reportCrash: false);
+    UmengCommonSdk.initCommon(UMENG_KEY_ANDROID, UMENG_KEY_IOS, 'Umeng');
+    UmengCommonSdk.setPageCollectionModeManual();
   }
 
   static void trackEventUmeng(String event) {
-    // UMengAnalytics.logEvent(event);
+    UmengCommonSdk.onEvent(event, {});
   }
 
   static void onPause(String page) {
-    // UMengAnalytics.beginPageView(page);
+    UmengCommonSdk.onPageEnd(page);
   }
 
   static void onResume(String page) {
-    // UMengAnalytics.endPageView(page);
+    UmengCommonSdk.onPageStart(page);
   }
 }
