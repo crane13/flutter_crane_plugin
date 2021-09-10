@@ -8,4 +8,12 @@ class PlatformUtils {
       return false;
     }
   }
+
+  static bool hasChannelPlugin() {
+    try {
+      return Platform.isAndroid || Platform.isIOS;
+    } catch (e) {
+      return false;
+    }
+  }
 }

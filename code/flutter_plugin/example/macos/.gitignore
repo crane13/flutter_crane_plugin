@@ -1,16 +1,6 @@
-.DS_Store
-.dart_tool/
-
-.packages
-.pub/
-
-build/
-
 # Flutter-related
 **/Flutter/ephemeral/
 **/Pods/
 
 # Xcode-related
 **/xcuserdata/
-
-**/Flutter/
