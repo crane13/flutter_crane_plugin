@@ -8,7 +8,7 @@
 
 import Foundation
 import GoogleMobileAds
-class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
+open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
     var interstitial: GADInterstitialAd!
     private var controller: UIViewController?
     private var appId:String? = Const.ADMOB_ID
@@ -66,15 +66,15 @@ class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
         return shown
     }
 
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    public func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
       print("Ad did present full screen content.")
     }
 
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
       print("Ad failed to present full screen content with error \(error.localizedDescription).")
     }
 
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
       print("Ad did dismiss full screen content.")
     self.loadAd(controller: self.controller!)
     }

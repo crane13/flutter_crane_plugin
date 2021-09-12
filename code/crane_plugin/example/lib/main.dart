@@ -54,11 +54,12 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: GestureDetector(
-            onTap: (){
+            onTap: () {
               AUtils.showBanner();
-              // AUtils.showPopNow();
+              AUtils.showPopNow();
               // AUtils.showVideo();
               // AUti
+              BaseJumpUtils
             },
             child: Text('Running on: $_platformVersion\n'),
           ),

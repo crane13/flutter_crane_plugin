@@ -6,25 +6,24 @@
 //
 
 import Foundation
-import Firebase
-public class FireBaseUtils{
-    
-    static let sharedInstance = FireBaseUtils()
-    
-    func initFirebase()  {
+import FirebaseAnalytics
+import FirebaseCore
+open class FireBaseUtils{
+
+    static public let sharedInstance = FireBaseUtils()
+
+    public func initFirebase()  {
         FirebaseApp.configure()
     }
-    
-    func logEvent(event : String)  {
+
+    public func logEvent(event : String)  {
 //        firebaseAnalytic
 //        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
 //          AnalyticsParameterItemID: "id-\(title!)",
 //          AnalyticsParameterItemName: title!,
 //          AnalyticsParameterContentType: "cont"
 //          ])
-     
-   
 //
     }
-    
+
 }

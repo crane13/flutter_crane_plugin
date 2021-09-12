@@ -5,40 +5,38 @@ import AppTrackingTransparency
 import AdSupport
 let kOverlayStyleUpdateNotificationName = "io.flutter.plugin.platform.SystemChromeOverlayNotificationName"
 let kOverlayStyleUpdateNotificationKey = "io.flutter.plugin.platform.SystemChromeOverlayNotificationKey"
-@UIApplicationMain
-@objc class CraneAppDelegate: FlutterAppDelegate {
-    override func application(
+open class CraneAppDelegate: FlutterAppDelegate {
+    open override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         self.requestIDFA()
-        FireBaseUtils.sharedInstance.initFirebase()
-//         GeneratedPluginRegistrant.register(with: self)
+       FireBaseUtils.sharedInstance.initFirebase()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
+
         let controller: FlutterViewController = window.rootViewController as! FlutterViewController
-        
+
         GGViewFactory.registerWith(registry: self, viewController: controller)
-        
+
         GameCenterHelper.helper.authenticateLocalPlayer(controller: controller);
-        
+
         FlutterGGPlugin.registerWith(registry: self, viewController: controller)
-       
+
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-    
-    override func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+
+    open override func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return (UIInterfaceOrientationMask.portrait);
     }
-    
+
     public func isIphoneX() -> Bool {
         return UIScreen.main.nativeBounds.size.height - 2436 == 0 ? true : false
     }
-    
+
     public func isSmallIphone() -> Bool {
         return UIScreen.main.bounds.size.height == 480 ? true : false
     }
-    
+
     func requestIDFA() {
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
