@@ -20,7 +20,6 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
     private var methodChannel: MethodChannel? = null
     private var eventChannel: EventChannel? = null
     private var adView: AdView? = null
-    private val admob_appId = Const.ADMOB_ID
     private val admob_bannerId = Const.ADMOB_BANNER
     private var size: String? = null
     private var isGDT = false

@@ -2,22 +2,21 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:intl/intl.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
+
+import 'TextUtils.dart';
 
 class CommonUtils {
   static const MINITES = 60;
   static const HOUR = 60 * MINITES;
-  // static final oCcy = new NumberFormat("#,##0.000", "en_US");
-  // static final oCcy_2 = new NumberFormat("#,##0.00", "en_US");
-  // static final oCcy_2_ = new NumberFormat("#0.00", "en_US");
 
-  static bool isStringEmpty(String str) {
-    return str == null || str.trim().length <= 0 || 'null' == str;
-  }
+  static final oCcy = new NumberFormat("#,##0.000", "en_US");
+  static final oCcy_2 = new NumberFormat("#,##0.00", "en_US");
+  static final oCcy_2_ = new NumberFormat("#0.00", "en_US");
 
   static void showToast(BuildContext context, String message) {
-    if (!isStringEmpty(message)) {
+    if (!TextUtils.isEmpty(message)) {
       // Toast.show(message, context,
       //     duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
 
@@ -28,8 +27,7 @@ class CommonUtils {
           timeInSecForIosWeb: 1,
           // backgroundColor: Colors.red,
           // textColor: Colors.white,
-          fontSize: 16.0
-      );
+          fontSize: 16.0);
     }
   }
 
@@ -76,29 +74,29 @@ class CommonUtils {
     return (a.round()) / (math.pow(10, n));
   }
 
-  // static String double3(double value) {
-  //   if (value == null) {
-  //     return '0.000';
-  //   }
-  //   return oCcy.format(value);
-  // }
-  //
-  // static String double2_0(double value) {
-  //   if (value == null) {
-  //     return '0.00';
-  //   }
-  //   return oCcy_2_.format(value);
-  // }
+  static String double3(double value) {
+    if (value == null) {
+      return '0.000';
+    }
+    return oCcy.format(value);
+  }
 
-  // static String double2(double value) {
-  //   if (value == null || value == 0) {
-  //     return '';
-  //   }
-  //   return oCcy_2.format(value);
-  // }
+  static String double2_0(double value) {
+    if (value == null) {
+      return '0.00';
+    }
+    return oCcy_2_.format(value);
+  }
+
+  static String double2(double value) {
+    if (value == null || value == 0) {
+      return '';
+    }
+    return oCcy_2.format(value);
+  }
 
   static String formatStr(String str) {
-    if (isStringEmpty(str)) {
+    if (TextUtils.isEmpty(str)) {
       return '';
     }
     return str;

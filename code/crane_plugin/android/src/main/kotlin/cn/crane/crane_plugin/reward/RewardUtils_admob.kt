@@ -4,8 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.text.TextUtils
 import cn.crane.crane_plugin.Const
-import cn.crane.crane_plugin.EventCallback
 import cn.crane.crane_plugin.CraneActivity
+import cn.crane.crane_plugin.EventCallback
 import cn.crane.crane_plugin.pop.PopUtils_admob
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardItem
@@ -51,21 +51,6 @@ object RewardUtils_admob {
         })
         return rewardVideoAD
     }
-
-//    private fun loadAd(context: MainActivity?) {
-//        adLoaded = false
-//        videoCached = false
-//        val adLoadCallback: RewardedAdLoadCallback = object : RewardedAdLoadCallback() {
-//            override fun onRewardedAdLoaded() { // Ad successfully loaded.
-//                sendEvent("onRewardedAdLoaded")
-//            }
-//
-//            override fun onRewardedAdFailedToLoad(errorCode: Int) { // Ad failed to load.
-//                sendEvent("onRewardedAdFailedToLoad")
-//            }
-//        }
-//        getRewardVideoAD(context)!!.loadAd(AdRequest.Builder().addTestDevice("1AE526D5B3C57E01BA577BAA4D64F58A").build(), adLoadCallback)
-//    }
 
     fun isReady(context: CraneActivity?): Boolean {
         return if (rewardVideoAD != null) {

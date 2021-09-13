@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import io.flutter.app.FlutterApplication
 
-class CraneApp : FlutterApplication() {
+open class CraneApp : FlutterApplication() {
 
     override fun onCreate() {
         super.onCreate()

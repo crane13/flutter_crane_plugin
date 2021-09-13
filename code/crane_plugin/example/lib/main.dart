@@ -1,12 +1,33 @@
 import 'dart:async';
 
 import 'package:crane_plugin/crane_plugin.dart';
-import 'package:crane_plugin/utils/AUtils.dart';
+import 'package:crane_plugin/framwork/page/base/V.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'Configs.dart';
+import 'TestPage.dart';
+
 void main() {
+  Configs.init();
   runApp(MyApp());
+  // runApp(CraneApp(Scaffold(
+  //   appBar: AppBar(
+  //     title: const Text('Plugin example app'),
+  //   ),
+  //   body: Center(
+  //     child: GestureDetector(
+  //       onTap: () {
+  //         // AUtils.showBanner();
+  //         // AUtils.showPopNow();
+  //         // AUtils.showVideo();
+  //
+  //         // BaseJumpUtils.jumpMoreAppPage(context);
+  //       },
+  //       child: Text('Running on: \n'),
+  //     ),
+  //   ),
+  // )));
 }
 
 class MyApp extends StatefulWidget {
@@ -47,24 +68,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: GestureDetector(
-            onTap: () {
-              AUtils.showBanner();
-              AUtils.showPopNow();
-              // AUtils.showVideo();
-              // AUti
-              BaseJumpUtils
-            },
-            child: Text('Running on: $_platformVersion\n'),
-          ),
-        ),
-      ),
-    );
+    return V.buildApp(TestPage());
   }
 }

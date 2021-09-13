@@ -1,3 +1,18 @@
 {
-  "aa": "aa"
+  "app_name": "",
+  "dark_mode": "Dark Mode",
+  "theme": "Theme",
+  "theme_dark": "Dark",
+  "theme_systerm": "Systerm",
+  "theme_light": "Light",
+  "back": "Back",
+  "tos": "Privacy Policy",
+  "more_games": "More Games",
+  "rate": "Rate",
+  "share": "Share",
+  "settings": "Settings",
+  "other_works": "Other Works",
+  "restore": "Restore",
+  "complete": "Restore Completed",
+  "rank": "Rank"
 }

@@ -47,9 +47,6 @@ object PopUtils_admob {
                 PopUtils_admob.interstitialAd = interstitialAd
             }
         })
-//        interstitialAd = InterstitialAd(context)
-//        interstitialAd!!.adUnitId = positionId
-//        interstitialAd!!.adListener = adCallback
     }
 
 

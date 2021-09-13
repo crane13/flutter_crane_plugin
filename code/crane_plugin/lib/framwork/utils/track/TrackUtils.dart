@@ -1,5 +1,4 @@
-
-import '../CommonUtils.dart';
+import '../TextUtils.dart';
 import 'UmengUtils.dart';
 
 class TrackUtils {
@@ -9,19 +8,19 @@ class TrackUtils {
   }
 
   static void onPause(String page) {
-    if (!CommonUtils.isStringEmpty(page)) {
+    if (!TextUtils.isEmpty(page)) {
       UmengUtils.onPause(page);
     }
   }
 
   static void onResume(String page) {
-    if (!CommonUtils.isStringEmpty(page)) {
+    if (!TextUtils.isEmpty(page)) {
       UmengUtils.onResume(page);
     }
   }
 
   static void trackEvent(String event) {
-    if (!CommonUtils.isStringEmpty(event)) {
+    if (!TextUtils.isEmpty(event)) {
 //      AppCenterUtils.trackEventerAppCenter(event);
       UmengUtils.trackEventUmeng(event);
     }

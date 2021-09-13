@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:crane_plugin/bean/app_list_entity.dart';
+import 'package:crane_plugin/framwork/bean/app_list_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -21,6 +21,10 @@ class ConfigUtils {
     _isPad = value;
   }
 
+  static setScreenSize(Size size) {
+    screenSize = size;
+  }
+
   static get isScreenH => _isScreenH;
 
   static set isScreenH(value) {
@@ -33,7 +37,11 @@ class ConfigUtils {
     _locale = value;
   }
 
-  static Size get screenSize => _screenSize!;
+  // static Size? get screenSize => _screenSize != null ? _screenSize : null;
+
+  static Size? getScreenSize() {
+    return _screenSize;
+  }
 
   static set screenSize(Size value) {
     _screenSize = value;
@@ -78,7 +86,6 @@ class ConfigUtils {
     }
   }
 
-
   static Future<List<AppItem>?> _loadAppListfromServer() async {
     try {
       var resp = await http.get(K.getMoreListUrlForHttp());
@@ -96,8 +103,10 @@ class ConfigUtils {
     try {
       String configJson = await DefaultAssetBundle.of(context).loadString(
           isChinese() ? 'assets/tos/tos_zh.txt' : 'assets/tos/tos.txt');
+      print('loadTOSFromAssets : $configJson');
       return configJson;
     } catch (e) {
+      print(e);
       return '';
     }
   }

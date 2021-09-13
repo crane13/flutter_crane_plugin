@@ -75,17 +75,7 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
                    if #available(iOS 10.3, *) {
                        SKStoreReviewController.requestReview()
                    }
-        }else if method == "showbanner1"{
-            //            self.showAny(position:1)
-        }else if method == "showbanner3"{
-            //            self.showAny(position:3)
-            
-        }else if method == "showPopAd2"{
-            //            self.showAny(position:2)
-            
-        }else if method == "showPopAd4"{
-            //            self.showAny(position:4)
-            
+
         }else if method == "unlockScene"{
             
         }else if method == "removeAds"{

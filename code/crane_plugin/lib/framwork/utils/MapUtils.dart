@@ -1,8 +1,8 @@
-import 'CommonUtils.dart';
+import 'TextUtils.dart';
 
 class MapUtils {
   static T? getItem<T>(Map<String, T> map, String key) {
-    if (!isEmpty(map) && !CommonUtils.isStringEmpty(key)) {
+    if (!isEmpty(map) && !TextUtils.isEmpty(key)) {
       if (map.containsKey(key)) {
         return map[key];
       }
@@ -14,7 +14,7 @@ class MapUtils {
     if (map == null) {
       map = {};
     }
-    if (!CommonUtils.isStringEmpty(key)) {
+    if (!TextUtils.isEmpty(key)) {
       map[key] = value;
       return true;
     }
@@ -30,7 +30,7 @@ class MapUtils {
   }
 
   static T? deleteItem<T>(Map<String, T> map, String key) {
-    if (!isEmpty(map) && !CommonUtils.isStringEmpty(key)) {
+    if (!isEmpty(map) && !TextUtils.isEmpty(key)) {
       if (map.containsKey(key)) {
         return map.remove(key);
       }

@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import 'DataManager.dart';
 import 'FlutterGG.dart';
 import 'track/TrackUtils.dart';
-import 'DataManager.dart';
 
 class AUtils {
   static const DURATION = 2 * 60 * 1000;

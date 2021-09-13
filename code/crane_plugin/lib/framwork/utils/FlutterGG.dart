@@ -4,10 +4,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'track/TrackUtils.dart';
 import '../view/BannerView.dart';
-import 'CommonUtils.dart';
 import 'PlatformUtils.dart';
+import 'TextUtils.dart';
+import 'track/TrackUtils.dart';
 
 class FlutterGG {
   static const PLUGIN_KEY = 'flutter_gg';
@@ -135,7 +135,7 @@ class FlutterGG {
   }
 
   static Future<bool> reportScore(String rankId, int score) async {
-    if (CommonUtils.isStringEmpty(rankId)) {
+    if (TextUtils.isEmpty(rankId)) {
       return false;
     }
     if (Platform.isIOS) {

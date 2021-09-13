@@ -20,6 +20,22 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) =>
-      <String, Function>{"aa": MessageLookupByLibrary.simpleMessage("aa")};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "app_name": MessageLookupByLibrary.simpleMessage(""),
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "complete": MessageLookupByLibrary.simpleMessage("Restore Completed"),
+        "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "more_games": MessageLookupByLibrary.simpleMessage("More Games"),
+        "other_works": MessageLookupByLibrary.simpleMessage("Other Works"),
+        "rank": MessageLookupByLibrary.simpleMessage("Rank"),
+        "rate": MessageLookupByLibrary.simpleMessage("Rate"),
+        "restore": MessageLookupByLibrary.simpleMessage("Restore"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+        "theme_systerm": MessageLookupByLibrary.simpleMessage("Systerm"),
+        "tos": MessageLookupByLibrary.simpleMessage("Privacy Policy")
+      };
 }

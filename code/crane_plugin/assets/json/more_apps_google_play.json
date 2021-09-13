@@ -1,0 +1,60 @@
+{
+  "appList": [
+    {
+      "name": "Crazy Sudoku",
+      "name_zh": "一起来数独",
+      "package": "cn.crane.myapp.flutter_sudoku",
+      "icon": "https://lh3.googleusercontent.com/-s7cE6kXlZrJ-Rz3myYgMvXCWXRnt-hTV2LWXcdi3G6GVjmi-9WkCbawgWH8LlDi1ZUs=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.myapp.flutter_sudoku"
+    },
+    {
+      "name": "Railway Worker",
+      "name_zh": "疯狂小火车",
+      "package": "cn.crane.flutter.plumber.lineworker",
+      "icon": "https://lh3.googleusercontent.com/v5taESI9TphIaE0kGaLWxaUQK0cSEc2F_rak519WXFLCPf9A1HxE-mAWLRU9qISZjJo=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.plumber.lineworker"
+    },
+    {
+      "name": "Jigsaw World",
+      "name_zh": "Jigsaw World",
+      "package": "cn.crane.flutter.puzzle.jigsaw",
+      "icon": "https://lh3.googleusercontent.com/kJp_U8CEz8gRcTAIDyi9wSRs0DNpsREu36LrV2J0QjSxBaVnj1qvCEZ-vX7q-i4NzfC1=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.puzzle.jigsaw"
+    },
+    {
+      "name": "Dance Up",
+      "name_zh": "Dance Up",
+      "package": "cn.crane.flutter.danceup",
+      "icon": "https://lh3.googleusercontent.com/5SzysxGj15mQjetlH9bpgeJiZkjxtN2Hi4Wgnou6N3NhuvkFkOmUqJ0RK29wO55teg=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.danceup"
+    },
+    {
+      "name": "Game of Life",
+      "name_zh": "康威生命游戏",
+      "package": "cn.crane.game.flutter.lifegame",
+      "icon": "https://lh3.googleusercontent.com/tvoRwJ_hAQkYgIb0zYX-_fIOY16ej1QGdE1X2_fizVZqtBbzzLoZE9ZxHHbQ4r5HXA=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.game.flutter.lifegame"
+    },
+    {
+      "name": "Touch Number",
+      "name_zh": "Touch Number",
+      "package": "cn.crane.game.flutter.findx",
+      "icon": "https://lh3.googleusercontent.com/HV0WY50Y9PE0TKE8TaUbm5ETj7Li-GBLgGMN3i8iXpCdk5HmdTl4uj2oczq40T6zTg=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.game.flutter.findx"
+    },
+    {
+      "name": "UFO Fled",
+      "name_zh": "UFO Fled",
+      "package": "cn.crane.game.flappyufo",
+      "icon": "https://lh3.googleusercontent.com/bSBV8QlpCNGN_fYi30HQnl1tnQ5Ome0qX6xt64VHX0cZFxXL-U-RyPdjtgls7mtdUGE=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.game.flappyufo"
+    },
+    {
+      "name": "App Quick Finder",
+      "name_zh": "App Quick Finder",
+      "package": "cn.crane.application.appfinder",
+      "icon": "https://lh3.googleusercontent.com/6memJq3T81dG_dcGB97UZsZY5q-uOkLiaDBADE1MH1dNwXcJNEBzXz-4qLBSMN4AJA=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.application.appfinder"
+    }
+  ]
+}

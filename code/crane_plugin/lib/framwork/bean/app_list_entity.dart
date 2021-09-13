@@ -1,4 +1,4 @@
-import 'package:crane_plugin/utils/ConfigUtils.dart';
+import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
 
 class AppListEntity {
   List<AppItem> appList = [];
