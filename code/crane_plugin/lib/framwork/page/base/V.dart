@@ -14,7 +14,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../K.dart';
 
 class V {
-  static MaterialApp buildApp(Widget homePage) {
+  static MaterialApp buildApp(Widget homePage, String title, {Theme? theme}) {
     return MaterialApp(
       builder: (context, child) => MediaQuery(
           // 全局设置字体大小不随系统的设置而变化

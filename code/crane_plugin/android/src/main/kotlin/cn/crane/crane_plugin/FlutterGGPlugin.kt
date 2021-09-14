@@ -3,14 +3,14 @@ package cn.crane.crane_plugin
 import android.content.Context
 import android.content.pm.PackageManager
 import android.util.Log
-import cn.crane.crane_plugin.pop.PopUtils_admob
-import cn.crane.crane_plugin.reward.RewardUtils_admob
+import cn.crane.crane_plugin.event.EventCallback
+import cn.crane.crane_plugin.pop.PopManager
+import cn.crane.crane_plugin.reward.RewardManager
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import java.util.*
 
 /**
  *
@@ -28,11 +28,6 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
     constructor(activity: CraneActivity) : super() {
         this.activity = activity
     }
-
-
-//    fun FlutterGGPlugin(activity: MainActivity) {
-//        this.activity = activity
-//    }
 
     private var eventCallback: EventCallback = object : EventCallback {
         override fun sendEvent(event: String) {
@@ -65,19 +60,18 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
                 result.success(true)
             }
             "showPopAd" -> {
-                PopUtils_admob.setEventCallback(eventCallback)
-                result.success(PopUtils_admob.showAd(activity!!))
+                PopManager.setEventCallback(eventCallback)
+                result.success(PopManager.show(activity!!))
             }
             "showRewardAd" -> {
-                RewardUtils_admob.setEventCallback(eventCallback)
-//                RewardUtils_gdt.setEventCallback(eventCallback)
-                showVideo(result)
+                RewardManager.setEventCallback(eventCallback)
+                RewardManager.show(context, result)
             }
             "isPad" -> result.success(false)
             "getChannel" -> {
 //                result.success(BuildConfig.channel)
             }
-            "isRewardVideoReady" -> result.success(isVideoReady())
+            "isRewardVideoReady" -> result.success(RewardManager.isReady(context))
 
             else -> result.notImplemented()
         }
@@ -94,38 +88,6 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
-
-
-    private fun isVideoReady(): Boolean {
-//        val readyGDT: Boolean = RewardUtils_gdt.isReady(registrar!!.activity())
-        val readyGDT: Boolean = false
-        val readyMob = RewardUtils_admob.isReady(activity)
-        return readyGDT || readyMob
-    }
-
-    private fun showVideo(result: Result) {
-        if (RewardUtils_admob.isReady(activity)) {
-            RewardUtils_admob.show(activity, result)
-        }
-//        if (isZh()) {
-//            if (RewardUtils_gdt.isReady(registrar!!.activity())) {
-//                RewardUtils_gdt.show(registrar.activity(), result)
-//            } else if (RewardUtils_admob.isReady(registrar.activity())) {
-//                RewardUtils_admob.show(registrar.activity(), result)
-//            }
-//        } else {
-//            if (RewardUtils_admob.isReady(registrar!!.activity())) {
-//                RewardUtils_admob.show(registrar.activity(), result)
-//            } else if (RewardUtils_gdt.isReady(registrar.activity())) {
-//                RewardUtils_gdt.show(registrar.activity(), result)
-//            }
-//        }
-    }
-
-
-    private fun isZh(): Boolean {
-        return Locale.getDefault().language.contains("zh")
     }
 
     private fun onEvent(event: String) {

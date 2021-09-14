@@ -16,12 +16,6 @@ object Const {
     var ADMOB_VIDEO = "ca-app-pub-3940256099942544/5224354917"
 
 
-    var GDT_ID = "1110408140"
-    var GDT_BANNER = "6051407872284640"
-    var GDT_POP = "6031403852587601"
-    var GDT_VIDEO = ""
-    var GDT_SPLASH = "8091206872382589"
-
 
     // test
 //        var ADMOB_ID = "";

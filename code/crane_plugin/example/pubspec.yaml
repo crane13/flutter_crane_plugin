@@ -72,5 +72,3 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/json/
-    - assets/tos/

@@ -1,4 +1,5 @@
 import 'package:crane_plugin/framwork/router/CraneJumpUtils.dart';
+import 'package:crane_plugin/framwork/utils/AUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +21,10 @@ class _TestPageState extends State<TestPage> {
           child: GestureDetector(
             onTap: () {
               // AUtils.showBanner();
-              // AUtils.showPopNow();
+              AUtils.showPopNow();
               // AUtils.showVideo();
               // BaseJumpUtils.jumpMoreAppPage(context);
-              CraneJumpUtils.jumpSettingsPage(context);
+              // CraneJumpUtils.jumpSettingsPage(context);
             },
             child: Text('Running on: \n'),
           ),
