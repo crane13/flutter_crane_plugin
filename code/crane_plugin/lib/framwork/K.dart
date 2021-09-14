@@ -5,11 +5,11 @@ import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
 class K {
   static var IS_GOOGLEPLAY = true;
 
-  static const IOS_APPID = '1564193574';
-  static const ANDROID_PACKAGE = 'cn.crane.flutter.minesweeper';
-  static const IOS_PACKAGE = 'cn.crane.flutter.minesweeper';
+  static var IOS_APPID = '';
+  static var ANDROID_PACKAGE = '';
+  static var IOS_PACKAGE = '';
 
-  static const ICON_IMAGE = '';
+  static var ICON_IMAGE = '';
 
   static var _channel = '';
 

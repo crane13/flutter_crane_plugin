@@ -1,6 +1,6 @@
 import 'package:crane_plugin/framwork/bean/app_list_entity.dart';
 import 'package:crane_plugin/framwork/page/base/V.dart';
-import 'package:crane_plugin/framwork/router/BaseJumpUtils.dart';
+import 'package:crane_plugin/framwork/router/CraneJumpUtils.dart';
 import 'package:crane_plugin/framwork/theme/CraneColors.dart';
 import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
 import 'package:crane_plugin/framwork/utils/TextUtils.dart';
@@ -74,7 +74,7 @@ class _MoreGamePageState extends BaseState<MoreGamePage> {
               decoration: TextDecoration.none,
               fontWeight: FontWeight.normal)),
       onTap: () {
-        BaseJumpUtils.openUrl(appItem.link);
+        CraneJumpUtils.openUrl(appItem.link);
       },
       trailing:
           Icon(CupertinoIcons.forward, color: CraneColors.getTxtDetailColor()),

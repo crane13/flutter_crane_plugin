@@ -96,31 +96,13 @@ class V {
           width: 50,
           alignment: Alignment.centerLeft,
           child: Icon(
-            Icons.arrow_back_ios,
+            Icons.arrow_back_ios_new,
             color: CraneColors.getTxtTitleColor(),
             size: 20,
           ),
         ),
       );
     }
-//    return CupertinoPageScaffold(
-//      backgroundColor: BaseColors.getBgSettingColor(),
-//      navigationBar: CupertinoNavigationBar(
-//        backgroundColor: BaseColors.getNavBarBgColor(),
-//        actionsForegroundColor: BaseColors.getNavBarColor(),
-//        previousPageTitle: S.of(context).back,
-////        middle: Text(S.of(context).add_success_diary),
-////        trailing: GestureDetector(
-////          child: Text(
-////            S.of(context).choose_color,
-////            style: TextStyle(color: CusColors.whiteColor),
-////          ),
-////          onTap: chooseColor,
-////        ),
-//      ),
-//      child: _buildContent(),
-//      resizeToAvoidBottomInset: true,
-//    );
 
     return Theme(
         data: ThemeData(
@@ -138,20 +120,6 @@ class V {
                 : CraneColors.getBgSettingColor(),
             navigationBar: showNavigationBar
                 ? CupertinoNavigationBar(
-//            leading: GestureDetector(
-//              onTap: () {
-//                Navigator.of(context).pop();
-//              },
-//              child: Container(
-//                padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
-//                child: Image.asset(
-//                  R.icon_back,
-//                  width: 8,
-//                  height: 8,
-//                  fit: BoxFit.contain,
-//                ),
-//              ),
-//            ),
                     padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
                     leading: leading,
                     middle: Text(
@@ -210,7 +178,7 @@ class V {
       txt = '';
     }
     if (color == null) {
-      // color = BaseColors.getTxtTitleColor();
+      color = CraneColors.getTxtTitleColor();
     }
     return Text(
       '$txt',

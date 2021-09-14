@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:crane_plugin/framwork/bean/app_list_entity.dart';
-import 'package:crane_plugin/framwork/router/BaseJumpUtils.dart';
+import 'package:crane_plugin/framwork/router/CraneJumpUtils.dart';
 import 'package:crane_plugin/framwork/theme/CraneColors.dart';
 import 'package:crane_plugin/framwork/theme/ThemeType.dart';
 import 'package:crane_plugin/framwork/utils/AUtils.dart';
@@ -27,7 +27,7 @@ class SettingsPage extends StatefulWidget {
       {Key? key,
       this.share_content = '',
       this.share_image = '',
-      this.icon_path = K.ICON_IMAGE})
+      this.icon_path = ''})
       : super(key: key);
 
   @override
@@ -48,6 +48,10 @@ class SettingsPageState extends BaseState<SettingsPage> {
   @override
   void initState() {
     super.initState();
+
+    if (TextUtils.isEmpty(widget.icon_path)) {
+      widget.icon_path = K.ICON_IMAGE;
+    }
     loadData();
     AUtils.showBanner();
 
@@ -100,9 +104,9 @@ class SettingsPageState extends BaseState<SettingsPage> {
     ));
 
     // if (Platform.isIOS) {
-      arrWidgets.add(_buildItem(S.of(context).rank, null, () {
-        BaseJumpUtils.jumpRankPage(context);
-      }, imagePath: 'assets/images/rank.png'));
+    arrWidgets.add(_buildItem(S.of(context).rank, null, () {
+      CraneJumpUtils.jumpRankPage(context);
+    }, imagePath: 'assets/images/rank.png'));
     // }
     //
     // arrWidgets.add(_buildItem(S.of(context).history, Icons.history, () {
@@ -129,12 +133,12 @@ class SettingsPageState extends BaseState<SettingsPage> {
 
     if (appList == null || appList.length <= 0) {
       arrWidgets.add(_buildItem(S.of(context).more_games, Icons.more_horiz, () {
-        BaseJumpUtils.jumpMoreAppPage(context);
+        CraneJumpUtils.jumpMoreAppPage(context);
       }));
     }
 
     arrWidgets.add(_buildItem(S.of(context).rate, Icons.star, () {
-      BaseJumpUtils.openUrl(K.getRateUrl());
+      CraneJumpUtils.openUrl(K.getRateUrl());
     }));
 
 //    arrWidgets.add(getItem(S.of(context).share, Icons.share, () {
@@ -147,7 +151,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
 //    }));
 
     arrWidgets.add(_buildItem(S.of(context).tos, Icons.library_books, () {
-      BaseJumpUtils.jumpTOSPage(context);
+      CraneJumpUtils.jumpTOSPage(context);
     }));
 
     if (appList != null && appList.length > 0) {
@@ -286,7 +290,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
           fontSize: 15,
           fontWeight: FontWeight.normal),
       onTap: () {
-        BaseJumpUtils.openUrl(appItem.link);
+        CraneJumpUtils.openUrl(appItem.link);
         TrackUtils.trackEvent('jumpAppPage==${appItem.package}');
       },
       trailing:

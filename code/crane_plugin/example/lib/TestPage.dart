@@ -1,4 +1,4 @@
-import 'package:crane_plugin/framwork/router/BaseJumpUtils.dart';
+import 'package:crane_plugin/framwork/router/CraneJumpUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,7 @@ class _TestPageState extends State<TestPage> {
               // AUtils.showPopNow();
               // AUtils.showVideo();
               // BaseJumpUtils.jumpMoreAppPage(context);
-              BaseJumpUtils.jumpSettingsPage(context);
+              CraneJumpUtils.jumpSettingsPage(context);
             },
             child: Text('Running on: \n'),
           ),

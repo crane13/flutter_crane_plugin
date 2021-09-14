@@ -97,3 +97,6 @@ flutter:
   assets:
     #    - assets/PennyWhistle.mp3
     - assets/
+    - assets/images/
+    - assets/json/
+    - assets/tos/
