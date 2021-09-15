@@ -8,6 +8,8 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
+import cn.crane.crane_plugin.bview.BViewManager
+import cn.crane.crane_plugin.bview.BView_admob
 import com.google.android.gms.ads.MobileAds
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -16,7 +18,6 @@ import io.flutter.embedding.engine.FlutterEngine
 open class CraneActivity : FlutterActivity() {
 
     private lateinit var linearLayout: LinearLayout
-    private var ggView: GGView = GGView()
 
     private var decorView: View? = null
 
@@ -54,7 +55,8 @@ open class CraneActivity : FlutterActivity() {
 
     fun loadBanner() {
         setShowBanner(true)
-        ggView.loadBanner(this, linearLayout)
+
+        BView_admob.loadView(context, linearLayout, false)
     }
 
     fun setShowBanner(show: Boolean) {

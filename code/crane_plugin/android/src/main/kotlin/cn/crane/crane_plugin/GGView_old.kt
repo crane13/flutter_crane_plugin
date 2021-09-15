@@ -6,7 +6,6 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
-import cn.crane.crane_plugin.bview.BViewManager
 import com.google.android.gms.ads.*
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
@@ -17,7 +16,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.platform.PlatformView
 import java.util.*
 
-class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
+class GGView_old : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
     private var methodChannel: MethodChannel? = null
     private var eventChannel: EventChannel? = null
     private var adView: AdView? = null
@@ -36,8 +35,6 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
             }
         }
         loadBanner(context, null)
-
-
         methodChannel = MethodChannel(messenger, PLUGIN_VIEW + "_\$id")
         eventChannel = EventChannel(messenger, PLUGIN_VIEW)
         eventChannel!!.setStreamHandler(this)
@@ -163,7 +160,7 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
     override fun onCancel(o: Any) {}
 
     companion object {
-        val TAG = GGView::class.java.simpleName
+        val TAG = GGView_old::class.java.simpleName
         const val PLUGIN_VIEW = "plugins.crane.view/GGView"
         const val PLUGIN_EVENT = "plugins.crane.view/GGEvent"
     }

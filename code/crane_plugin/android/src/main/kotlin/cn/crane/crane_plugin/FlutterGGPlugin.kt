@@ -2,11 +2,13 @@ package cn.crane.crane_plugin
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.text.TextUtils
 import android.util.Log
 import cn.crane.crane_plugin.event.EventCallback
 import cn.crane.crane_plugin.pop.PopManager
 import cn.crane.crane_plugin.reward.RewardManager
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -92,21 +94,21 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
 
     private fun onEvent(event: String) {
         Log.v(TAG, "onEvent : $event")
-        //        if (!TextUtils.isEmpty(event) && eventChannel != null) {
-        //            eventChannel.setStreamHandler(new EventChannel.StreamHandler() {
-        //                @Override
-        //                public void onListen(Object o, EventChannel.EventSink eventSink) {
-        //                    if (eventSink != null) {
-        //                        eventSink.success(event);
-        //                    }
-        //                }
-        //
-        //                @Override
-        //                public void onCancel(Object o) {
-        //
-        //                }
-        //            });
-        //        }
+//                if (!TextUtils.isEmpty(event) && eventChannel != null) {
+//                    eventChannel.setStreamHandler(new EventChannel.StreamHandler() {
+//                        @Override
+//                        public void onListen(Object o, EventChannel.EventSink eventSink) {
+//                            if (eventSink != null) {
+//                                eventSink.success(event);
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancel(Object o) {
+//
+//                        }
+//                    });
+//                }
     }
 
 
