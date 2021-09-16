@@ -16,6 +16,8 @@ object RewardUtils_admob : BaseReward() {
     private var rewardId: String? = Const.ADMOB_VIDEO
     private var result: MethodChannel.Result? = null
 
+    private var hasEarnReward : Boolean = false
+
     override fun loadAd(context: Context?) {
         adLoaded = false
         videoCached = false
@@ -25,11 +27,11 @@ object RewardUtils_admob : BaseReward() {
             override fun onAdLoaded(var1: RewardedAd?) {
 
                 rewardVideoAD = var1
-                sendEvent(javaClass.simpleName + "onAdLoaded")
+                sendEvent("onAdLoaded")
             }
 
             override fun onAdFailedToLoad(var1: LoadAdError?) {
-                sendEvent(javaClass.simpleName + "onAdFailedToLoad")
+                sendEvent("onAdFailedToLoad")
             }
         })
     }
@@ -46,18 +48,20 @@ object RewardUtils_admob : BaseReward() {
     }
 
     override fun show(context: Context?, result: MethodChannel.Result?): Boolean {
+        hasEarnReward = false
         RewardUtils_admob.result = result
         return if (rewardVideoAD != null) {
             rewardVideoAD?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
+                    result?.success(hasEarnReward)
                     loadAd(context)
                 }
 
                 override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                    loadAd(context)
                 }
 
                 override fun onAdShowedFullScreenContent() {
-                    result?.success(false)
                     rewardVideoAD = null;
 
                 }
@@ -65,14 +69,13 @@ object RewardUtils_admob : BaseReward() {
             val adCallback: OnUserEarnedRewardListener = object : OnUserEarnedRewardListener {
                 override fun onUserEarnedReward(var1: RewardItem?) {
                     if (var1 != null) {
-                        sendEvent("onUserEarnedReward")
-                        result?.success(true)
+                        hasEarnReward = true;
                         loadAd(context)
-                        sendEvent(javaClass.simpleName + "onUserEarnedReward_true")
+                        sendEvent( "onUserEarnedReward_true")
                     } else {
-                        result?.success(false)
+                        hasEarnReward = false;
                         loadAd(context)
-                        sendEvent(javaClass.simpleName + "onUserEarnedReward_false")
+                        sendEvent("onUserEarnedReward_false")
                     }
 
                 }

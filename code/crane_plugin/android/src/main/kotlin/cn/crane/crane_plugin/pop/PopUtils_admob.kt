@@ -65,7 +65,14 @@ object PopUtils_admob : BasePop() {
     }
 
     override fun isReady(context: Context?): Boolean {
-        return interstitialAd != null
+        return if (interstitialAd != null) {
+            true
+        } else {
+            if (context != null) {
+                loadAd(context)
+            }
+            false
+        }
     }
 
 

@@ -2,13 +2,11 @@ package cn.crane.crane_plugin
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.text.TextUtils
 import android.util.Log
 import cn.crane.crane_plugin.event.EventCallback
 import cn.crane.crane_plugin.pop.PopManager
 import cn.crane.crane_plugin.reward.RewardManager
 import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -24,7 +22,6 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
     }
 
     private var channel: MethodChannel? = null
-    private var context: Context? = null
     private var activity: CraneActivity? = null
 
     constructor(activity: CraneActivity) : super() {
@@ -43,7 +40,7 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
         Log.v(TAG, "onMethodCall : " + call.method)
 
         when (call.method) {
-            "getPlatformVersion" -> result.success(getAppVersionName(context))
+            "getPlatformVersion" -> result.success(getAppVersionName(activity))
             "registerSid" -> {
             }
             "showBannerEnable" -> {
@@ -62,18 +59,18 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
                 result.success(true)
             }
             "showPopAd" -> {
-                PopManager.setEventCallback(eventCallback)
-                result.success(PopManager.show(activity!!))
+//                PopManager.setEventCallback(eventCallback)
+                result.success(PopManager.show(activity))
             }
             "showRewardAd" -> {
-                RewardManager.setEventCallback(eventCallback)
-                RewardManager.show(context, result)
+//                RewardManager.setEventCallback(eventCallback)
+                RewardManager.show(activity, result)
             }
             "isPad" -> result.success(false)
             "getChannel" -> {
 //                result.success(BuildConfig.channel)
             }
-            "isRewardVideoReady" -> result.success(RewardManager.isReady(context))
+            "isRewardVideoReady" -> result.success(RewardManager.isReady(activity))
 
             else -> result.notImplemented()
         }
@@ -114,7 +111,6 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
 
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(binding.binaryMessenger, KEY)
-        context = binding.applicationContext
         channel!!.setMethodCallHandler(this)
     }
 
