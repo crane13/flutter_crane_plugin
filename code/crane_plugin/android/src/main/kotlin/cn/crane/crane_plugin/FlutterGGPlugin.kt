@@ -1,16 +1,16 @@
 package cn.crane.crane_plugin
 
-import android.content.Context
-import android.content.pm.PackageManager
 import android.util.Log
 import cn.crane.crane_plugin.event.EventCallback
 import cn.crane.crane_plugin.pop.PopManager
 import cn.crane.crane_plugin.reward.RewardManager
+import cn.crane.crane_plugin.utils.CraneUtils
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+
 
 /**
  *
@@ -40,54 +40,52 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
         Log.v(TAG, "onMethodCall : " + call.method)
 
         when (call.method) {
-            "getPlatformVersion" -> result.success(getAppVersionName(activity))
+            "getPlatformVersion" -> {
+                result.success(CraneUtils.getAppVersionName(activity))
+            }
             "registerSid" -> {
             }
-            "showBannerEnable" -> {
+            "registerAdmobId" ->
+                //                    MobileAds.initialize(registrar.activity(), call.argument("admob_appId"));
+                result.notImplemented()
 
+            "showBannerEnable" -> {
                 if (activity is CraneActivity) {
                     val activity = activity as CraneActivity
                     activity.setShowBanner(call.argument<Boolean>("showBanner")!!)
                 }
                 result.success(true)
             }
-            "registerAdmobId" ->
-                //                    MobileAds.initialize(registrar.activity(), call.argument("admob_appId"));
-                result.notImplemented()
             "showbanner" -> {
-                showBanner(call)
+                if (activity is CraneActivity) {
+                    val activity = activity as CraneActivity
+                    activity.loadBanner()
+                }
                 result.success(true)
             }
+
             "showPopAd" -> {
-//                PopManager.setEventCallback(eventCallback)
+                PopManager.setEventCallback(eventCallback)
                 result.success(PopManager.show(activity))
             }
+            "isRewardVideoReady" -> {
+                result.success(RewardManager.isReady(activity))
+            }
             "showRewardAd" -> {
-//                RewardManager.setEventCallback(eventCallback)
+                RewardManager.setEventCallback(eventCallback)
                 RewardManager.show(activity, result)
             }
-            "isPad" -> result.success(false)
+            "isPad" -> {
+                result.success(CraneUtils.isPad(activity))
+            }
             "getChannel" -> {
 //                result.success(BuildConfig.channel)
             }
-            "isRewardVideoReady" -> result.success(RewardManager.isReady(activity))
-
             else -> result.notImplemented()
         }
 
     }
 
-    private fun showBanner(call: MethodCall) {
-        try {
-
-            if (activity is CraneActivity) {
-                val activity = activity as CraneActivity
-                activity.loadBanner()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
 
     private fun onEvent(event: String) {
         Log.v(TAG, "onEvent : $event")
@@ -120,16 +118,4 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
     }
 
 
-    fun getAppVersionName(context: Context?): String {
-        var appVersionName = ""
-        try {
-            val packageInfo = context!!.applicationContext
-                .packageManager
-                .getPackageInfo(context.packageName, 0)
-            appVersionName = packageInfo.versionName
-        } catch (e: PackageManager.NameNotFoundException) {
-        }
-
-        return appVersionName
-    }
 }

@@ -8,7 +8,6 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
-import cn.crane.crane_plugin.bview.BViewManager
 import cn.crane.crane_plugin.bview.BView_admob
 import com.google.android.gms.ads.MobileAds
 import io.flutter.embedding.android.FlutterActivity
