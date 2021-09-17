@@ -26,10 +26,10 @@ open class Const{
    public static var ADMOB_SPLASH: String = "ca-app-pub-7441199969844342/1605913250";
 
     
-   public static var ADMOB_ID: String = "";
-   public static var ADMOB_BANNER: String = "";
-   public static var ADMOB_POP: String = "";
-   public static var ADMOB_VIDEO: String = "";
-   public static var ADMOB_SPLASH: String = "";
+//    public static var ADMOB_ID: String = "";
+//    public static var ADMOB_BANNER: String = "";
+//    public static var ADMOB_POP: String = "";
+//    public static var ADMOB_VIDEO: String = "";
+//    public static var ADMOB_SPLASH: String = "";
     
 }
