@@ -76,9 +76,19 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
                        SKStoreReviewController.requestReview()
                    }
 
-        }else if method == "unlockScene"{
-            
+        }else if method == "initIAP"{
+            IAPUtils.sharedInstance.initIAP()
+        }else if method == "restore"{
+            IAPUtils.sharedInstance.restore(flutterResult: result);
+        }else if method == "getSkuInfo"{
+            let sku_id = params["sku_id"]  as! String;
+            IAPUtils.sharedInstance.getList(sku_id: sku_id, flutterResult:result)
+        }
+        else if method == "unlockScene"{
+            let sku_id = params["sku_id"]  as! String;
+            IAPUtils.sharedInstance.purcharse(sku_id: sku_id, flutterResult:result)
         }else if method == "removeAds"{
+
         }else if method == "showLeader"{
             GameCenterHelper.helper.showLeader()
         }else if method == "reportScore"{

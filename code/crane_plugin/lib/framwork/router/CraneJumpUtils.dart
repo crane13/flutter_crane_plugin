@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:crane_plugin/framwork/page/LoadingPage.dart';
 import 'package:crane_plugin/framwork/page/MoreGamePage.dart';
 import 'package:crane_plugin/framwork/page/SettingsPage.dart';
 import 'package:crane_plugin/framwork/page/TosPage.dart';
@@ -44,6 +45,16 @@ class CraneJumpUtils {
 
   static void jumpRankPage(BuildContext context) {
     FlutterGG.showRank(0);
+  }
+
+  static void jumpLoadingPage(BuildContext context) {
+    Navigator.of(context).push(PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return LoadingPage();
+        }));
+//    Navigator.of(context)
+//        .push(MaterialPageRoute(builder: (context) => new LoadingPage()));
   }
 
   static Future<dynamic> jump(BuildContext context, Widget widget) async {

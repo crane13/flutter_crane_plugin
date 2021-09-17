@@ -9,7 +9,6 @@ class Configs {
     K.IOS_APPID = '';
     K.ANDROID_PACKAGE = '';
     K.IOS_PACKAGE = '';
-    K.ICON_IMAGE = '';
     K.IS_GOOGLEPLAY = true;
     K.setChannel('');
   }

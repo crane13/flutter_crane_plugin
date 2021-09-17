@@ -9,8 +9,6 @@ class K {
   static var ANDROID_PACKAGE = '';
   static var IOS_PACKAGE = '';
 
-  static var ICON_IMAGE = '';
-
   static var _channel = '';
 
   static setChannel(String channel) {

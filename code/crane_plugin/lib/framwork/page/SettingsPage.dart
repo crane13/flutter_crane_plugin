@@ -49,9 +49,6 @@ class SettingsPageState extends BaseState<SettingsPage> {
   void initState() {
     super.initState();
 
-    if (TextUtils.isEmpty(widget.icon_path)) {
-      widget.icon_path = K.ICON_IMAGE;
-    }
     loadData();
     AUtils.showBanner();
 
@@ -82,13 +79,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
           height: 50,
           color: Colors.transparent,
         ),
-//        Image.asset(
-//          widget.icon_path,
-//          height: 100,
-//          width: 100,
-//          fit: BoxFit.cover,
-//        ),
-        V.buildLogoView(),
+        V.buildLogoView(widget.icon_path),
         Divider(
           height: 30,
           color: Colors.transparent,
@@ -104,7 +95,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
     ));
 
     // if (Platform.isIOS) {
-    arrWidgets.add(_buildItem(S.of(context).rank, null, () {
+    arrWidgets.add(buildItem(S.of(context).rank, null, () {
       CraneJumpUtils.jumpRankPage(context);
     }, imagePath: 'assets/images/rank.png'));
     // }
@@ -113,7 +104,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
     //   JumpUtils.jumpRecordPage(context);
     // }));
 
-    arrWidgets.add(_buildItem(S.of(context).theme, iconTheme, () {
+    arrWidgets.add(buildItem(S.of(context).theme, iconTheme, () {
       selectTheme();
     }, value: ThemeType.getThemeStr(context)));
 
@@ -132,12 +123,12 @@ class SettingsPageState extends BaseState<SettingsPage> {
 //    }
 
     if (appList == null || appList.length <= 0) {
-      arrWidgets.add(_buildItem(S.of(context).more_games, Icons.more_horiz, () {
+      arrWidgets.add(buildItem(S.of(context).more_games, Icons.more_horiz, () {
         CraneJumpUtils.jumpMoreAppPage(context);
       }));
     }
 
-    arrWidgets.add(_buildItem(S.of(context).rate, Icons.star, () {
+    arrWidgets.add(buildItem(S.of(context).rate, Icons.star, () {
       CraneJumpUtils.openUrl(K.getRateUrl());
     }));
 
@@ -150,7 +141,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
 //      CommonUtils.feedback();
 //    }));
 
-    arrWidgets.add(_buildItem(S.of(context).tos, Icons.library_books, () {
+    arrWidgets.add(buildItem(S.of(context).tos, Icons.library_books, () {
       CraneJumpUtils.jumpTOSPage(context);
     }));
 
@@ -201,7 +192,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
     );
   }
 
-  Widget _buildItem(String title, IconData? icon, onPress,
+  Widget buildItem(String title, IconData? icon, onPress,
       {String value = '', String imagePath = ''}) {
     return Column(children: <Widget>[
       ListTile(

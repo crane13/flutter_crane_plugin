@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,85 +27,107 @@ class FlutterGG {
 //    }
   }
 
+  /// ==============     IAP  ==================
+
+  static Future<bool> initIAP() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel.invokeMethod("initIAP", {});
+  }
+
   static Future<String> getSkuInfo(String sku_id) async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return '';
+    }
     return await _channel.invokeMethod("getSkuInfo", {
       'sku_id': sku_id,
     });
   }
 
+  static Future<bool> removeAds() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel.invokeMethod("removeAds", {});
+  }
+
   static Future<bool> unlockScene(String sku_id) async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
     return await _channel.invokeMethod("unlockScene", {
       'sku_id': sku_id,
     });
   }
 
   static Future<String> restore() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return '';
+    }
     return await _channel.invokeMethod("restore", {});
   }
 
-//  static Future<bool> restoreByPage(BuildContext context) async {
-//    String result = await FlutterGG.restore();
-//    print('restore : ${result}');
-//    List<String> sku_ids = result.split(',');
-//    for (String sku_id in sku_ids) {
-//      if (!CommonUtils.isStringEmpty(sku_id)) {
-//        await CommonUtils.setScenceLocked(sku_id.split('_')[0], true);
-//      }
-//    }
-//    return true;
-//  }
+  /// ==============     IAP end ==================
 
-  static Future<bool> setIsPad() async {
-    bool result = await _channel.invokeMethod('isPad', {});
-    print('isPad === ${result}');
-    return result;
+  /// ==============     Game Center  ==================
+
+  static Future<bool> initGameCenter() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel.invokeMethod("initGameCenter", {});
   }
 
-  static void _onEvent(Object? value) {
-    String event = value!.toString();
-    TrackUtils.trackEvent(event);
+  static Future<bool> showRank(int score) async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel.invokeMethod("showLeader", {'score': score});
   }
 
-  static void _onError(dynamic) {}
-
-  static Future<String> getplatformVersion() async {
-    var version = await _channel.invokeMethod('getPlatformVersion', {});
-//    print('version ===== ${version}');
-    return version;
+  static Future<bool> reportScore(String rankId, int score) async {
+    if (TextUtils.isEmpty(rankId)) {
+      return false;
+    }
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel
+        .invokeMethod("reportScore", {'rankId': rankId, 'score': score});
   }
 
-  static Future register(
-      {String appId = '',
-      bool doOnIOS: true,
-      doOnAndroid: true,
-      enableMTA: false}) async {
-    return await _channel.invokeMethod("registerApp", {
-      "appId": appId,
-      "iOS": doOnIOS,
-      "android": doOnAndroid,
-      "enableMTA": enableMTA
-    });
+  static Future<bool> reportAchievements(String achievement) async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel
+        .invokeMethod("reportAchievements", {'achievement': achievement});
   }
 
+  /// ==============     Game Center end  ==================
+
+  /// ==============     ad     ==================
   static Future setShowBanner(bool show) async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
     return await _channel
         .invokeMethod("showBannerEnable", {"showBanner": show});
   }
 
+  static Future<bool> showBannerAd() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel.invokeMethod("showbanner", {});
+  }
+
   static Future<bool> showPopAd() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
     return await _channel.invokeMethod("showPopAd", {});
-  }
-
-  static Future<bool> showScoreView() async {
-    return await _channel.invokeMethod("showScoreView", {});
-  }
-
-  static Future<String> getChannel() async {
-    return await _channel.invokeMethod("getChannel", {});
-  }
-
-  static Future<bool> showRewardAd() async {
-    return await _channel.invokeMethod("showRewardAd", {});
   }
 
   static Future<bool> isRewardVideoReady() async {
@@ -116,56 +137,16 @@ class FlutterGG {
     return await _channel.invokeMethod("isRewardVideoReady", {});
   }
 
-//  static Future<bool> unlockScene(String scene) async {
-//    return await _channel.invokeMethod("unlockScene", {
-//      'scene': scene,
-//    });
-//  }
-
-  static Future<bool> removeAds() async {
-    return await _channel.invokeMethod("removeAds", {});
-  }
-
-  static Future<bool> initGameCenter() async {
-    return await _channel.invokeMethod("initGameCenter", {});
-  }
-
-  static Future<bool> showRank(int score) async {
-    return await _channel.invokeMethod("showLeader", {'score': score});
-  }
-
-  static Future<bool> reportScore(String rankId, int score) async {
-    if (TextUtils.isEmpty(rankId)) {
+  static Future<bool> showRewardAd() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
       return false;
     }
-    if (Platform.isIOS) {
-      return await _channel
-          .invokeMethod("reportScore", {'rankId': rankId, 'score': score});
-    }
-    return false;
-  }
-
-  static Future<bool> reportAchievements(String achievement) async {
-    return await _channel
-        .invokeMethod("reportAchievements", {'achievement': achievement});
-  }
-
-  static Future<bool> setWallPaperParams() async {
-    return await _channel.invokeMethod("setWallPaperParams", {});
-  }
-
-  static Future<bool> setWallPaper() async {
-    return await _channel.invokeMethod("setWallPaper", {});
-  }
-
-  static Future<bool> showBannerAd() async {
-    return await _channel.invokeMethod("showbanner", {});
+    return await _channel.invokeMethod("showRewardAd", {});
   }
 
   static Widget getAView(
       {double padding_h = 0, String size = 'banner', double maxHeight = 0}) {
-    bool enable = true;
-
+    bool enable = PlatformUtils.hasChannelPlugin();
     if (enable) {
       if (size == 'large') {
         return BannerView(
@@ -187,4 +168,57 @@ class FlutterGG {
       );
     }
   }
+
+  /// ==============     ad end    ==================
+
+  static Future<bool> setIsPad() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    bool result = await _channel.invokeMethod('isPad', {});
+    return result;
+  }
+
+  static Future<String> getplatformVersion() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return '';
+    }
+    var version = await _channel.invokeMethod('getPlatformVersion', {});
+    return version;
+  }
+
+  static Future<bool> showScoreView() async {
+    if (PlatformUtils.isApple()) {
+      return await _channel.invokeMethod("showScoreView", {});
+    }
+    return false;
+  }
+
+  static Future<String> getChannel() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return '';
+    }
+    return await _channel.invokeMethod("getChannel", {});
+  }
+
+  static Future<bool> setWallPaperParams() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel.invokeMethod("setWallPaperParams", {});
+  }
+
+  static Future<bool> setWallPaper() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
+    return await _channel.invokeMethod("setWallPaper", {});
+  }
+
+  static void _onEvent(Object? value) {
+    String event = value!.toString();
+    TrackUtils.trackEvent(event);
+  }
+
+  static void _onError(dynamic) {}
 }

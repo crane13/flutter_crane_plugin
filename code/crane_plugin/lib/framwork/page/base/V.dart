@@ -656,7 +656,7 @@ class V {
     );
   }
 
-  static Widget buildLogoView() {
+  static Widget buildLogoView(String icon_path) {
     return Container(
         height: 100,
         width: 100,
@@ -665,7 +665,7 @@ class V {
             border: Border.all(color: CraneColors.txt_hint, width: 1.0),
             borderRadius: BorderRadius.circular(18)),
         child: Image.asset(
-          K.ICON_IMAGE,
+          icon_path,
           height: 100,
           width: 100,
           fit: BoxFit.cover,
