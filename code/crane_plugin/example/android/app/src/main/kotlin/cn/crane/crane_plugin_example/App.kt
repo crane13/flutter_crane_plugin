@@ -1,6 +1,5 @@
 package cn.crane.crane_plugin_example
 
-import cn.crane.crane_plugin.Const
 import cn.crane.crane_plugin.CraneApp
 import cn.crane.crane_plugin.reward.RewardManager
 import cn.crane.crane_plugin.reward.RewardUtils_admob
