@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:crane_plugin/framwork/page/LoadingPage.dart';
 import 'package:crane_plugin/framwork/page/MoreGamePage.dart';
 import 'package:crane_plugin/framwork/page/SettingsPage.dart';
 import 'package:crane_plugin/framwork/page/TosPage.dart';
 import 'package:crane_plugin/framwork/utils/FlutterGG.dart';
+import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:crane_plugin/framwork/utils/track/TrackUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ class CraneJumpUtils {
   }
 
   static void jumpMoreAppPage(BuildContext context) {
-    if (Platform.isIOS) {
+    if (PlatformUtils.isApple()) {
       openUrl('https://apps.apple.com/developer/id1061441649');
     } else {
       jump(context, MoreGamePage());

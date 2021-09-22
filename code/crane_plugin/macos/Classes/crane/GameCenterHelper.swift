@@ -10,26 +10,26 @@ import Foundation
 import GameKit
 
 public class GameCenterHelper: NSObject ,GKGameCenterControllerDelegate {
-    
-    static let helper = GameCenterHelper()
-    
-    
-    var viewController: UIViewController?
-    
-    
+
+    static public let helper = GameCenterHelper()
+
+
+    var viewController: NSViewController?
+
+
     override init() {
         super.init()
     }
-    
-    
-    func authenticateLocalPlayer(controller:UIViewController)  {
+
+
+    public func authenticateLocalPlayer(controller:NSViewController)  {
         print("authenticateLocalPlayer")
         self.viewController = controller
         GKLocalPlayer.local.authenticateHandler = { gcAuthVC, error in
             if GKLocalPlayer.local.isAuthenticated {
                 print("Authenticated to Game Center!")
             } else if let vc = gcAuthVC {
-                self.viewController?.present(vc, animated: true)
+                self.viewController?.presentAsModalWindow(vc)
             }
             else {
                 self.openSettings();
@@ -64,24 +64,24 @@ public class GameCenterHelper: NSObject ,GKGameCenterControllerDelegate {
     //        }
     //        }
     //    }
-    
+
     func showLeader()  {
-        
+
         let gc = GKGameCenterViewController()
         gc.gameCenterDelegate = self
-        self.viewController?.present(gc, animated: true, completion: nil)
+        self.viewController?.presentAsModalWindow(gc)
     }
-    
+
     func openSettings()
     {
-        
+
 
     }
-    
+
     public func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController)
     {
-        gameCenterViewController.dismiss(animated: true, completion: nil)
-        
-        
+        gameCenterViewController.dismiss(gameCenterViewController)
+
+
     }
 }

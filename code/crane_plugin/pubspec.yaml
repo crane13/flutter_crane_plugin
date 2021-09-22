@@ -30,6 +30,7 @@ dependencies:
   umeng_common_sdk: ^1.2.3
   event_bus: ^2.0.0
   intl: ^0.17.0
+  provider: ^6.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
+import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 
 class K {
   static var IS_GOOGLEPLAY = true;
@@ -81,7 +82,7 @@ class K {
   }
 
   static String getRateUrl() {
-    if (Platform.isIOS) {
+    if (PlatformUtils.isApple()) {
       return 'itms-apps://itunes.apple.com/app/id${IOS_APPID}?action=write-review';
     } else {
       if (IS_GOOGLEPLAY) {

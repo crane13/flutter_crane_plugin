@@ -8,6 +8,7 @@ import 'package:crane_plugin/framwork/theme/ThemeType.dart';
 import 'package:crane_plugin/framwork/utils/AUtils.dart';
 import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
 import 'package:crane_plugin/framwork/utils/FlutterGG.dart';
+import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:crane_plugin/framwork/utils/TextUtils.dart';
 import 'package:crane_plugin/framwork/utils/track/TrackUtils.dart';
 import 'package:crane_plugin/generated/l10n.dart';
@@ -94,11 +95,11 @@ class SettingsPageState extends BaseState<SettingsPage> {
       ],
     ));
 
-    // if (Platform.isIOS) {
-    arrWidgets.add(buildItem(S.of(context).rank, null, () {
-      CraneJumpUtils.jumpRankPage(context);
-    }, imagePath: 'assets/images/rank.png'));
-    // }
+    if (PlatformUtils.isIOS()) {
+      arrWidgets.add(buildItem(S.of(context).rank, null, () {
+        CraneJumpUtils.jumpRankPage(context);
+      }, imagePath: 'assets/images/rank.png'));
+    }
     //
     // arrWidgets.add(_buildItem(S.of(context).history, Icons.history, () {
     //   JumpUtils.jumpRecordPage(context);
@@ -122,12 +123,6 @@ class SettingsPageState extends BaseState<SettingsPage> {
 //      }));
 //    }
 
-    if (appList == null || appList.length <= 0) {
-      arrWidgets.add(buildItem(S.of(context).more_games, Icons.more_horiz, () {
-        CraneJumpUtils.jumpMoreAppPage(context);
-      }));
-    }
-
     arrWidgets.add(buildItem(S.of(context).rate, Icons.star, () {
       CraneJumpUtils.openUrl(K.getRateUrl());
     }));
@@ -144,6 +139,12 @@ class SettingsPageState extends BaseState<SettingsPage> {
     arrWidgets.add(buildItem(S.of(context).tos, Icons.library_books, () {
       CraneJumpUtils.jumpTOSPage(context);
     }));
+
+    if (appList == null || appList.length <= 0) {
+      arrWidgets.add(buildItem(S.of(context).more_games, Icons.more_horiz, () {
+        CraneJumpUtils.jumpMoreAppPage(context);
+      }));
+    }
 
     if (appList != null && appList.length > 0) {
       arrWidgets.add(Container(
@@ -290,6 +291,9 @@ class SettingsPageState extends BaseState<SettingsPage> {
   }
 
   void loadData() {
+    if (Platform.isMacOS) {
+      return;
+    }
     if (Platform.isIOS) {
       if (!AUtils.isEnable()) {
         return;

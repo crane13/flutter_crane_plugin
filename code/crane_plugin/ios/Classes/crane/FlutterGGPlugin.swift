@@ -65,28 +65,23 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             let infoDictionary = Bundle.main.infoDictionary
             if let infoDictionary = infoDictionary {
                 appVersion = infoDictionary["CFBundleShortVersionString"] as! String
-                //                let appBuild = infoDictionary["CFBundleVersion"]
-                //                PrintLog("version\(appVersion),build\(appBuild)")
             }
-            
-            //            print("version\(appVersion)")
             result(appVersion)
         }else if method == "showScoreView"{
                    if #available(iOS 10.3, *) {
                        SKStoreReviewController.requestReview()
                    }
-
         }else if method == "initIAP"{
-            IAPUtils.sharedInstance.initIAP()
+//            IAPUtils.sharedInstance.initIAP()
         }else if method == "restore"{
-            IAPUtils.sharedInstance.restore(flutterResult: result);
+//            IAPUtils.sharedInstance.restore(flutterResult: result);
         }else if method == "getSkuInfo"{
             let sku_id = params["sku_id"]  as! String;
-            IAPUtils.sharedInstance.getList(sku_id: sku_id, flutterResult:result)
+//            IAPUtils.sharedInstance.getList(sku_id: sku_id, flutterResult:result)
         }
         else if method == "unlockScene"{
             let sku_id = params["sku_id"]  as! String;
-            IAPUtils.sharedInstance.purcharse(sku_id: sku_id, flutterResult:result)
+//            IAPUtils.sharedInstance.purcharse(sku_id: sku_id, flutterResult:result)
         }else if method == "removeAds"{
 
         }else if method == "showLeader"{
