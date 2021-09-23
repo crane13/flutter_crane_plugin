@@ -43,12 +43,6 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
             "getPlatformVersion" -> {
                 result.success(CraneUtils.getAppVersionName(activity))
             }
-            "registerSid" -> {
-            }
-            "registerAdmobId" ->
-                //                    MobileAds.initialize(registrar.activity(), call.argument("admob_appId"));
-                result.notImplemented()
-
             "showBannerEnable" -> {
                 if (activity is CraneActivity) {
                     val activity = activity as CraneActivity
@@ -79,7 +73,7 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
                 result.success(CraneUtils.isPad(activity))
             }
             "getChannel" -> {
-//                result.success(BuildConfig.channel)
+                result.success("crane")
             }
             else -> result.notImplemented()
         }
