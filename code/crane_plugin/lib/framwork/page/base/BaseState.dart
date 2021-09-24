@@ -96,11 +96,13 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
     AUtils.showBannerEnable(visible);
   }
 
-  double getPaddingTop() => MediaQuery.of(context).padding.top;
+  double paddingTop() => MediaQuery.of(context).padding.top;
 
-  double getPaddingBottom() => MediaQuery.of(context).padding.bottom;
+  double paddingBottom() => MediaQuery.of(context).padding.bottom;
 
-  double getPaddingRight() => MediaQuery.of(context).padding.right;
+  double paddingRight() => MediaQuery.of(context).padding.right;
+
+  double paddingLeft() => MediaQuery.of(context).padding.left;
 
   void onResume() {
     isResumed = true;

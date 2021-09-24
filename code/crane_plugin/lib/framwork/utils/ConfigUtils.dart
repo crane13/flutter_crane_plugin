@@ -102,7 +102,7 @@ class ConfigUtils {
   static Future<String> loadTOSFromAssets(BuildContext context) async {
     try {
       String configJson = await DefaultAssetBundle.of(context).loadString(
-          isChinese() ? 'assets/tos/tos_zh.txt' : 'assets/tos/tos.txt');
+          isChinese() ? 'packages/crane_plugin/assets/tos/tos_zh.txt' : 'packages/crane_plugin/assets/tos/tos.txt');
       print('loadTOSFromAssets : $configJson');
       return configJson;
     } catch (e) {
