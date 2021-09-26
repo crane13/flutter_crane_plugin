@@ -95,11 +95,6 @@ class SettingsPageState extends BaseState<SettingsPage> {
       ],
     ));
 
-    if (PlatformUtils.isIOS()) {
-      arrWidgets.add(buildItem(S.of(context).rank, null, () {
-        CraneJumpUtils.jumpRankPage(context);
-      }, imagePath: 'assets/images/rank.png'));
-    }
     //
     // arrWidgets.add(_buildItem(S.of(context).history, Icons.history, () {
     //   JumpUtils.jumpRecordPage(context);
@@ -108,7 +103,11 @@ class SettingsPageState extends BaseState<SettingsPage> {
     arrWidgets.add(buildItem(S.of(context).theme, iconTheme, () {
       selectTheme();
     }, value: ThemeType.getThemeStr(context)));
-
+    if (PlatformUtils.isIOS()) {
+      arrWidgets.add(buildItem(S.of(context).rank, null, () {
+        CraneJumpUtils.jumpRankPage(context);
+      }, imagePath: 'assets/images/rank.png'));
+    }
     List<Widget> custormWidgets = buildCustormWidgets();
     if (custormWidgets != null && custormWidgets.length > 0) {
       arrWidgets.addAll(custormWidgets);
