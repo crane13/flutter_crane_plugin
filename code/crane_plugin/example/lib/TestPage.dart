@@ -1,3 +1,4 @@
+import 'package:crane_plugin/framwork/page/base/V.dart';
 import 'package:crane_plugin/framwork/router/CraneJumpUtils.dart';
 import 'package:crane_plugin/framwork/utils/AUtils.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,17 +18,35 @@ class _TestPageState extends State<TestPage> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: GestureDetector(
-            onTap: () {
-              // AUtils.showBanner();
-              AUtils.showPopNow();
-              // AUtils.showVideo();
-              // BaseJumpUtils.jumpMoreAppPage(context);
-              // CraneJumpUtils.jumpSettingsPage(context);
-            },
-            child: Text('Running on: \n'),
-          ),
-        ));
+        body: _buildContent());
+  }
+
+  Widget _buildContent() {
+    return Container(
+      alignment: Alignment.center,
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          V.buildButton('tos', () {
+            CraneJumpUtils.jumpTOSPage(context);
+          }),
+          V.buildButton('more', () {
+            CraneJumpUtils.jumpMoreAppPage(context);
+          }),
+          V.buildButton('settings', () {
+            CraneJumpUtils.jumpSettingsPage(context);
+          }),
+          V.buildButton('loading', () {
+            CraneJumpUtils.jumpLoadingPage(context);
+          }),
+          V.buildButton('rank', () {
+            CraneJumpUtils.jumpRankPage(context);
+          }),
+          V.buildButton('pop', () {
+            AUtils.showPopNow();
+          }),
+        ],
+      ),
+    );
   }
 }

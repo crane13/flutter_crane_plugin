@@ -65,7 +65,7 @@ class _LoadingPageState extends BaseState<LoadingPage> {
               padding: EdgeInsets.all(10),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: Colors.black87,
+                  color: CraneColors.getBgDialogColor(),
 //                    shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(6))),
 //          decoration:
@@ -78,7 +78,7 @@ class _LoadingPageState extends BaseState<LoadingPage> {
 
   static getLoadingView() {
     return SpinKitFadingCircle(
-      color: CraneColors.txt_black,
+      color: CraneColors.white,
       size: 60,
       duration: Duration(seconds: 1),
     );

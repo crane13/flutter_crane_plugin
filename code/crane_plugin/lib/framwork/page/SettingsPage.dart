@@ -28,7 +28,7 @@ class SettingsPage extends StatefulWidget {
       {Key? key,
       this.share_content = '',
       this.share_image = '',
-      this.icon_path = ''})
+      this.icon_path = K.ICON_DEFAULT})
       : super(key: key);
 
   @override
@@ -95,10 +95,6 @@ class SettingsPageState extends BaseState<SettingsPage> {
       ],
     ));
 
-    //
-    // arrWidgets.add(_buildItem(S.of(context).history, Icons.history, () {
-    //   JumpUtils.jumpRecordPage(context);
-    // }));
 
     arrWidgets.add(buildItem(S.of(context).theme, iconTheme, () {
       selectTheme();
@@ -106,7 +102,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
     if (PlatformUtils.isIOS()) {
       arrWidgets.add(buildItem(S.of(context).rank, null, () {
         CraneJumpUtils.jumpRankPage(context);
-      }, imagePath: 'assets/images/rank.png'));
+      }, imagePath: 'packages/crane_plugin/assets/images/rank.png'));
     }
     List<Widget> custormWidgets = buildCustormWidgets();
     if (custormWidgets != null && custormWidgets.length > 0) {
@@ -274,7 +270,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
       contentPadding: EdgeInsets.fromLTRB(15, 5, 15, paddingBottom),
       leading: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(10)),
-        child: Image.network(iconUrl, height: 40, width: 40, fit: BoxFit.cover),
+        child: V.buildNetImageView(iconUrl, 40)
       ),
       title: V.buildText(appItem.getName(),
           color: CraneColors.getTxtTitleColor(),

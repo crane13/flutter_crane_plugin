@@ -1,5 +1,7 @@
+import 'package:crane_plugin/framwork/K.dart';
 import 'package:crane_plugin/framwork/theme/CraneColors.dart';
 import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
+import 'package:crane_plugin/framwork/utils/TextUtils.dart';
 import 'package:crane_plugin/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +26,9 @@ class _TosPageState extends BaseState<TosPage> {
     super.initState();
     ConfigUtils.loadTOSFromAssets(context).then((tos) {
       setState(() {
+        if (!TextUtils.isEmpty(tos)) {
+          tos = tos.replaceAll('@{crane_app_name}', K.CRANE_APP_NAME);
+        }
         tosString = tos;
       });
     });
@@ -43,7 +48,10 @@ class _TosPageState extends BaseState<TosPage> {
           children: <Widget>[
             Text(
               tosString,
-              style: TextStyle(color: CraneColors.getTxtTitleColor()),
+              style: TextStyle(
+                color: CraneColors.getTxtTitleColor(),
+                height: 2.0,
+              ),
             ),
             Divider(
               height: 60,

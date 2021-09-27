@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crane_plugin/framwork/theme/CraneColors.dart';
 import 'package:crane_plugin/framwork/utils/AUtils.dart';
 import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
@@ -707,6 +708,26 @@ class V {
               : SizedBox()
         ],
       ),
+    );
+  }
+
+  /// ImageVIew from url
+  static Widget buildNetImageView(String imageUrl, double w,
+      {String placeholder = K.ICON_DEFAULT,
+      double aspectRatio = 1 / 1,
+      double radius = 0}) {
+    return Container(
+      width: w,
+      child: AspectRatio(
+          aspectRatio: aspectRatio,
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(radius),
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                placeholder: (BuildContext context, String url) =>
+                    Image.asset(placeholder),
+                fit: BoxFit.cover,
+              ))),
     );
   }
 }

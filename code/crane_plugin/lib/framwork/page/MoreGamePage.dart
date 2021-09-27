@@ -59,12 +59,7 @@ class _MoreGamePageState extends BaseState<MoreGamePage> {
       contentPadding: EdgeInsets.fromLTRB(15, 15, 15, paddingBottom),
       leading: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(10)),
-        child: Image.network(
-          iconUrl,
-          height: 50,
-          width: 50,
-          fit: BoxFit.cover,
-        ),
+        child: V.buildNetImageView(iconUrl, 50),
       ),
       title: Text(appItem.getName(),
           overflow: TextOverflow.clip,

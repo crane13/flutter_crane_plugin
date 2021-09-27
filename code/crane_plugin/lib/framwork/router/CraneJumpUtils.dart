@@ -9,11 +9,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../K.dart';
+
 class CraneJumpUtils {
   static void jumpSettingsPage(BuildContext context,
       {String shareContent = '',
       String shareImage = '',
-      String iconPath = ''}) {
+      String iconPath = K.ICON_DEFAULT}) {
     jump(
         context,
         SettingsPage(

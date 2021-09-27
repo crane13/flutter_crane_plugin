@@ -9,7 +9,9 @@ class Configs {
     K.IOS_APPID = '';
     K.ANDROID_PACKAGE = '';
     K.IOS_PACKAGE = '';
-    K.IS_GOOGLEPLAY = true;
+    K.IS_OVERSEA = true;
     K.setChannel('');
+
+    K.CRANE_APP_NAME = 'Crane Demo';
   }
 }
