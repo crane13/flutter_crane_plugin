@@ -14,16 +14,16 @@ class K {
 
   static setChannel(String channel) {
     K._channel = channel;
-    IS_GOOGLEPLAY = channel != null && channel.contains('google');
+    // IS_GOOGLEPLAY = channel != null && channel.contains('google');
   }
 
   static getChannel() {
     return _channel;
   }
 
-  static init(bool is_googleplay) {
-    IS_GOOGLEPLAY = is_googleplay;
-  }
+  // static init(bool is_googleplay) {
+  //   IS_GOOGLEPLAY = is_googleplay;
+  // }
 
   static String getPackage() {
     return Platform.isIOS ? IOS_PACKAGE : ANDROID_PACKAGE;
