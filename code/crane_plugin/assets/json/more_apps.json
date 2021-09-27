@@ -48,27 +48,6 @@
       "package": "cn.crane.game.flutter.findx",
       "icon": "http://image.coolapk.com/apk_logo/2019/1002/17/icon_1024_border-245595-o_1dm5tc5lmkvc1uf313p715463ndq-uid-836161@1024x1024.png",
       "link": "https://www.coolapk.com/apk/245595"
-    },
-    {
-      "name": "雾霾追踪",
-      "name_zh": "雾霾追踪",
-      "package": "cn.crane.application.aqi",
-      "icon": "http://image.coolapk.com/apk_logo/2017/1019/icon_144-164765-o_1bsqik4sv1fd8l3u47p1cgt181hq-uid-836161@144x144.png",
-      "link": "https://www.coolapk.com/game/cn.crane.application.aqi"
-    },
-    {
-      "name": "微文阅读",
-      "name_zh": "微文阅读",
-      "package": "cn.crane.application.wechat_ariticle",
-      "icon": "http://pp.myapp.com/ma_icon/0/icon_12179070_1510150270/96",
-      "link": "https://www.coolapk.com/game/cn.crane.application.wechat_ariticle"
-    },
-    {
-      "name": "美食健康菜谱",
-      "name_zh": "美食健康菜谱",
-      "package": "cn.crane.application.cookbook",
-      "icon": "http://image.coolapk.com/apk_logo/2019/0505/00/icon_512-150310-o_1da1se6qu1dvae5pj4m180avkuq-uid-836161@512x512.png",
-      "link": "https://www.coolapk.com/game/cn.crane.application.cookbook"
     }
   ]
 }

@@ -1,11 +1,11 @@
 {
   "appList": [
     {
-      "name": "Crane Sudoku",
-      "name_zh": "巅疯数独者",
-      "package": "cn.crane.flutter.sudoku",
-      "icon": "https://is5-ssl.mzstatic.com/image/thumb/Purple125/v4/24/5e/d0/245ed0ba-bc3c-8342-48ab-c23dff37e9a4/AppIcon-1x_U007emarketing-0-7-0-85-220.png/230x0w.webp",
-      "link": "https://itunes.apple.com/app/id1563765031"
+      "name": "Railway Worker",
+      "name_zh": "疯狂小火车",
+      "package": "cn.crane.flutter.plumber.lineworker",
+      "icon": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/46/e6/18/46e618e4-e002-a48f-9458-aec0cd5a752a/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.png",
+      "link": "https://itunes.apple.com/app/id1485420263"
     },
     {
       "name": "Crane Mine Sweeper",
@@ -15,11 +15,11 @@
       "link": "https://itunes.apple.com/app/id1564193574"
     },
     {
-      "name": "Railway Worker",
-      "name_zh": "疯狂小火车",
-      "package": "cn.crane.flutter.plumber.lineworker",
-      "icon": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/46/e6/18/46e618e4-e002-a48f-9458-aec0cd5a752a/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.png",
-      "link": "https://itunes.apple.com/app/id1485420263"
+      "name": "Crane Sudoku",
+      "name_zh": "巅疯数独者",
+      "package": "cn.crane.flutter.sudoku",
+      "icon": "https://is5-ssl.mzstatic.com/image/thumb/Purple125/v4/24/5e/d0/245ed0ba-bc3c-8342-48ab-c23dff37e9a4/AppIcon-1x_U007emarketing-0-7-0-85-220.png/230x0w.webp",
+      "link": "https://itunes.apple.com/app/id1563765031"
     },
     {
       "name": "Jigsaw World",
@@ -29,11 +29,25 @@
       "link": "https://itunes.apple.com/app/id1477751457"
     },
     {
+      "name": "Touch Number",
+      "name_zh": "按数字",
+      "package": "cn.crane.game.flutter.findx",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/e4/58/0a/e4580aa1-6848-78bb-2f47-0f69bf69cbc5/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.jpg",
+      "link": "https://itunes.apple.com/app/id1481699832"
+    },
+    {
       "name": "2048庆余年大宗师版",
       "name_zh": "2048庆余年大宗师版",
       "package": "cn.crane.flutter.flutter.2048",
       "icon": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/58/fc/b0/58fcb023-7979-df7c-96b9-e93b5328620a/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.png",
       "link": "https://itunes.apple.com/app/1493121096"
+    },
+    {
+      "name": "Flappy UFO",
+      "name_zh": "Flappy UFO",
+      "package": "cn.crane.game.flappyufo",
+      "icon": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/6d/6b/0c/6d6b0cb3-c4f3-5f3c-d1fd-0ac9dcda0748/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.jpg",
+      "link": "https://itunes.apple.com/app/id1482524329"
     },
     {
       "name": "Game of Life",
@@ -48,20 +62,6 @@
       "package": "cn.crane.flutter.langtons.ant",
       "icon": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/14/7c/ac/147cac84-7acd-b155-f482-754754ac560e/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.png",
       "link": "https://apps.apple.com/cn/app/id1491344162"
-    },
-    {
-      "name": "Touch Number",
-      "name_zh": "按数字",
-      "package": "cn.crane.game.flutter.findx",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/e4/58/0a/e4580aa1-6848-78bb-2f47-0f69bf69cbc5/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.jpg",
-      "link": "https://itunes.apple.com/app/id1481699832"
-    },
-    {
-      "name": "Flappy UFO",
-      "name_zh": "Flappy UFO",
-      "package": "cn.crane.game.flappyufo",
-      "icon": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/6d/6b/0c/6d6b0cb3-c4f3-5f3c-d1fd-0ac9dcda0748/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.jpg",
-      "link": "https://itunes.apple.com/app/id1482524329"
     }
   ]
 }

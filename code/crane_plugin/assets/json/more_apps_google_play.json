@@ -15,18 +15,11 @@
       "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.plumber.lineworker"
     },
     {
-      "name": "Jigsaw World",
-      "name_zh": "Jigsaw World",
-      "package": "cn.crane.flutter.puzzle.jigsaw",
-      "icon": "https://lh3.googleusercontent.com/kJp_U8CEz8gRcTAIDyi9wSRs0DNpsREu36LrV2J0QjSxBaVnj1qvCEZ-vX7q-i4NzfC1=s360",
-      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.puzzle.jigsaw"
-    },
-    {
-      "name": "Dance Up",
-      "name_zh": "Dance Up",
-      "package": "cn.crane.flutter.danceup",
-      "icon": "https://lh3.googleusercontent.com/5SzysxGj15mQjetlH9bpgeJiZkjxtN2Hi4Wgnou6N3NhuvkFkOmUqJ0RK29wO55teg=s360",
-      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.danceup"
+      "name": "Crane Mine Sweeper",
+      "name_zh": "扫雷大作战",
+      "package": "cn.crane.flutter.minesweeper",
+      "icon": "https://play-lh.googleusercontent.com/VM1o0PZuOVsaIeXZ0xNB3KRdizpgmKDkq0Vj97k5b0LfEP2AGSn5zXHYuPB4zX-AG9rg=s360-rw",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.minesweeper"
     },
     {
       "name": "Game of Life",
@@ -36,6 +29,20 @@
       "link": "https://play.google.com/store/apps/details?id=cn.crane.game.flutter.lifegame"
     },
     {
+      "name": "Langton's ant",
+      "name_zh": "兰顿蚂蚁",
+      "package": "cn.crane.flutter.langtons.ant",
+      "icon": "https://play-lh.googleusercontent.com/pu8K-bvZv6RlYZb09K2RQWYCiBCqPZ-oTa0D5_rbY7GZom9eauejgbfJMnBweoFdXk2y=s360-rw",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.langtons.ant"
+    },
+    {
+      "name": "Solitaire Links",
+      "name_zh": "纸牌连连看",
+      "package": "cn.crane.flutter.flutter_card_link",
+      "icon": "https://play-lh.googleusercontent.com/hC2t3bN1RI43jvb9spEjA9dNUAae9J5v32623muzDPIgWB787Ak-bjAtoYU6Oz5H1b4P=s360-rw",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.flutter_card_link"
+    },
+    {
       "name": "Touch Number",
       "name_zh": "Touch Number",
       "package": "cn.crane.game.flutter.findx",
@@ -43,11 +50,11 @@
       "link": "https://play.google.com/store/apps/details?id=cn.crane.game.flutter.findx"
     },
     {
-      "name": "UFO Fled",
-      "name_zh": "UFO Fled",
-      "package": "cn.crane.game.flappyufo",
-      "icon": "https://lh3.googleusercontent.com/bSBV8QlpCNGN_fYi30HQnl1tnQ5Ome0qX6xt64VHX0cZFxXL-U-RyPdjtgls7mtdUGE=s360",
-      "link": "https://play.google.com/store/apps/details?id=cn.crane.game.flappyufo"
+      "name": "Dance Up",
+      "name_zh": "Dance Up",
+      "package": "cn.crane.flutter.danceup",
+      "icon": "https://lh3.googleusercontent.com/5SzysxGj15mQjetlH9bpgeJiZkjxtN2Hi4Wgnou6N3NhuvkFkOmUqJ0RK29wO55teg=s360",
+      "link": "https://play.google.com/store/apps/details?id=cn.crane.flutter.danceup"
     },
     {
       "name": "App Quick Finder",
