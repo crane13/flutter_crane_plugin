@@ -87,18 +87,6 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
                 successed = true
             }
             result(successed)
-        case "initIAP":
-            result(successed)
-        case "restore":
-            result(successed)
-        case "getSkuInfo":
-            let sku_id = params["sku_id"]  as! String;
-            result(successed)
-        case "unlockScene":
-            let sku_id = params["sku_id"]  as! String;
-            result(successed)
-        case "removeAds":
-            result(successed)
         case "showLeader":
             GameCenterHelper.helper.showLeader()
             result(true)
