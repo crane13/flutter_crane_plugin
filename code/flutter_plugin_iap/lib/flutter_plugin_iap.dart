@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 class FlutterPluginIap {
   static const MethodChannel _channel =
-      const MethodChannel('flutter_plugin_iap');
+  const MethodChannel('flutter_plugin_iap');
 
   static Future<String?> get platformVersion async {
     final String? version = await _channel.invokeMethod('getPlatformVersion');
