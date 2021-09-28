@@ -10,6 +10,7 @@ import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import cn.crane.crane_plugin.bview.BView_admob
 import com.google.android.gms.ads.MobileAds
+import com.google.firebase.analytics.FirebaseAnalytics
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 
@@ -17,6 +18,7 @@ import io.flutter.embedding.engine.FlutterEngine
 open class CraneActivity : FlutterActivity() {
 
     private lateinit var linearLayout: LinearLayout
+    private var mFirebaseAnalytics: FirebaseAnalytics? = null
 
     private var decorView: View? = null
 
@@ -35,14 +37,14 @@ open class CraneActivity : FlutterActivity() {
         linearLayout = LinearLayout(this)
 
         linearLayout.layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
         )
 
 
         var params = FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.MATCH_PARENT,
-            FrameLayout.LayoutParams.WRAP_CONTENT
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
         )
         params.gravity = Gravity.BOTTOM
         params.bottomMargin = 0
@@ -50,6 +52,9 @@ open class CraneActivity : FlutterActivity() {
         addContentView(linearLayout, params)
 
         decorView = window.decorView
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
     fun loadBanner() {
