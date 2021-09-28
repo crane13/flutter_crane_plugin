@@ -23,7 +23,7 @@ class K {
   }
 
   static String getMoreListLocal() {
-    if (PlatformUtils.isApp()) {
+    if (PlatformUtils.isApple()) {
       if (ConfigUtils.isChinese()) {
         return 'packages/crane_plugin/assets/json/more_apps_ios_zh.json';
       } else {
@@ -40,7 +40,7 @@ class K {
   }
 
   static String getMoreListUrl() {
-    if (PlatformUtils.isApp()) {
+    if (PlatformUtils.isApple()) {
       if (ConfigUtils.isChinese()) {
         return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps_ios_zh.json';
       } else {
@@ -58,7 +58,7 @@ class K {
 
   static Uri getMoreListUrlForHttp() {
     String unencodedPath = '';
-    if (PlatformUtils.isApp()) {
+    if (PlatformUtils.isApple()) {
       if (ConfigUtils.isChinese()) {
         unencodedPath = '/more_apps_ios_zh.json';
       } else {
