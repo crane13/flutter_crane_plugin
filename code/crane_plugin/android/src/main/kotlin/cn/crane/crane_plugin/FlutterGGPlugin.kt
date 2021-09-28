@@ -43,6 +43,9 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
             "getPlatformVersion" -> {
                 result.success(CraneUtils.getAppVersionName(activity))
             }
+            "getPackageName" -> {
+                result.success(CraneUtils.getPackageName(activity))
+            }
             "showBannerEnable" -> {
                 if (activity is CraneActivity) {
                     val activity = activity as CraneActivity

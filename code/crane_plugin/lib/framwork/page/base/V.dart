@@ -1,10 +1,10 @@
-import 'dart:io';
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crane_plugin/framwork/theme/CraneColors.dart';
 import 'package:crane_plugin/framwork/utils/AUtils.dart';
 import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
+import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:crane_plugin/framwork/utils/TextUtils.dart';
 import 'package:crane_plugin/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
@@ -530,7 +530,7 @@ class V {
   }) {
 //    _showDatePickerAndroid(context, initialDate, callback,
 //        startDate: startDate);
-    if (Platform.isIOS) {
+    if (PlatformUtils.isIOS()) {
       _showCupertinoDatePickerIos(context, initialDate, callback,
           startDate: startDate);
     } else {

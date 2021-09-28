@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:crane_plugin/framwork/bean/app_list_entity.dart';
 import 'package:crane_plugin/framwork/router/CraneJumpUtils.dart';
@@ -95,7 +94,6 @@ class SettingsPageState extends BaseState<SettingsPage> {
       ],
     ));
 
-
     arrWidgets.add(buildItem(S.of(context).theme, iconTheme, () {
       selectTheme();
     }, value: ThemeType.getThemeStr(context)));
@@ -118,8 +116,8 @@ class SettingsPageState extends BaseState<SettingsPage> {
 //      }));
 //    }
 
-    arrWidgets.add(buildItem(S.of(context).rate, Icons.star, () {
-      CraneJumpUtils.openUrl(K.getRateUrl());
+    arrWidgets.add(buildItem(S.of(context).rate, Icons.star, () async {
+      CraneJumpUtils.openUrl(await K.getRateUrl());
     }));
 
 //    arrWidgets.add(getItem(S.of(context).share, Icons.share, () {
@@ -269,9 +267,8 @@ class SettingsPageState extends BaseState<SettingsPage> {
     return ListTile(
       contentPadding: EdgeInsets.fromLTRB(15, 5, 15, paddingBottom),
       leading: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        child: V.buildNetImageView(iconUrl, 40)
-      ),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          child: V.buildNetImageView(iconUrl, 40)),
       title: V.buildText(appItem.getName(),
           color: CraneColors.getTxtTitleColor(),
           fontSize: 15,
@@ -286,10 +283,10 @@ class SettingsPageState extends BaseState<SettingsPage> {
   }
 
   void loadData() {
-    if (Platform.isMacOS) {
+    if (PlatformUtils.isMacOS()) {
       return;
     }
-    if (Platform.isIOS) {
+    if (PlatformUtils.isIOS()) {
       if (!AUtils.isEnable()) {
         return;
       }

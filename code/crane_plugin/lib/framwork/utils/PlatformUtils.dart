@@ -25,6 +25,22 @@ class PlatformUtils {
     }
   }
 
+  static bool isMacOS() {
+    try {
+      return Platform.isMacOS;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  static bool isAndroid() {
+    try {
+      return Platform.isAndroid;
+    } catch (e) {
+      return false;
+    }
+  }
+
   static bool hasChannelPlugin() {
     try {
       return Platform.isAndroid || Platform.isIOS || Platform.isMacOS;

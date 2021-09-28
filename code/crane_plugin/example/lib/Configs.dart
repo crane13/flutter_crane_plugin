@@ -7,8 +7,6 @@ class Configs {
     UmengUtils.UMENG_KEY_ANDROID = '';
 
     K.IOS_APPID = '';
-    K.ANDROID_PACKAGE = '';
-    K.IOS_PACKAGE = '';
     K.IS_OVERSEA = true;
     K.setChannel('');
 

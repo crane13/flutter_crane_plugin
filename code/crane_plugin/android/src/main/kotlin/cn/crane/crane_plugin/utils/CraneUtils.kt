@@ -26,12 +26,20 @@ object CraneUtils {
         var appVersionName = ""
         try {
             val packageInfo = context!!.applicationContext
-                .packageManager
-                .getPackageInfo(context.packageName, 0)
+                    .packageManager
+                    .getPackageInfo(context.packageName, 0)
             appVersionName = packageInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
         }
 
         return appVersionName
     }
+
+    fun getPackageName(context: Context?): String {
+        if (context != null) {
+            return context.packageName
+        }
+        return ""
+    }
+
 }

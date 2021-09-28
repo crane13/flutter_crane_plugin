@@ -74,6 +74,9 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
                 appVersion = infoDictionary["CFBundleShortVersionString"] as! String
             }
             result(appVersion)
+        case "getPackageName":
+           let bundleID = Bundle.main.bundleIdentifier
+            result(bundleID)
         case "isPad":
             let isPad = Bool(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
             result(isPad)

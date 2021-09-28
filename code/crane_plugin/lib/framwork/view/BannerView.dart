@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'dart:io';
 
+import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -63,16 +63,23 @@ class BannerViewState extends State<BannerView> {
       child: Padding(
           padding:
               EdgeInsets.fromLTRB(widget.padding_h, 0, widget.padding_h, 0),
-          child: Platform.isIOS
-              ? UiKitView(
-                  viewType: PLUGIN_VIEW,
-                  creationParams: widget.params,
-                  creationParamsCodec: const StandardMessageCodec())
-              : AndroidView(
-                  viewType: PLUGIN_VIEW,
-                  creationParams: widget.params,
-                  creationParamsCodec: const StandardMessageCodec())),
+          child: _buildNativeView()),
     );
+  }
+
+  Widget _buildNativeView() {
+    if (PlatformUtils.isIOS()) {
+      return UiKitView(
+          viewType: PLUGIN_VIEW,
+          creationParams: widget.params,
+          creationParamsCodec: const StandardMessageCodec());
+    } else if (PlatformUtils.isAndroid()) {
+      return AndroidView(
+          viewType: PLUGIN_VIEW,
+          creationParams: widget.params,
+          creationParamsCodec: const StandardMessageCodec());
+    }
+    return SizedBox();
   }
 
   bool isLarge() {

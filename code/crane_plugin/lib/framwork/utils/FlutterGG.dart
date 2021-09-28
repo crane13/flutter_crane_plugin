@@ -215,6 +215,13 @@ class FlutterGG {
     return await _channel.invokeMethod("setWallPaper", {});
   }
 
+  static Future<String> getPackageName() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return '';
+    }
+    return await _channel.invokeMethod("getPackageName", {});
+  }
+
   static void _onEvent(Object? value) {
     String event = value!.toString();
     TrackUtils.trackEvent(event);

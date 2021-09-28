@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:crane_plugin/framwork/bean/app_list_entity.dart';
+import 'package:crane_plugin/framwork/utils/FlutterGG.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -60,10 +61,11 @@ class ConfigUtils {
     if (list == null || list.length <= 0) {
       list = await _loadAppListFromAssets(context);
     }
+    String packageName = await FlutterGG.getPackageName();
     List<AppItem> resultList = [];
     if (list != null && list.length > 0) {
       for (AppItem item in list) {
-        if (item != null && item.package != K.getPackage()) {
+        if (item != null && item.package != packageName) {
           resultList.add(item);
         }
       }
@@ -102,7 +104,9 @@ class ConfigUtils {
   static Future<String> loadTOSFromAssets(BuildContext context) async {
     try {
       String configJson = await DefaultAssetBundle.of(context).loadString(
-          isChinese() ? 'packages/crane_plugin/assets/tos/tos_zh.txt' : 'packages/crane_plugin/assets/tos/tos.txt');
+          isChinese()
+              ? 'packages/crane_plugin/assets/tos/tos_zh.txt'
+              : 'packages/crane_plugin/assets/tos/tos.txt');
       print('loadTOSFromAssets : $configJson');
       return configJson;
     } catch (e) {

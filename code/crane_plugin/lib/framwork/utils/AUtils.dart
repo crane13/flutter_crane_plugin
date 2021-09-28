@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:flutter/material.dart';
 
 import 'DataManager.dart';
@@ -15,7 +16,7 @@ class AUtils {
   static bool _showA = true;
 
   static void initA() async {
-    if (Platform.isIOS) {
+    if (PlatformUtils.isApple()) {
       bool shouldReview = await DataManager.shouldReview();
       _showA = !shouldReview;
     } else {
@@ -123,7 +124,7 @@ class AUtils {
   static void showReviewOrPop() {
     Future.delayed(Duration(milliseconds: 300), () async {
       bool shouldReview = await DataManager.shouldReview();
-      if ((Platform.isIOS || Platform.isMacOS) && shouldReview) {
+      if ((PlatformUtils.isApple()) && shouldReview) {
         _showA = true;
         DataManager.setHasReview();
         FlutterGG.showScoreView();
