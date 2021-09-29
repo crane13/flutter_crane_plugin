@@ -17,10 +17,13 @@ class BannerView extends StatefulWidget {
   double padding_h = 0;
   double maxHeight = 0;
 
+  final BannerController? controller;
+
   BannerView(
       {Key? key,
       this.title = '',
       this.params,
+      this.controller,
       this.padding_h = 0,
       this.maxHeight = 0,
       this.listener})
@@ -33,6 +36,8 @@ class BannerViewState extends State<BannerView> {
   var _eventChannel = const EventChannel(PLUGIN_VIEW);
 
   StreamSubscription? _subscription;
+
+  MethodChannel? _channel;
 
   @override
   void initState() {
@@ -68,16 +73,35 @@ class BannerViewState extends State<BannerView> {
   Widget _buildNativeView() {
     if (Platform.isIOS) {
       return UiKitView(
-          viewType: PLUGIN_VIEW,
-          creationParams: widget.params,
-          creationParamsCodec: const StandardMessageCodec());
+        viewType: PLUGIN_VIEW,
+        creationParams: widget.params,
+        creationParamsCodec: const StandardMessageCodec(),
+        onPlatformViewCreated: (id) {
+          _onPlatformViewCreated(id);
+        },
+      );
     } else if (Platform.isAndroid) {
       return AndroidView(
-          viewType: PLUGIN_VIEW,
-          creationParams: widget.params,
-          creationParamsCodec: const StandardMessageCodec());
+        viewType: PLUGIN_VIEW,
+        creationParams: widget.params,
+        creationParamsCodec: const StandardMessageCodec(),
+        onPlatformViewCreated: (id) {
+          _onPlatformViewCreated(id);
+        },
+      );
     }
     return SizedBox();
+  }
+
+  void _onPlatformViewCreated(int id) {
+    _channel = MethodChannel('${PLUGIN_VIEW}_$id');
+    _channel?.setMethodCallHandler((MethodCall call) async {
+      if (call.method == 'onCaptured') {
+        // if (widget.onCapture != null)
+        //   widget.onCapture!(call.arguments.toString());
+      }
+    });
+    widget.controller?._channel = _channel;
   }
 
   bool isLarge() {
@@ -105,5 +129,19 @@ class BannerViewState extends State<BannerView> {
       _subscription!.cancel();
     }
     super.dispose();
+  }
+}
+
+class BannerController {
+  MethodChannel? _channel;
+
+  BannerController();
+
+  void load() {
+    _channel?.invokeMethod("load");
+  }
+
+  void setSize(String size) {
+    _channel?.invokeMethod("setSize", {'size': size});
   }
 }

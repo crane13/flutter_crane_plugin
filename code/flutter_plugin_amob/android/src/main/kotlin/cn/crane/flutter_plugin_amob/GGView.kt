@@ -8,7 +8,6 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.LinearLayout
-import cn.crane.flutter_plugin_amob.utils.CraneExtend
 import com.google.android.gms.ads.*
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
@@ -27,11 +26,10 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
     private var size: String? = null
     private var isGDT = false
     private var eventSink: EventSink? = null
-
-    constructor() {}
-
+    private var context: Context? = null;
 
     internal constructor(context: Context?, messenger: BinaryMessenger?, id: Int, params: Map<String?, Any>?) {
+        this.context = context
         if (params != null) {
             if (params.containsKey("size")) {
                 size = params["size"].toString()
@@ -56,7 +54,7 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
             AdRequest.Builder()
                     .build()
         }
-        getAdBanner(context as Activity?, linearLayout).loadAd(adRequest)
+        buildAdView(context as Activity?, linearLayout).loadAd(adRequest)
         return adView
     }
 
@@ -66,12 +64,13 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
     }
 
     override fun dispose() {
+//        adView = null
     }
 
     private val isLarge: Boolean
         private get() = "large".equals(size, ignoreCase = true)
 
-    private fun getAdBanner(activity: Activity?, linearLayout: LinearLayout?): AdView {
+    private fun buildAdView(activity: Activity?, linearLayout: LinearLayout?): AdView {
         if (adView != null) {
             linearLayout?.removeAllViews()
             adView!!.destroy()
@@ -111,17 +110,6 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
     }
 
 
-    private fun onEventGDT(event: String) {
-        var event = event
-        Log.v("qqqq", "lonEventGDT: $event")
-        if (!TextUtils.isEmpty(event)) {
-            if (!event.contains("GDT_banner_")) {
-                event = "GDT_banner_$event"
-            }
-            onEvent(event)
-        }
-    }
-
     private fun onEventAdmob(event: String) {
         var event = event
         if (!TextUtils.isEmpty(event)) {
@@ -155,8 +143,22 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
 //        }
     }
 
-    override fun onMethodCall(methodCall: MethodCall, result: MethodChannel.Result) {
-        result.notImplemented()
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+
+        if (call.method == null) return
+
+        when (call.method) {
+            "load" -> {
+                loadBanner(context, null)
+                result.success(true)
+            }
+            "setSize" -> {
+                this.size = call.argument<String>("size")!!
+                loadBanner(context, null)
+                result.success(true)
+            }
+            else -> result.notImplemented()
+        }
     }
 
     override fun onListen(o: Any, eventSink: EventSink) {
