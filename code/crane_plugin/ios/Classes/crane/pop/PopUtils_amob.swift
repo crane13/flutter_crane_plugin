@@ -14,8 +14,6 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
     private var appId:String? = Const.ADMOB_ID
     private var posId:String? = Const.ADMOB_POP
     
-    //       private var posId:String? = "ca-app-pub-3940256099942544/4411468910" //test
-    
     static let sharedInstance = PopUtils_amob()
     
     func setAppAndPosdId(appId: String, posId:String){
@@ -28,12 +26,7 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
     }
     
     func loadAd(controller: UIViewController, isNow : Bool){
-        //        interstitial = GADInterstitialAd(adUnitID: self.posId!)
-        //        interstitial.delegate = self
-        //        let request = getRequest()
-        //        interstitial.load(request)
-        
-        
+
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID:self.posId!,
                                request: request,
@@ -54,13 +47,6 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
     func showAd(controller: UIViewController, isNow : Bool)  -> Bool{
         self.controller = controller
         var shown = false
-        //        if interstitial != nil && interstitial.isReady {
-        //            shown = true
-        //            interstitial.present(fromRootViewController: self.controller!)
-        //        } else {
-        //            self.loadAd(controller: controller)
-        //        }
-        
         if let ad = interstitial {
             shown = true
             ad.present(fromRootViewController: controller)

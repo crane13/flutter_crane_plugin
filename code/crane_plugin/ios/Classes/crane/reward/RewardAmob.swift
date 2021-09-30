@@ -15,7 +15,6 @@ public class RewardAmob: NSObject,  GADFullScreenContentDelegate {
     var appId : String = Const.ADMOB_ID
     var rewardId : String = Const.ADMOB_VIDEO
     
-    //          var rewardId : String = "ca-app-pub-3940256099942544/1712485313" //test
     var controller : UIViewController!
     
     static let sharedInstance = RewardAmob()
@@ -26,7 +25,6 @@ public class RewardAmob: NSObject,  GADFullScreenContentDelegate {
     
     var hasEarnReward : Bool = false;
     
-    //    var
     func initReward(viewController:UIViewController) {
         self.controller = viewController
         
@@ -51,12 +49,7 @@ public class RewardAmob: NSObject,  GADFullScreenContentDelegate {
         self.controller = viewController
         
         self.result = result
-        //        if(appId.count > 0 && rewardId.count > 0)
-        //        {
-        //            self.appId = appId
-        //            self.rewardId = rewardId
-        //        }
-        
+
         var isReady = false;
         
         if let ad = rewardedAd {

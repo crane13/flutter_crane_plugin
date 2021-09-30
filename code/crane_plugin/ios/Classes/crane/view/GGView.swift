@@ -16,9 +16,6 @@ import GoogleMobileAds
 
 public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBannerViewDelegate{
     
-    
-    
-    
     fileprivate var methodChannel: FlutterMethodChannel!
     fileprivate var eventChannel: FlutterEventChannel!
     private var adView: GADBannerView!
@@ -27,7 +24,6 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
     var events : FlutterEventSink!
     
     private var event : NSString!
-    
 
     private var admob_appId :String! = Const.ADMOB_ID
     private var admob_bannerId :String! = Const.ADMOB_BANNER
@@ -44,10 +40,6 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
         super.init()
         
         let params = args as! NSDictionary
-        //        self.gdt_appId = params["gdt_appId"] as? String
-        //        self.gdt_bannerId = params["gdt_bannerId"] as? String
-        //        self.admob_appId = params["admob_appId"] as? String
-        //        self.admob_bannerId = params["admob_bannerId"] as? String
         self.size = params["size"] as? String
         
         
@@ -76,12 +68,6 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
     
     
     func loadBanner(aid: String, abid: String, controller:UIViewController) {
-     
-//        self.admob_appId = aid
-//        self.admob_bannerId = abid
-        
-
-       
             if self.adView != nil{
                 self.adView.delegate = nil
                 self.adView.removeFromSuperview()

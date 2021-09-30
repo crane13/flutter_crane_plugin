@@ -20,8 +20,7 @@ public class GGViewFactory :  NSObject, FlutterPlatformViewFactory{
     
     public func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?) -> FlutterPlatformView {
         let uiActivityIndicatorController = GGView(withFrame: frame, viewIdentifier: viewId, arguments: args, binaryMessenger: messenger, controller: controller)
-//        uiActivityIndicatorController.loadAd(viewController: self.controller)
-        
+
         return uiActivityIndicatorController
     }
     
