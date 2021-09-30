@@ -14,10 +14,10 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
     private var appId:String? = Const.ADMOB_ID
     private var posId:String? = Const.ADMOB_POP
     
-//       private var posId:String? = "ca-app-pub-3940256099942544/4411468910" //test
-
-     static let sharedInstance = PopUtils_amob()
-
+    //       private var posId:String? = "ca-app-pub-3940256099942544/4411468910" //test
+    
+    static let sharedInstance = PopUtils_amob()
+    
     func setAppAndPosdId(appId: String, posId:String){
         if appId != nil && appId.count > 0{
             self.appId = appId
@@ -26,59 +26,63 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
             self.posId = posId
         }
     }
-
-    func loadAd(controller: UIViewController){
-//        interstitial = GADInterstitialAd(adUnitID: self.posId!)
-//        interstitial.delegate = self
-//        let request = getRequest()
-//        interstitial.load(request)
+    
+    func loadAd(controller: UIViewController, isNow : Bool){
+        //        interstitial = GADInterstitialAd(adUnitID: self.posId!)
+        //        interstitial.delegate = self
+        //        let request = getRequest()
+        //        interstitial.load(request)
         
         
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID:self.posId!,
-                                   request: request,
-                                   completionHandler: { (ad, error) in
-                                    if let error = error {
-                                      print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                      return
-                                    }
-                                    self.interstitial = ad
-                                    self.interstitial.fullScreenContentDelegate = self
-        })
+                               request: request,
+                               completionHandler: { (ad, error) in
+                                if let error = error {
+                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    return
+                                }
+                                self.interstitial = ad
+                                self.interstitial.fullScreenContentDelegate = self
+                                if(isNow)
+                                {
+                                    self.showAd(controller: controller, isNow : false)
+                                }
+                               })
     }
-
-    func showAd(controller: UIViewController)  -> Bool{
+    
+    func showAd(controller: UIViewController, isNow : Bool)  -> Bool{
         self.controller = controller
         var shown = false
-//        if interstitial != nil && interstitial.isReady {
-//            shown = true
-//            interstitial.present(fromRootViewController: self.controller!)
-//        } else {
-//            self.loadAd(controller: controller)
-//        }
+        //        if interstitial != nil && interstitial.isReady {
+        //            shown = true
+        //            interstitial.present(fromRootViewController: self.controller!)
+        //        } else {
+        //            self.loadAd(controller: controller)
+        //        }
         
         if let ad = interstitial {
             shown = true
-          ad.present(fromRootViewController: controller)
+            ad.present(fromRootViewController: controller)
         } else {
-          self.loadAd(controller: controller)
+            self.loadAd(controller: controller, isNow : isNow)
         }
         return shown
     }
-
+    
     public func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-      print("Ad did present full screen content.")
+        print("Ad did present full screen content.")
     }
-
+    
     public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-      print("Ad failed to present full screen content with error \(error.localizedDescription).")
+        print("Ad failed to present full screen content with error \(error.localizedDescription).")
     }
-
+    
     public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-      print("Ad did dismiss full screen content.")
-    self.loadAd(controller: self.controller!)
+        print("Ad did dismiss full screen content.")
+        self.loadAd(controller: self.controller!, isNow: false)
     }
     
     
-   
+    
 }

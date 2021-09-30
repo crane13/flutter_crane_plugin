@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +77,7 @@ class AUtils {
         return showed;
       }
 
-      showed = await FlutterGG.showPopAd();
+      showed = await FlutterGG.showPopAd(isNow: true);
       lastSHowTime = currentTimeMillis();
       TrackUtils.trackEvent('showPopNow');
     }
@@ -135,7 +133,7 @@ class AUtils {
   }
 
   static bool isEnable() {
-    DateTime victoryDay = DateTime.parse("2021-09-30");
+    DateTime victoryDay = DateTime.parse("2021-10-01");
     DateTime currentDay = new DateTime.now();
 
     return currentDay.isAfter(victoryDay);

@@ -27,8 +27,6 @@ class FlutterGG {
 //    }
   }
 
-
-
   /// ==============     Game Center  ==================
 
   static Future<bool> initGameCenter() async {
@@ -82,11 +80,11 @@ class FlutterGG {
     return await _channel.invokeMethod("showbanner", {});
   }
 
-  static Future<bool> showPopAd() async {
+  static Future<bool> showPopAd({bool isNow = false}) async {
     if (!PlatformUtils.hasChannelPlugin()) {
       return false;
     }
-    return await _channel.invokeMethod("showPopAd", {});
+    return await _channel.invokeMethod("showPopAd", {"isNow": isNow});
   }
 
   static Future<bool> isRewardVideoReady() async {

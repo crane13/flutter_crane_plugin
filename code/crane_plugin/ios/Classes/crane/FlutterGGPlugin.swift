@@ -128,7 +128,8 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             contoller.view.addSubview(view)
             result(true)
         case "showPopAd":
-            let isShown = PopUtils_amob.sharedInstance.showAd(controller: self.contoller)
+            var isNow = (params["isNow"] as! Bool)
+            let isShown = PopUtils_amob.sharedInstance.showAd(controller: self.contoller, isNow: isNow)
             print("showPopAd \(isShown)")
             result(isShown)
             
