@@ -82,7 +82,7 @@ class K {
   }
 
   static String getRateUrl() {
-    if (Platform.isIOS) {
+    if (Platform.isIOS || Platform.isMacOS) {
       return 'itms-apps://itunes.apple.com/app/id${IOS_APPID}?action=write-review';
     } else {
       if (IS_GOOGLEPLAY) {
