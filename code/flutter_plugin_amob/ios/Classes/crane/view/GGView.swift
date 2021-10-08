@@ -15,7 +15,7 @@ import GoogleMobileAds
 
 
 public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBannerViewDelegate{
-
+    
     fileprivate var methodChannel: FlutterMethodChannel!
     fileprivate var eventChannel: FlutterEventChannel!
     private var adView: GADBannerView!
@@ -25,19 +25,21 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
     
     private var event : NSString!
     
-
+    
     private var admob_appId :String! = Const.ADMOB_ID
     private var admob_bannerId :String! = Const.ADMOB_BANNER
     
     private var isGDT = false
     private var size: String!
     
+    private var controller :UIViewController
+    
     public override init() {
         super.init()
     }
     
     @objc public init(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?, binaryMessenger: FlutterBinaryMessenger, controller: UIViewController) {
-        
+        self.controller = controller
         super.init()
         
         let params = args as! NSDictionary
@@ -73,35 +75,35 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
     
     
     func loadBanner(aid: String, abid: String, controller:UIViewController) {
-     
-//        self.admob_appId = aid
-//        self.admob_bannerId = abid
         
-
-       
-            if self.adView != nil{
-                self.adView.delegate = nil
-                self.adView.removeFromSuperview()
-                self.adView = nil
-            }
+        //        self.admob_appId = aid
+        //        self.admob_bannerId = abid
+        
+        
+        
+        if self.adView != nil{
+            self.adView.delegate = nil
+            self.adView.removeFromSuperview()
+            self.adView = nil
+        }
+        
+        if(self.isLarge())
+        {
+            self.adView = GADBannerView(adSize: kGADAdSizeMediumRectangle)
             
-            if(self.isLarge())
-            {
-                self.adView = GADBannerView(adSize: kGADAdSizeMediumRectangle)
-
-                
-                
-            }else{
-                self.adView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-            }
             
-            self.adView.adUnitID = self.admob_bannerId
-  
-            self.adView.rootViewController = controller
-            self.adView.delegate = self
-
             
-            self.adView.load(GADRequest())
+        }else{
+            self.adView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        }
+        
+        self.adView.adUnitID = self.admob_bannerId
+        
+        self.adView.rootViewController = controller
+        self.adView.delegate = self
+        
+        
+        self.adView.load(GADRequest())
         
     }
     
@@ -111,7 +113,7 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
             self.adView.removeFromSuperview()
             self.adView = nil
         }
-       
+        
     }
     
     
@@ -129,11 +131,11 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
     
     public func view() -> UIView {
         
-            return self.adView
-       
+        return self.adView
+        
     }
     
-  
+    
     func isZh() -> Bool {
         
         let defs = UserDefaults.standard
@@ -185,10 +187,19 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
     
     func onMethodCall(call: FlutterMethodCall, result: @escaping FlutterResult) {
         let method = call.method
-        if method == "start" {
-            //            self.indicator.startAnimating()
-        } else if method == "stop" {
-            //            self.indicator.stopAnimating()
+        
+        switch method {
+        case "load":
+            self.loadBanner(aid: admob_appId, abid: admob_bannerId,  controller: self.controller)
+            
+            result(true)
+        case "setSize":
+            let params = call.arguments as! NSDictionary
+            self.size = params["size"] as? String
+            self.loadBanner(aid: admob_appId, abid: admob_bannerId,  controller: self.controller)
+            result(true)
+        default:
+            result(false)
         }
     }
     
@@ -208,26 +219,26 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
     
     
     public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-      print("bannerViewDidReceiveAd")
+        print("bannerViewDidReceiveAd")
     }
-
+    
     public func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
-
+    
     public func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
-      print("bannerViewDidRecordImpression")
+        print("bannerViewDidRecordImpression")
     }
-
+    
     public func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-      print("bannerViewWillPresentScreen")
+        print("bannerViewWillPresentScreen")
     }
-
+    
     public func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
-      print("bannerViewWillDIsmissScreen")
+        print("bannerViewWillDIsmissScreen")
     }
-
+    
     public func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
-      print("bannerViewDidDismissScreen")
+        print("bannerViewDidDismissScreen")
     }
 }

@@ -154,6 +154,7 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
 
     override fun onMethodCall(methodCall: MethodCall, result: MethodChannel.Result) {
         result.notImplemented()
+
     }
 
     override fun onListen(o: Any, eventSink: EventSink) {
