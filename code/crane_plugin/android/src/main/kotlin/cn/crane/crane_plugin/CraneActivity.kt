@@ -53,8 +53,10 @@ open class CraneActivity : FlutterActivity() {
 
         decorView = window.decorView
 
-        // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        if (isSupportFirebase()) {
+            // Obtain the FirebaseAnalytics instance.
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        }
     }
 
     fun loadBanner() {
@@ -126,5 +128,9 @@ open class CraneActivity : FlutterActivity() {
         }
 
         return hasNavigationBar
+    }
+
+    open fun isSupportFirebase(): Boolean {
+        return true
     }
 }
