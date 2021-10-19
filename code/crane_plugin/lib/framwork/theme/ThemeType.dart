@@ -63,7 +63,7 @@ class ThemeType {
     return brightnessValue == Brightness.dark;
   }
 
-  static Future<int> saveThemeType(int theme) async {
+  static Future<bool> saveThemeType(int theme) async {
     return await CacheUtils.setIntWithKey(KEY_THEME, theme);
   }
 

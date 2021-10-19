@@ -1,11 +1,12 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheUtils {
-  static Future setIntWithKey(String key, int v) async {
+  static Future<bool> setIntWithKey(String key, int v) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setInt(key, v);
     } catch (e) {}
+    return false;
   }
 
   static Future<int?> getIntByKey(String key) async {
