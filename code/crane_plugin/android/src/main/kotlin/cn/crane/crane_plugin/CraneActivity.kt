@@ -1,5 +1,6 @@
 package cn.crane.crane_plugin
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
@@ -9,6 +10,7 @@ import android.widget.LinearLayout
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import cn.crane.crane_plugin.bview.BView_admob
+import cn.crane.crane_plugin.gcenter.GameCenterHelper
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
 import io.flutter.embedding.android.FlutterActivity
@@ -57,6 +59,8 @@ open class CraneActivity : FlutterActivity() {
             // Obtain the FirebaseAnalytics instance.
             mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         }
+
+//        GameCenterHelper.getInstance().signIn(this)
     }
 
     fun loadBanner() {
@@ -132,5 +136,10 @@ open class CraneActivity : FlutterActivity() {
 
     open fun isSupportFirebase(): Boolean {
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        GameCenterHelper.getInstance().onActivityResult(this, requestCode, resultCode, data)
     }
 }

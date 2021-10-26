@@ -2,6 +2,7 @@ package cn.crane.crane_plugin
 
 import android.util.Log
 import cn.crane.crane_plugin.event.EventCallback
+import cn.crane.crane_plugin.gcenter.GameCenterHelper
 import cn.crane.crane_plugin.pop.PopManager
 import cn.crane.crane_plugin.reward.RewardManager
 import cn.crane.crane_plugin.utils.CraneUtils
@@ -45,6 +46,17 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
             }
             "getPackageName" -> {
                 result.success(CraneUtils.getPackageName(activity))
+            }
+            "showLeader" -> {
+                var iScore = call.argument<Boolean>("score") as Int
+                var rankId = call.argument<Boolean>("rankId") as String
+                GameCenterHelper.getInstance().showLeaderboard(activity, rankId, iScore)
+                result.success(true)
+            }
+            "reportScore" -> {
+                var iScore = call.argument<Boolean>("score") as Int
+                var rankId = call.argument<Boolean>("rankId") as String
+                GameCenterHelper.getInstance().reportScore(activity, rankId, iScore)
             }
             "showBannerEnable" -> {
                 if (activity is CraneActivity) {

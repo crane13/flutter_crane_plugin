@@ -36,11 +36,13 @@ class FlutterGG {
     return await _channel.invokeMethod("initGameCenter", {});
   }
 
-  static Future<bool> showRank(int score) async {
+  static Future<bool> showRank(int score,
+      {String rankId = 'score_rank'}) async {
     if (!PlatformUtils.hasChannelPlugin()) {
       return false;
     }
-    return await _channel.invokeMethod("showLeader", {'score': score});
+    return await _channel
+        .invokeMethod("showLeader", {'rankId': rankId, 'score': score});
   }
 
   static Future<bool> reportScore(String rankId, int score) async {
