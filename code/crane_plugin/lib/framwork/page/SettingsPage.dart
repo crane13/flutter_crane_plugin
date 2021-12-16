@@ -139,6 +139,12 @@ class SettingsPageState extends BaseState<SettingsPage> {
       }));
     }
 
+    List<Widget> arrCustorms = getCustormWidgets();
+
+    if (arrCustorms != null && arrCustorms.length > 0) {
+      arrWidgets.addAll(arrCustorms);
+    }
+
     if (appList != null && appList.length > 0) {
       arrWidgets.add(Container(
         padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -296,6 +302,10 @@ class SettingsPageState extends BaseState<SettingsPage> {
         appList = list;
       });
     });
+  }
+
+  List<Widget> getCustormWidgets() {
+    return [];
   }
 
   @override

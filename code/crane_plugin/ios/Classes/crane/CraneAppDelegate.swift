@@ -11,7 +11,11 @@ open class CraneAppDelegate: FlutterAppDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         self.requestIDFA()
-       FireBaseUtils.sharedInstance.initFirebase()
+        if(self.isFireEnable())
+        {
+            FireBaseUtils.sharedInstance.initFirebase()
+        }
+      
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
         let controller: FlutterViewController = window.rootViewController as! FlutterViewController
@@ -29,6 +33,10 @@ open class CraneAppDelegate: FlutterAppDelegate {
         return (UIInterfaceOrientationMask.portrait);
     }
 
+    
+    open func isFireEnable() -> Bool{
+        return true
+    }
     public func isIphoneX() -> Bool {
         return UIScreen.main.nativeBounds.size.height - 2436 == 0 ? true : false
     }
