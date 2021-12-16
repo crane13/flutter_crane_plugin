@@ -11,7 +11,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
     with WidgetsBindingObserver {
   bool isResumed = false;
 
-  int currentScore = 0;
+  // int currentScore = 0;
   double screenH = 0.0;
   double screenW = 0.0;
 
@@ -79,11 +79,11 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
     TrackUtils.trackEvent(event);
   }
 
-  onScoreChanged(int score) {
-    setState(() {
-      currentScore = score;
-    });
-  }
+  // onScoreChanged(int score) {
+  //   setState(() {
+  //     currentScore = score;
+  //   });
+  // }
 
   String getPageName() {
     print('getPageName ========== ${runtimeType.toString()}');

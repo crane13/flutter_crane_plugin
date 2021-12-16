@@ -10,14 +10,11 @@ open class CraneAppDelegate: FlutterAppDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        self.requestIDFA()
         if(self.isFireEnable())
         {
             FireBaseUtils.sharedInstance.initFirebase()
         }
       
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
-
         let controller: FlutterViewController = window.rootViewController as! FlutterViewController
 
         GGViewFactory.registerWith(registry: self, viewController: controller)
@@ -45,15 +42,26 @@ open class CraneAppDelegate: FlutterAppDelegate {
         return UIScreen.main.bounds.size.height == 480 ? true : false
     }
 
+    func applicationDidBecomeActive(_ application: UIApplication)
+    {
+      self.requestIDFA()
+    }
+
     func requestIDFA() {
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
                 // Tracking authorization completed. Start loading ads here.
                 // loadAd()
+                initOther()
             })
         } else {
             // Fallback on earlier versions
+             initOther()
         }
+    }
+
+    func initOther(){
+     GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
 }
 
