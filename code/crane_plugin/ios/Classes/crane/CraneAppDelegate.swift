@@ -14,6 +14,7 @@ open class CraneAppDelegate: FlutterAppDelegate {
         {
             FireBaseUtils.sharedInstance.initFirebase()
         }
+        self.initOther()
       
         let controller: FlutterViewController = window.rootViewController as! FlutterViewController
 
@@ -42,21 +43,25 @@ open class CraneAppDelegate: FlutterAppDelegate {
         return UIScreen.main.bounds.size.height == 480 ? true : false
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication)
+    open override func applicationDidBecomeActive(_ application: UIApplication)
     {
-      self.requestIDFA()
+        // 2.timer(必须在主线程中执行)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.requestIDFA), userInfo: nil, repeats: false)
+
+       
+//      self.requestIDFA()
     }
 
-    func requestIDFA() {
+    @objc func requestIDFA() {
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
                 // Tracking authorization completed. Start loading ads here.
                 // loadAd()
-                initOther()
+//                self.initOther()
             })
         } else {
             // Fallback on earlier versions
-             initOther()
+//            self.initOther()
         }
     }
 
