@@ -6,6 +6,11 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 object CraneUtils {
+
+    fun isHuaweiMate(context: Context?) : Boolean{
+
+        return false
+    }
     fun isPad(context: Context?): Boolean {
         try {
             val dm = context?.resources?.displayMetrics

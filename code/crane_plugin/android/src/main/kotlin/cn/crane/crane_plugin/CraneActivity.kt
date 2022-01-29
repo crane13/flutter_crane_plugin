@@ -1,8 +1,10 @@
 package cn.crane.crane_plugin
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
@@ -11,6 +13,7 @@ import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import cn.crane.crane_plugin.bview.BView_admob
 import cn.crane.crane_plugin.gcenter.GameCenterHelper
+import cn.crane.crane_plugin.utils.CraneUtils
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
 import io.flutter.embedding.android.FlutterActivity
@@ -23,6 +26,8 @@ open class CraneActivity : FlutterActivity() {
     private var mFirebaseAnalytics: FirebaseAnalytics? = null
 
     private var decorView: View? = null
+
+    private var isPad:Boolean = false;
 
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
 
@@ -37,6 +42,8 @@ open class CraneActivity : FlutterActivity() {
         super.onCreate(savedInstanceState)
 
         linearLayout = LinearLayout(this)
+
+        isPad = CraneUtils.isPad(this)
 
         linearLayout.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -141,5 +148,12 @@ open class CraneActivity : FlutterActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         GameCenterHelper.getInstance().onActivityResult(this, requestCode, resultCode, data)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        var newIsPad = CraneUtils.isPad(this)
+        Log.v("qqqqqq", "isPad" + isPad)
+        Log.v("qqqqqq", "newIsPad" + newIsPad)
     }
 }
