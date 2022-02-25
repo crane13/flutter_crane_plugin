@@ -5,10 +5,10 @@ import 'ThemeType.dart';
 
 class CraneColors {
   static const Color colorPrimary = Colors.white;
-  static const Color txt_black = Color(0x1a1a1a);
-  static const Color txt_grey = Color(0xb1b1b1);
-  static const Color txt_hint = Color(0xa7ada3);
-  static const Color line_divider = Color(0xf2f2f2);
+  static const Color txt_black = Color(0xff1a1a1a);
+  static const Color txt_grey = Color(0xffb1b1b1);
+  static const Color txt_hint = Color(0xffa7ada3);
+  static const Color line_divider = Color(0xfff2f2f2);
 
   static const Color white = Colors.white;
   static const Color black = Colors.black;

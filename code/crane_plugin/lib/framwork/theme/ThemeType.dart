@@ -70,7 +70,7 @@ class ThemeType {
   static Future<int> readThemeType() async {
     int? theme = await CacheUtils.getIntByKey(KEY_THEME);
     if (theme == null) {
-      theme = ThemeType.THEME_SYSTERM;
+      theme = ThemeType.THEME_LIGHT;
     }
     return theme;
   }

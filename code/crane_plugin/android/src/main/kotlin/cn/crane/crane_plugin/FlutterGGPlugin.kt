@@ -90,6 +90,11 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
             "getChannel" -> {
                 result.success("crane")
             }
+            "share" -> {
+                var content: String = call.argument<String>("content") as String
+                CraneUtils.share(activity, content)
+                result.success(true)
+            }
             else -> result.notImplemented()
         }
 
