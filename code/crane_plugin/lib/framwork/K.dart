@@ -88,4 +88,17 @@ class K {
       }
     }
   }
+
+  static Future<String> getShareUrl() async {
+    if (PlatformUtils.isApple()) {
+      return 'https://itunes.apple.com/app/id$IOS_APPID';
+    } else {
+      String packageName = await FlutterGG.getPackageName();
+      if (IS_OVERSEA) {
+        return 'https://play.google.com/store/apps/details?id=$packageName';
+      } else {
+        return 'https://www.coolapk.com/game/$packageName';
+      }
+    }
+  }
 }

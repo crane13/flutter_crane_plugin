@@ -15,7 +15,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  share: ^2.0.4
+#  share: ^2.0.4
   url_launcher: ^6.0.9
 #  toast: ^0.1.5
   fluttertoast: ^8.0.8

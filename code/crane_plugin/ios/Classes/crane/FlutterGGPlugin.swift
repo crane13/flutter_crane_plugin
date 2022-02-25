@@ -135,7 +135,13 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             
         case "showRewardAd":
             self.showVideo(result: result)
-            
+        case "share":
+            let shareString = "Hello This is a sharingText!"
+            let shareUrl = URL(string: "https://www.google.com")
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [shareString, shareUrl], applicationActivities: nil)
+            self.present(activityViewController, animated: true, completion: nil)
+             result(true)
+
         default:
             result(successed)
         }

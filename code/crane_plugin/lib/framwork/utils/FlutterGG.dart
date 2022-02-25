@@ -181,6 +181,13 @@ class FlutterGG {
     return await _channel.invokeMethod("getPackageName", {});
   }
 
+  static Future<String> share(String shareContent) async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return '';
+    }
+    return await _channel.invokeMethod("share", {'content': shareContent});
+  }
+
   static void _onEvent(Object? value) {
     String event = value!.toString();
     TrackUtils.trackEvent(event);

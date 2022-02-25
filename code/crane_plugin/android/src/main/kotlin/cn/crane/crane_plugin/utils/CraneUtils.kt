@@ -1,7 +1,9 @@
 package cn.crane.crane_plugin.utils
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import cn.crane.crane_plugin.R
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -45,6 +47,21 @@ object CraneUtils {
             return context.packageName
         }
         return ""
+    }
+
+    fun share(context: Context?, str: String?) {
+        if (context != null) {
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.type = "text/*"
+            sendIntent.putExtra(Intent.EXTRA_TEXT, str)
+            context.startActivity(
+                Intent.createChooser(
+                    sendIntent,
+                    context.getString(R.string.title_share_to)
+                )
+            )
+        }
     }
 
 }
