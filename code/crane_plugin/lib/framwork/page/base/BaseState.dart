@@ -86,7 +86,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   // }
 
   String getPageName() {
-    print('getPageName ========== ${runtimeType.toString()}');
+
     return runtimeType.toString();
   }
 
@@ -107,13 +107,13 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   void onResume() {
     isResumed = true;
     TrackUtils.onResume(getPageName());
-
-    print('base state onresume');
+    print('onResume ========== ${runtimeType.toString()}');
   }
 
   void onPause() {
     isResumed = false;
     TrackUtils.onPause(getPageName());
+    print('onPause ========== ${runtimeType.toString()}');
   }
 
   void onDestroy() {}
