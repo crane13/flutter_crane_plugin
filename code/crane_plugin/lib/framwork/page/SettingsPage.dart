@@ -94,9 +94,12 @@ class SettingsPageState extends BaseState<SettingsPage> {
       ],
     ));
 
-    arrWidgets.add(buildItem(S.of(context).theme, iconTheme, () {
-      selectTheme();
-    }, value: ThemeType.getThemeStr(context)));
+    if (isSupportDark()) {
+      arrWidgets.add(buildItem(S.of(context).theme, iconTheme, () {
+        selectTheme();
+      }, value: ThemeType.getThemeStr(context)));
+    }
+
     if (PlatformUtils.isIOS()) {
       arrWidgets.add(buildItem(S.of(context).rank, null, () {
         CraneJumpUtils.jumpRankPage(context);
@@ -306,6 +309,10 @@ class SettingsPageState extends BaseState<SettingsPage> {
 
   List<Widget> getCustormWidgets() {
     return [];
+  }
+
+  bool isSupportDark() {
+    return true;
   }
 
   @override

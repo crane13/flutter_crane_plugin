@@ -128,7 +128,7 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             contoller.view.addSubview(view)
             result(true)
         case "showPopAd":
-            var isNow = (params["isNow"] as! Bool)
+            let isNow = (params["isNow"] as! Bool)
             let isShown = PopUtils_amob.sharedInstance.showAd(controller: self.contoller, isNow: isNow)
             print("showPopAd \(isShown)")
             result(isShown)
@@ -136,10 +136,12 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
         case "showRewardAd":
             self.showVideo(result: result)
         case "share":
-            let shareString = "Hello This is a sharingText!"
-            let shareUrl = URL(string: "https://www.google.com")
-            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [shareString, shareUrl], applicationActivities: nil)
-            self.present(activityViewController, animated: true, completion: nil)
+            let content = (params["content"] as! String)
+            let url = (params["url"] as! String)
+
+            let shareUrl = URL(string: url)
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [content, shareUrl], applicationActivities: nil)
+            contoller.present(activityViewController, animated: true, completion: nil)
              result(true)
 
         default:

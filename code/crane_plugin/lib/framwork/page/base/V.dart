@@ -174,7 +174,8 @@ class V {
       Color color = CraneColors.txt_black,
       int maxLines = 10,
       FontWeight fontWeight = FontWeight.normal,
-      TextAlign textAlign = TextAlign.start}) {
+      TextAlign textAlign = TextAlign.start,
+      String? fontFamily = 'Roboto'}) {
     if (TextUtils.isEmpty(txt)) {
       txt = '';
     }
@@ -188,7 +189,7 @@ class V {
       textAlign: textAlign,
       style: TextStyle(
           color: color,
-          fontFamily: 'Roboto',
+          fontFamily: fontFamily,
           fontSize: fontSize,
           decoration: TextDecoration.none,
           fontWeight: fontWeight),
