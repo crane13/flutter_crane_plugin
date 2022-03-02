@@ -119,15 +119,19 @@ class AUtils {
     return _showA;
   }
 
-  static void showReviewOrPop() {
-    Future.delayed(Duration(milliseconds: 300), () async {
+  static void showReviewOrPop({bool popNow = true}) {
+    Future.delayed(Duration(milliseconds: 900), () async {
       bool shouldReview = await DataManager.shouldReview();
       if ((PlatformUtils.isApple()) && shouldReview) {
         _showA = true;
         DataManager.setHasReview();
         FlutterGG.showScoreView();
       } else {
-        AUtils.showPopNow();
+        if (popNow) {
+          AUtils.showPopNow();
+        } else {
+          AUtils.showPop();
+        }
       }
     });
   }
