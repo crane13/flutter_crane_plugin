@@ -92,7 +92,8 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
             }
             "share" -> {
                 var content: String = call.argument<String>("content") as String
-                CraneUtils.share(activity, content)
+                var url: String = call.argument<String>("url") as String
+                CraneUtils.share(activity, content + url)
                 result.success(true)
             }
             else -> result.notImplemented()
