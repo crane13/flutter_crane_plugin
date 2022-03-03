@@ -1,3 +1,4 @@
+import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:umeng_common_sdk/umeng_common_sdk.dart';
 
 class UmengUtils {
@@ -10,18 +11,26 @@ class UmengUtils {
   }
 
   static Future<void> initUmeng() async {
-    UmengCommonSdk.initCommon(UMENG_KEY_ANDROID, UMENG_KEY_IOS, 'Umeng');
+    if (PlatformUtils.isAndroid() || PlatformUtils.isIOS()) {
+      UmengCommonSdk.initCommon(UMENG_KEY_ANDROID, UMENG_KEY_IOS, 'Umeng');
+    }
   }
 
   static void trackEventUmeng(String event) {
-    UmengCommonSdk.onEvent(event, {});
+    if (PlatformUtils.isAndroid() || PlatformUtils.isIOS()) {
+      UmengCommonSdk.onEvent(event, {});
+    }
   }
 
   static void onPause(String page) {
-    UmengCommonSdk.onPageEnd(page);
+    if (PlatformUtils.isAndroid() || PlatformUtils.isIOS()) {
+      UmengCommonSdk.onPageEnd(page);
+    }
   }
 
   static void onResume(String page) {
-    UmengCommonSdk.onPageStart(page);
+    if (PlatformUtils.isAndroid() || PlatformUtils.isIOS()) {
+      UmengCommonSdk.onPageStart(page);
+    }
   }
 }
