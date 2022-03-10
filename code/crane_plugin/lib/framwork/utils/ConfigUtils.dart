@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:crane_plugin/framwork/bean/app_list_entity.dart';
 import 'package:crane_plugin/framwork/utils/FlutterGG.dart';
+import 'package:crane_plugin/framwork/utils/L.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -78,7 +79,7 @@ class ConfigUtils {
     try {
       var configJson =
           await DefaultAssetBundle.of(context).loadString(K.getMoreListLocal());
-      print('_loadAppListFromAssets');
+      L.log('_loadAppListFromAssets');
       var response = json.decode(
           new Utf8Decoder(allowMalformed: true).convert(configJson.codeUnits));
 
@@ -93,10 +94,10 @@ class ConfigUtils {
       var resp = await http.get(K.getMoreListUrlForHttp());
       var response = json.decode(
           new Utf8Decoder(allowMalformed: true).convert(resp.bodyBytes));
-      print('_loadAppListfromServer === ${response}');
+      L.log('_loadAppListfromServer === ${response}');
       return AppListEntity.fromJson(response).appList;
     } catch (e) {
-      print(e);
+      L.log(e);
       return null;
     } finally {}
   }
@@ -107,10 +108,10 @@ class ConfigUtils {
           isChinese()
               ? 'packages/crane_plugin/assets/tos/tos_zh.txt'
               : 'packages/crane_plugin/assets/tos/tos.txt');
-      print('loadTOSFromAssets : $configJson');
+      L.log('loadTOSFromAssets : $configJson');
       return configJson;
     } catch (e) {
-      print(e);
+      L.log(e);
       return '';
     }
   }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:crane_plugin/framwork/page/base/BaseState.dart';
 import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,7 +32,7 @@ class BannerView extends StatefulWidget {
   BannerViewState createState() => new BannerViewState();
 }
 
-class BannerViewState extends State<BannerView> {
+class BannerViewState extends BaseState<BannerView> {
   var _eventChannel = const EventChannel(PLUGIN_VIEW);
 
   StreamSubscription? _subscription;
@@ -49,7 +50,7 @@ class BannerViewState extends State<BannerView> {
   void _onEvent(Object? value) {
     String event = value.toString();
     if (event != null && event.length > 0) {
-      print('_onEvent == $event');
+      log('_onEvent == $event');
       widget.listener!(event);
     }
   }

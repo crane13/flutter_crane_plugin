@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'package:crane_plugin/framwork/theme/ThemeType.dart';
 import 'package:crane_plugin/framwork/utils/AUtils.dart';
 import 'package:crane_plugin/framwork/utils/ConfigUtils.dart';
+import 'package:crane_plugin/framwork/utils/L.dart';
 import 'package:crane_plugin/framwork/utils/track/TrackUtils.dart';
 import 'package:flutter/material.dart';
 
@@ -86,7 +87,6 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   // }
 
   String getPageName() {
-
     return runtimeType.toString();
   }
 
@@ -107,13 +107,17 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   void onResume() {
     isResumed = true;
     TrackUtils.onResume(getPageName());
-    print('onResume ========== ${runtimeType.toString()}');
+    log('onResume');
   }
 
   void onPause() {
     isResumed = false;
     TrackUtils.onPause(getPageName());
-    print('onPause ========== ${runtimeType.toString()}');
+    log('onPause');
+  }
+
+  void log(String message) {
+    L.log('${runtimeType.toString()} === $message');
   }
 
   void onDestroy() {}

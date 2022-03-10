@@ -1,3 +1,4 @@
+import 'package:crane_plugin/framwork/utils/L.dart';
 import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:flutter/material.dart';
 
@@ -43,11 +44,11 @@ class AUtils {
 //      1567045850517
 //      1567045852705
 
-      print('showPop currentTime : $currentTime');
-      print('showPop lastSHowTime : $lastSHowTime');
+      L.log('showPop currentTime : $currentTime');
+      L.log('showPop lastSHowTime : $lastSHowTime');
 
       int duration = currentTime - lastSHowTime;
-      print('showPop duration : $duration');
+      L.log('showPop duration : $duration');
       if (duration < DURATION) {
         return isShown;
       }
