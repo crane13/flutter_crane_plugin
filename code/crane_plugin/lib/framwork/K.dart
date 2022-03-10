@@ -23,7 +23,7 @@ class K {
   }
 
   static String getMoreListLocal() {
-    if (PlatformUtils.isApple()) {
+    if (PlatformUtils.isIOS()) {
       if (ConfigUtils.isChinese()) {
         return 'packages/crane_plugin/assets/json/more_apps_ios_zh.json';
       } else {
@@ -35,12 +35,24 @@ class K {
       } else {
         return 'packages/crane_plugin/assets/json/more_apps.json';
       }
+    } else if (PlatformUtils.isMacOS()) {
+      if (ConfigUtils.isChinese()) {
+        return 'packages/crane_plugin/assets/json/more_apps_macos.json';
+      } else {
+        return 'packages/crane_plugin/assets/json/more_apps_macos.json';
+      }
     }
     return '';
   }
 
   static String getMoreListUrl() {
-    if (PlatformUtils.isApple()) {
+    if (PlatformUtils.isIOS()) {
+      if (ConfigUtils.isChinese()) {
+        return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps_ios_zh.json';
+      } else {
+        return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps_ios.json';
+      }
+    } else if (PlatformUtils.isMacOS()) {
       if (ConfigUtils.isChinese()) {
         return 'https://configs-1253122004.cos.ap-chengdu.myqcloud.com/more_apps_ios_zh.json';
       } else {
@@ -58,7 +70,13 @@ class K {
 
   static Uri getMoreListUrlForHttp() {
     String unencodedPath = '';
-    if (PlatformUtils.isApple()) {
+    if (PlatformUtils.isIOS()) {
+      if (ConfigUtils.isChinese()) {
+        unencodedPath = '/more_apps_ios_zh.json';
+      } else {
+        unencodedPath = '/more_apps_ios.json';
+      }
+    } else if (PlatformUtils.isMacOS()) {
       if (ConfigUtils.isChinese()) {
         unencodedPath = '/more_apps_ios_zh.json';
       } else {
