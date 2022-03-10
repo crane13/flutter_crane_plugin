@@ -28,7 +28,9 @@ class _MoreViewState extends BaseState<MoreView> {
   @override
   void initState() {
     super.initState();
-    loadData();
+    Future.delayed(Duration(seconds: 0), () {
+      loadData();
+    });
   }
 
   @override
@@ -72,7 +74,10 @@ class _MoreViewState extends BaseState<MoreView> {
           onTap: () {
             CraneJumpUtils.openUrl(item.link);
           },
-          child: V.buildNetImageView(item.icon, itemW));
+          child: Container(
+            color: CraneColors.line_divider,
+            child: Image.network(item.icon, fit: BoxFit.cover),
+          ));
     }
     return SizedBox();
   }

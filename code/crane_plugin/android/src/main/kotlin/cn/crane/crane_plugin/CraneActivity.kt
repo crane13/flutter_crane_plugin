@@ -16,6 +16,7 @@ import cn.crane.crane_plugin.gcenter.GameCenterHelper
 import cn.crane.crane_plugin.utils.CraneUtils
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.umeng.commonsdk.UMConfigure
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 
@@ -27,7 +28,7 @@ open class CraneActivity : FlutterActivity() {
 
     private var decorView: View? = null
 
-    private var isPad:Boolean = false;
+    private var isPad: Boolean = false;
 
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
 
@@ -40,20 +41,21 @@ open class CraneActivity : FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        UMConfigure.preInit(this, getUmengKey(), "google")
 
         linearLayout = LinearLayout(this)
 
         isPad = CraneUtils.isPad(this)
 
         linearLayout.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
         )
 
 
         var params = FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.WRAP_CONTENT
         )
         params.gravity = Gravity.BOTTOM
         params.bottomMargin = 0
@@ -155,5 +157,9 @@ open class CraneActivity : FlutterActivity() {
         var newIsPad = CraneUtils.isPad(this)
         Log.v("qqqqqq", "isPad" + isPad)
         Log.v("qqqqqq", "newIsPad" + newIsPad)
+    }
+
+    open fun getUmengKey(): String {
+        return ""
     }
 }

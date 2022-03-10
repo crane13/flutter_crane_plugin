@@ -11,9 +11,11 @@ class UmengUtils {
   }
 
   static Future<void> initUmeng() async {
-    if (PlatformUtils.isAndroid() || PlatformUtils.isIOS()) {
-      UmengCommonSdk.initCommon(UMENG_KEY_ANDROID, UMENG_KEY_IOS, 'Umeng');
-    }
+    Future.delayed(Duration(seconds: 1), () {
+      if (PlatformUtils.isAndroid() || PlatformUtils.isIOS()) {
+        UmengCommonSdk.initCommon(UMENG_KEY_ANDROID, UMENG_KEY_IOS, 'Umeng');
+      }
+    });
   }
 
   static void trackEventUmeng(String event) {
