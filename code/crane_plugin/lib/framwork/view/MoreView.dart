@@ -46,7 +46,10 @@ class _MoreViewState extends BaseState<MoreView> {
         children: [
           V.buildText('MORE FREE GAMES',
               color: CraneColors.txt_grey, fontSize: 14),
-          _buildAppListView()
+          SizedBox(
+            width: itemW * 5 + padding * 4,
+            child: _buildAppListView(),
+          )
         ],
       ),
     );
@@ -83,9 +86,9 @@ class _MoreViewState extends BaseState<MoreView> {
   }
 
   void loadData() {
-    if (PlatformUtils.isMacOS()) {
-      return;
-    }
+    // if (PlatformUtils.isMacOS()) {
+    //   return;
+    // }
     if (PlatformUtils.isIOS()) {
       if (!AUtils.isEnable()) {
         return;
@@ -93,7 +96,13 @@ class _MoreViewState extends BaseState<MoreView> {
     }
     ConfigUtils.loadAppList(context).then((list) {
       setState(() {
-        appList = list;
+        if (list != null) {
+          if (list.length > 10) {
+            appList = list.sublist(0, 10);
+          } else {
+            appList = list;
+          }
+        }
       });
     });
   }
