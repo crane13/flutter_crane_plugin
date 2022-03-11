@@ -17,9 +17,6 @@ class CommonUtils {
 
   static void showToast(BuildContext context, String message) {
     if (!TextUtils.isEmpty(message)) {
-      // Toast.show(message, context,
-      //     duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-
       Fluttertoast.showToast(
           msg: message,
           toastLength: Toast.LENGTH_SHORT,
