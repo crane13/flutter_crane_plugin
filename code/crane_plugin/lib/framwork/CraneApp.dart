@@ -17,7 +17,7 @@ class CraneApp extends StatelessWidget {
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: child!),
       debugShowCheckedModeBanner: false,
-      title: 'Mine Sweeper',
+      title: '',
       theme: ThemeData(
         // This is the theme of your application.
         //

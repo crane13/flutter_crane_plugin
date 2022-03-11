@@ -10,13 +10,11 @@ import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-const double itemW = 50;
-const double padding = 10;
-
 class MoreView extends StatefulWidget {
-  static const double H = itemW * 2 + padding * 2 + 15;
+  double itemW = 50;
+  double padding = 10;
 
-  const MoreView({Key? key}) : super(key: key);
+  MoreView({Key? key, this.itemW = 50, this.padding = 10}) : super(key: key);
 
   @override
   _MoreViewState createState() => _MoreViewState();
@@ -24,10 +22,14 @@ class MoreView extends StatefulWidget {
 
 class _MoreViewState extends BaseState<MoreView> {
   List<AppItem> appList = [];
+  double itemW = 50;
+  double padding = 10;
 
   @override
   void initState() {
     super.initState();
+    itemW = widget.itemW;
+    padding = widget.padding;
     Future.delayed(Duration(seconds: 0), () {
       loadData();
     });
