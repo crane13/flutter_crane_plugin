@@ -106,7 +106,7 @@ class FlutterGG {
   static Widget getAView(
       {double padding_h = 0, String size = 'banner', double maxHeight = 0}) {
     bool enable = PlatformUtils.hasChannelPlugin();
-    if (enable) {
+    if (enable && (PlatformUtils.isAndroid() || PlatformUtils.isIOS())) {
       if (size == 'large') {
         return BannerView(
           padding_h: padding_h,

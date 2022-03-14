@@ -13,8 +13,14 @@ import 'package:flutter/material.dart';
 class MoreView extends StatefulWidget {
   double itemW = 50;
   double padding = 10;
+  Color titleColor = CraneColors.txt_grey;
 
-  MoreView({Key? key, this.itemW = 50, this.padding = 10}) : super(key: key);
+  MoreView(
+      {Key? key,
+      this.itemW = 50,
+      this.padding = 10,
+      this.titleColor = CraneColors.txt_grey})
+      : super(key: key);
 
   @override
   _MoreViewState createState() => _MoreViewState();
@@ -47,7 +53,7 @@ class _MoreViewState extends BaseState<MoreView> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           V.buildText('MORE FREE GAMES',
-              color: CraneColors.txt_grey, fontSize: 14),
+              color: widget.titleColor, fontSize: 14),
           SizedBox(
             width: itemW * 5 + padding * 4,
             child: _buildAppListView(),

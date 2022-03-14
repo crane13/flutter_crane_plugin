@@ -95,8 +95,9 @@ open class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             GameCenterHelper.helper.reportScore(rankId: rankId, score: iScore)
             
         default:
-            result(FlutterMethodNotImplemented)
-            
+//             result(FlutterMethodNotImplemented)
+            result(false)
+
         }
         
     }

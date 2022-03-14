@@ -59,6 +59,13 @@
     {
       "name": "Flappy UFO",
       "name_zh": "Flappy UFO",
+      "package": "cn.crane.flutter.tapdance",
+      "icon": "https://is5-ssl.mzstatic.com/image/thumb/Purple126/v4/cc/85/63/cc8563df-4162-edae-d4a1-79ffc1929cf2/AppIcon-1x_U007emarketing-0-7-0-0-85-220.png/230x0w.webp",
+      "link": "https://itunes.apple.com/app/id1599106711"
+    },
+    {
+      "name": "Dance Up",
+      "name_zh": "Dance Up",
       "package": "cn.crane.game.flappyufo",
       "icon": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/6d/6b/0c/6d6b0cb3-c4f3-5f3c-d1fd-0ac9dcda0748/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/230x0w.jpg",
       "link": "https://itunes.apple.com/app/id1482524329"

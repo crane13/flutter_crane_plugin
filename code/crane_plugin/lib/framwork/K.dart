@@ -78,9 +78,9 @@ class K {
       }
     } else if (PlatformUtils.isMacOS()) {
       if (ConfigUtils.isChinese()) {
-        unencodedPath = '/more_apps_ios_zh.json';
+        unencodedPath = '/more_apps_macos.json';
       } else {
-        unencodedPath = '/more_apps_ios.json';
+        unencodedPath = '/more_apps_macos.json';
       }
     } else if (PlatformUtils.isAndroid()) {
       if (IS_OVERSEA) {
