@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 import 'TextUtils.dart';
@@ -17,14 +17,16 @@ class CommonUtils {
 
   static void showToast(BuildContext context, String message) {
     if (!TextUtils.isEmpty(message)) {
-      Fluttertoast.showToast(
-          msg: message,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          // backgroundColor: Colors.red,
-          // textColor: Colors.white,
-          fontSize: 16.0);
+      // Fluttertoast.showToast(
+      //     msg: message,
+      //     toastLength: Toast.LENGTH_SHORT,
+      //     gravity: ToastGravity.CENTER,
+      //     timeInSecForIosWeb: 1,
+      //     // backgroundColor: Colors.red,
+      //     // textColor: Colors.white,
+      //     fontSize: 16.0);
+
+      BotToast.showText(text: message, align: Alignment.center);
     }
   }
 

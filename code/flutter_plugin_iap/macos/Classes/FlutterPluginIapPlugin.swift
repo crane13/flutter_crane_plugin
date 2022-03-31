@@ -6,6 +6,7 @@ public class FlutterPluginIapPlugin: NSObject, FlutterPlugin {
     let channel = FlutterMethodChannel(name: "flutter_plugin_iap", binaryMessenger: registrar.messenger)
     let instance = FlutterPluginIapPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
+      IAPUtils.sharedInstance.initIAP()
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

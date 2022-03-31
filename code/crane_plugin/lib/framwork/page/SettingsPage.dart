@@ -100,7 +100,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
       }, value: ThemeType.getThemeStr(context)));
     }
 
-    if (PlatformUtils.isIOS()) {
+    if (PlatformUtils.isApple()) {
       arrWidgets.add(buildItem(S.of(context).rank, null, () {
         CraneJumpUtils.jumpRankPage(context);
       }, imagePath: 'packages/crane_plugin/assets/images/rank.png'));

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FlutterMacOS
 import SwiftyStoreKit
 class IAPUtils: NSObject{
     let SKU_ID:String = "remove_ad"
