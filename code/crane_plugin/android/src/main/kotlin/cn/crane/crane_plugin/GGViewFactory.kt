@@ -11,11 +11,6 @@ import io.flutter.plugin.platform.PlatformViewFactory
 
 class GGViewFactory(private val messenger: BinaryMessenger, private val activity: Activity) :
     PlatformViewFactory(StandardMessageCodec.INSTANCE) {
-    override fun create(context: Context, id: Int, args: Any): PlatformView {
-        val params = args as Map<String?, Any>?
-        return GGView(activity, messenger, id, params)
-    }
-
     companion object {
 
         fun registerWith(@NonNull flutterEngine: FlutterEngine, activity: CraneActivity) {
@@ -26,6 +21,11 @@ class GGViewFactory(private val messenger: BinaryMessenger, private val activity
                 GGViewFactory(flutterEngine.dartExecutor.binaryMessenger, activity)
             );
         }
+    }
+
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
+        val params = args as Map<String?, Any>?
+        return GGView(activity, messenger, viewId, params)
     }
 
 }

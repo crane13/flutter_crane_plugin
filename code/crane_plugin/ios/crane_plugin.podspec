@@ -14,6 +14,9 @@ A new Flutter project.
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
+  s.source = { :git => 'git@github.com:Unity-Technologies/unity-mediation-cocoapods-prod.git'
+                  }
+
   s.dependency 'Flutter'
   s.platform = :ios, '9.0'
 
@@ -23,6 +26,9 @@ A new Flutter project.
 
   s.dependency 'Google-Mobile-Ads-SDK'
   s.dependency 'Firebase/Analytics'
+  s.dependency 'UnityMediationSdk'
+  s.dependency 'UnityMediationUnityAdapter'
+  s.dependency 'UnityMediationAdmobAdapter'
 end
 
 

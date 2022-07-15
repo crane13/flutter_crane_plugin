@@ -23,7 +23,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   initState() {
     super.initState();
 
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
 
     screenSize = ConfigUtils.getScreenSize();
     computeScreenHW();
@@ -34,7 +34,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
         ConfigUtils.setScreenSize(screenSize!);
         computeScreenHW();
         final Brightness brightness =
-            WidgetsBinding.instance!.window.platformBrightness;
+            WidgetsBinding.instance.window.platformBrightness;
         ThemeType.brightnessValue = brightness;
       });
     });
@@ -55,7 +55,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   }
 
   dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -71,7 +71,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   @override
   void didChangePlatformBrightness() {
     final Brightness brightness =
-        WidgetsBinding.instance!.window.platformBrightness;
+        WidgetsBinding.instance.window.platformBrightness;
     ThemeType.brightnessValue = brightness;
     setState(() {});
   }

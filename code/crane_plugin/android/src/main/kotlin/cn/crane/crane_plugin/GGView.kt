@@ -37,11 +37,12 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
         }
         loadBanner(context, null)
 
-
-        methodChannel = MethodChannel(messenger, PLUGIN_VIEW + "_\$id")
-        eventChannel = EventChannel(messenger, PLUGIN_VIEW)
-        eventChannel!!.setStreamHandler(this)
-        methodChannel!!.setMethodCallHandler(this)
+        messenger?.let {
+            methodChannel = MethodChannel(messenger, PLUGIN_VIEW + "_\$id")
+            eventChannel = EventChannel(messenger, PLUGIN_VIEW)
+            eventChannel!!.setStreamHandler(this)
+            methodChannel!!.setMethodCallHandler(this)
+        }
     }
 
     fun loadBanner(context: Context?, linearLayout: LinearLayout?): View? {

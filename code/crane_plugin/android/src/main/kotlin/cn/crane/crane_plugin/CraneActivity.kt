@@ -17,8 +17,14 @@ import cn.crane.crane_plugin.utils.CraneUtils
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.umeng.commonsdk.UMConfigure
+import com.unity3d.mediation.InitializationConfiguration
+import com.unity3d.mediation.UnityMediation
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
+import com.unity3d.mediation.errors.SdkInitializationError
+
+
+
 
 
 open class CraneActivity : FlutterActivity() {
@@ -37,6 +43,7 @@ open class CraneActivity : FlutterActivity() {
         GGViewFactory.registerWith(flutterEngine, this)
 
         MobileAds.initialize(this) {}
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

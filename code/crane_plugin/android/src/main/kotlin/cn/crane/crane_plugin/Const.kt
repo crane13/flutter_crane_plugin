@@ -16,6 +16,11 @@ object Const {
     var ADMOB_VIDEO = "ca-app-pub-3940256099942544/5224354917"
 
 
+    var U_ID = "12345"
+    var U_POP : String = "12345"
+    var U_REWARD : String = "12345"
+
+
 
     // test
 //        var ADMOB_ID = "";

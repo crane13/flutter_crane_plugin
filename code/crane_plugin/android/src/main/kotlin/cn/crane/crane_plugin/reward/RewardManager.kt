@@ -11,7 +11,8 @@ object RewardManager : BaseReward() {
     var listZh: ArrayList<BaseReward> = arrayListOf()
 
     init {
-        list.add(RewardUtils_admob)
+//        list.add(RewardUtils_admob)
+        list.add(RewardUtils_u)
     }
 
     override fun setEventCallback(callback: EventCallback?) {

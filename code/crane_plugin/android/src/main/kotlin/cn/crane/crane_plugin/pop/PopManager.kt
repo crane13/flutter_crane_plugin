@@ -9,7 +9,8 @@ object PopManager : BasePop() {
     var listZh: ArrayList<BasePop> = arrayListOf()
 
     init {
-        list.add(PopUtils_admob)
+//        list.add(PopUtils_admob)
+        list.add(PopUtils_u)
     }
 
     override fun setEventCallback(callback: EventCallback?) {

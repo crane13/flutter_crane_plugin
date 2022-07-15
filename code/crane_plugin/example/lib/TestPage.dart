@@ -55,6 +55,12 @@ class _TestPageState extends State<TestPage> {
           V.buildButton('pop', () {
             AUtils.showPopNow();
           }),
+          V.buildButton('pop merge', () {
+            AUtils.showPopNow();
+          }),
+          V.buildButton('video merge', () {
+            AUtils.showPopNow();
+          }),
         ],
       ),
     );
