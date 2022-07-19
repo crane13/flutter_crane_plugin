@@ -7,8 +7,8 @@ import com.unity3d.mediation.UnityMediation
 import com.unity3d.mediation.errors.SdkInitializationError
 
 
-class MergeUtils {
-    fun init() {
+object MergeUtils {
+     fun init() {
         val configuration = InitializationConfiguration.builder()
             .setGameId(Const.U_ID)
             .setInitializationListener(object : IInitializationListener {

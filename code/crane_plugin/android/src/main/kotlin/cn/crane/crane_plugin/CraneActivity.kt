@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi
 import cn.crane.crane_plugin.bview.BView_admob
 import cn.crane.crane_plugin.gcenter.GameCenterHelper
 import cn.crane.crane_plugin.utils.CraneUtils
+import cn.crane.crane_plugin.utils.MergeUtils
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.umeng.commonsdk.UMConfigure
@@ -42,7 +43,9 @@ open class CraneActivity : FlutterActivity() {
         flutterEngine.plugins.add(FlutterGGPlugin(this))
         GGViewFactory.registerWith(flutterEngine, this)
 
-        MobileAds.initialize(this) {}
+//        MobileAds.initialize(this) {}
+
+        MergeUtils.init()
 
     }
 
