@@ -3,11 +3,11 @@ import Flutter
 import GoogleMobileAds
 import AppTrackingTransparency
 import AdSupport
-
+import UnityMediationSdk
 
 let kOverlayStyleUpdateNotificationName = "io.flutter.plugin.platform.SystemChromeOverlayNotificationName"
 let kOverlayStyleUpdateNotificationKey = "io.flutter.plugin.platform.SystemChromeOverlayNotificationKey"
-open class CraneAppDelegate: FlutterAppDelegate {
+open class CraneAppDelegate: FlutterAppDelegate, UMSInitializationDelegate {
     open override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -68,10 +68,22 @@ open class CraneAppDelegate: FlutterAppDelegate {
     }
 
     func initOther(){
-     GADMobileAds.sharedInstance().start(completionHandler: nil)
+//     GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        let builder = UMSInitializationConfigurationBuilder.init();
+             let config = builder.setGameId(Const.U_ID).setInitializationDelegate(self).build()
+             UMSUnityMediation.initialize(with: config)
 //        UnityMediation.Initialize()
 //        UMSUnityMediation.init()
     }
+    
+    public func onInitializationComplete() {
+           
+       }
+       
+    public func onInitializationFailed(_ errorCode: UMSSdkInitializationError, message: String!) {
+           
+       }
 }
 
 // extension FlutterViewController {

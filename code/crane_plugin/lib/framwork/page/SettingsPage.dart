@@ -12,7 +12,6 @@ import 'package:crane_plugin/framwork/utils/TextUtils.dart';
 import 'package:crane_plugin/framwork/utils/track/TrackUtils.dart';
 import 'package:crane_plugin/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../K.dart';
@@ -47,6 +46,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
   IconData iconTheme = Icons.brightness_4;
 
   int lastPressDown = 0;
+  int clickTimes = 0;
 
   @override
   void initState() {
@@ -82,19 +82,37 @@ class SettingsPageState extends BaseState<SettingsPage> {
           height: 50,
           color: Colors.transparent,
         ),
+        // GestureDetector(
+        //   onLongPressDown: (LongPressDownDetails details){
+        //     lastPressDown = DateTime.now().millisecondsSinceEpoch;
+        //   },
+        //   onLongPressUp: (){
+        //     int duration = DateTime.now().millisecondsSinceEpoch - lastPressDown;
+        //     if(duration > 10 * 1000){
+        //         AUtils.aClosed = true;
+        //         AUtils.showBannerEnable(false);
+        //     }
+        //   },
+        //   child: V.buildLogoView(widget.icon_path),)
+        // ,
         GestureDetector(
-          onLongPressDown: (LongPressDownDetails details){
-            lastPressDown = DateTime.now().millisecondsSinceEpoch;
-          },
-          onLongPressUp: (){
-            int duration = DateTime.now().millisecondsSinceEpoch - lastPressDown;
-            if(duration > 10 * 1000){
+            child: V.buildLogoView(widget.icon_path),
+            onTap: () {
+              if (clickTimes <= 0) {
+                lastPressDown = DateTime.now().millisecondsSinceEpoch;
+              }
+              int duration =
+                  DateTime.now().millisecondsSinceEpoch - lastPressDown;
+              if (duration > 60 * 1000) {
+                clickTimes = 0;
+                lastPressDown = DateTime.now().millisecondsSinceEpoch;
+              }
+              clickTimes++;
+              if (clickTimes >= 10) {
                 AUtils.aClosed = true;
                 AUtils.showBannerEnable(false);
-            }
-          },
-          child: V.buildLogoView(widget.icon_path),)
-        ,
+              }
+            }),
         Divider(
           height: 30,
           color: Colors.transparent,

@@ -129,7 +129,7 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
                         } else {
 
                         }
-            view.frame = CGRect(x: (UIScreen.main.bounds.width - 320) / 2, y: viewFrame.height - 50 - safeBottom, width: 320, height: 50)
+            view.frame = CGRect(x: (UIScreen.main.bounds.width - 320) / 2, y: viewFrame.height - 50 - safeBottom + 10, width: 320, height: 50)
             
             contoller.view.addSubview(view)
             result(true)
