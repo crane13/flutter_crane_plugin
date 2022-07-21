@@ -3,8 +3,7 @@ import Flutter
 import GoogleMobileAds
 import AppTrackingTransparency
 import AdSupport
-import UnityMediationSdkPlaceholder
-import UnityMediationSdkPlaceholder
+
 
 let kOverlayStyleUpdateNotificationName = "io.flutter.plugin.platform.SystemChromeOverlayNotificationName"
 let kOverlayStyleUpdateNotificationKey = "io.flutter.plugin.platform.SystemChromeOverlayNotificationKey"

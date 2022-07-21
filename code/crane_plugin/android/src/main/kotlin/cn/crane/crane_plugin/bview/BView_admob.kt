@@ -28,7 +28,7 @@ object BView_admob : BaseBView() {
             adView!!.destroy()
         }
         var av1 = AdView(context)
-        av1.adSize = if (isLarge) AdSize.MEDIUM_RECTANGLE else AdSize.BANNER
+        av1.setAdSize(if (isLarge) AdSize.MEDIUM_RECTANGLE else AdSize.BANNER)
         av1.adUnitId = Const.ADMOB_BANNER
         av1.alpha = 1f
         av1.adListener = object : AdListener() {

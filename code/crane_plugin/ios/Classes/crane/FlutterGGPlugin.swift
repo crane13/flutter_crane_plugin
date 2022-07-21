@@ -122,14 +122,20 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             view.isHidden = false;
             let viewFrame : CGRect = contoller.view.frame
             
-            
-            view.frame = CGRect(x: (UIScreen.main.bounds.width - 320) / 2, y: viewFrame.height - 50, width: 320, height: 50)
+               var safeBottom :CGFloat = 0.0;
+                        if #available(iOS 11.0, *) {
+                            safeBottom = contoller.view?.safeAreaInsets.bottom ?? 0.0
+
+                        } else {
+
+                        }
+            view.frame = CGRect(x: (UIScreen.main.bounds.width - 320) / 2, y: viewFrame.height - 50 - safeBottom, width: 320, height: 50)
             
             contoller.view.addSubview(view)
             result(true)
         case "showPopAd":
             let isNow = (params["isNow"] as! Bool)
-            let isShown = PopUtils_amob.sharedInstance.showAd(controller: self.contoller, isNow: isNow)
+            let isShown = PopUtils_u.sharedInstance.showAd(controller: self.contoller, now: isNow)
             print("showPopAd \(isShown)")
             result(isShown)
             
@@ -154,7 +160,7 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
         
         //        let readyGDT : Bool = RewardGDT.sharedInstance.isReady(viewController: self.contoller);
         
-        let readyMob : Bool = RewardAmob.sharedInstance.isReady(viewController: self.contoller);
+        let readyMob : Bool = RewardU.sharedInstance.isReady(viewController: self.contoller);
         
         let readyGDT : Bool = false
         
@@ -171,14 +177,14 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             //            {
             //                RewardGDT.sharedInstance.showReard(viewController: self.contoller, appId: Const.GDT_ID, rewardId: Const.GDT_VIDEO, result: result)
             //            }else
-            if(RewardAmob.sharedInstance.isReady(viewController: self.contoller))
+            if(RewardU.sharedInstance.isReady(viewController: self.contoller))
             {
-                RewardAmob.sharedInstance.showReard(viewController: self.contoller,  result: result)
+                RewardU.sharedInstance.showReard(viewController: self.contoller,  result: result)
             }
         }else{
-            if(RewardAmob.sharedInstance.isReady(viewController: self.contoller))
+            if(RewardU.sharedInstance.isReady(viewController: self.contoller))
             {
-                RewardAmob.sharedInstance.showReard(viewController: self.contoller,  result: result)
+                RewardU.sharedInstance.showReard(viewController: self.contoller,  result: result)
             }
             //            else if(RewardGDT.sharedInstance.isReady(viewController: self.contoller))
             //            {

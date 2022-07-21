@@ -73,8 +73,8 @@ class GGView_old : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
             linearLayout?.removeAllViews()
             adView!!.destroy()
         }
-        adView = AdView(activity)
-        adView!!.adSize = if (isLarge) AdSize.MEDIUM_RECTANGLE else AdSize.BANNER
+        adView = AdView(activity!!)
+        adView!!.setAdSize(if (isLarge) AdSize.MEDIUM_RECTANGLE else AdSize.BANNER)
         adView!!.adUnitId = admob_bannerId
         adView!!.alpha = 1f
         adView!!.adListener = object : AdListener() {

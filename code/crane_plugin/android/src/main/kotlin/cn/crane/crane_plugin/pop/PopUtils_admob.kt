@@ -14,23 +14,23 @@ object PopUtils_admob : BasePop() {
     private var adLoaded = false
     private var videoCached = false
     private var interstitialAd: InterstitialAd? = null
-    private var positionId: String? = Const.ADMOB_POP
 
     override fun loadAd(context: Context?) {
+        context?.let {
+            var adRequest = AdRequest.Builder().build()
+            InterstitialAd.load(context, Const.ADMOB_POP, adRequest, object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    interstitialAd = null
+                    sendEvent("onAdFailedToLoad")
+                }
 
-        var adRequest = AdRequest.Builder().build()
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    PopUtils_admob.interstitialAd = interstitialAd
+                    sendEvent("onAdLoaded")
+                }
+            })
+        }
 
-        InterstitialAd.load(context, positionId, adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                interstitialAd = null
-                sendEvent("onAdFailedToLoad")
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                PopUtils_admob.interstitialAd = interstitialAd
-                sendEvent("onAdLoaded")
-            }
-        })
     }
 
 
@@ -46,7 +46,7 @@ object PopUtils_admob : BasePop() {
                     sendEvent("onAdDismissedFullScreenContent")
                 }
 
-                override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                     sendEvent("onAdFailedToShowFullScreenContent")
                 }
 

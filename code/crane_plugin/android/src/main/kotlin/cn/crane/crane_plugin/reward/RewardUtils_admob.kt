@@ -13,7 +13,6 @@ object RewardUtils_admob : BaseReward() {
     private var rewardVideoAD: RewardedAd? = null
     private var adLoaded = false
     private var videoCached = false
-    private var rewardId: String? = Const.ADMOB_VIDEO
     private var result: MethodChannel.Result? = null
 
     private var hasEarnReward : Boolean = false
@@ -22,18 +21,21 @@ object RewardUtils_admob : BaseReward() {
         adLoaded = false
         videoCached = false
         rewardVideoAD = null
-        var adRequest = AdRequest.Builder().build()
-        RewardedAd.load(context, rewardId, adRequest, object : RewardedAdLoadCallback() {
-            override fun onAdLoaded(var1: RewardedAd?) {
+        context?.let {
+            var adRequest = AdRequest.Builder().build()
+            RewardedAd.load(context, Const.ADMOB_VIDEO, adRequest, object : RewardedAdLoadCallback() {
+                override fun onAdLoaded(p0: RewardedAd) {
 
-                rewardVideoAD = var1
-                sendEvent("onAdLoaded")
-            }
+                    rewardVideoAD = p0
+                    sendEvent("onAdLoaded")
+                }
 
-            override fun onAdFailedToLoad(var1: LoadAdError?) {
-                sendEvent("onAdFailedToLoad")
-            }
-        })
+                override fun onAdFailedToLoad(p0: LoadAdError) {
+                    sendEvent("onAdFailedToLoad")
+                }
+            })
+        }
+
     }
 
     override fun isReady(context: Context?): Boolean {
@@ -57,7 +59,7 @@ object RewardUtils_admob : BaseReward() {
                     loadAd(context)
                 }
 
-                override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                     loadAd(context)
                 }
 
@@ -66,8 +68,8 @@ object RewardUtils_admob : BaseReward() {
 
                 }
             }
-            val adCallback: OnUserEarnedRewardListener = object : OnUserEarnedRewardListener {
-                override fun onUserEarnedReward(var1: RewardItem?) {
+            val adCallback =
+                OnUserEarnedRewardListener { var1 ->
                     if (var1 != null) {
                         hasEarnReward = true;
                         loadAd(context)
@@ -77,9 +79,7 @@ object RewardUtils_admob : BaseReward() {
                         loadAd(context)
                         sendEvent("onUserEarnedReward_false")
                     }
-
                 }
-            }
             rewardVideoAD!!.show(context as Activity, adCallback)
             true
         } else {

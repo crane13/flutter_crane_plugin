@@ -7,72 +7,75 @@
 //
 
 import Foundation
-//import GoogleMobileAds
 
-import UnityMediationUnityAdapterPlaceholder
-open class PopUtils_u: NSObject, UMSInterstitialAdLoadDelegate, UMSInterstitialAdShowDelegate{
+import UnityMediationSdk
+class PopUtils_u: NSObject, UMSInterstitialAdLoadDelegate, UMSInterstitialAdShowDelegate{
+
     var interstitial: UMSInterstitialAd!
     private var controller: UIViewController?
-    private var appId:String? = Const.ADMOB_ID
-    private var posId:String? = Const.ADMOB_POP
-    
-    static let sharedInstance = PopUtils_u()
-    
-    
-    
-    func setAppAndPosdId(appId: String, posId:String){
-        if appId != nil && appId.count > 0{
-            self.appId = appId
-        }
-        if posId != nil && posId.count > 0{
-            self.posId = posId
-        }
-    }
-    
-    func loadAd(controller: UIViewController, isNow : Bool){
+    private var appId:String? = Const.U_ID
+    private var posId:String? = Const.U_POP
 
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:self.posId!,
-                               request: request,
-                               completionHandler: { (ad, error) in
-                                if let error = error {
-                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                    return
-                                }
-                                self.interstitial = ad
-                                self.interstitial.fullScreenContentDelegate = self
-                                if(isNow)
-                                {
-                                    self.showAd(controller: controller, isNow : false)
-                                }
-                               })
+
+    private var showNow : Bool = false
+     static let sharedInstance = PopUtils_u()
+
+
+
+    func loadAd(controller: UIViewController, now : Bool){
+
+        self.showNow = now
+        self.interstitial = UMSInterstitialAd.init(adUnitId: Const.U_POP)
+        self.interstitial.load(with: self)
+
+
     }
-    
-    func showAd(controller: UIViewController, isNow : Bool)  -> Bool{
+
+    func showAd(controller: UIViewController, now : Bool)  -> Bool{
         self.controller = controller
         var shown = false
-        if let ad = interstitial {
+
+        if interstitial != nil {
             shown = true
-            ad.present(fromRootViewController: controller)
+            interstitial.show(with: controller, delegate: self)
+
         } else {
-            self.loadAd(controller: controller, isNow : isNow)
+          self.loadAd(controller: controller, now : now)
         }
         return shown
     }
-    
-    public func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
+
+
+
+    func onInterstitialLoaded(_ interstitialAd: UMSInterstitialAd) {
+        if(self.showNow){
+            self.showNow = false
+            self.showAd(controller: self.controller!, now : false)
+        }
+
     }
-    
-    public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad failed to present full screen content with error \(error.localizedDescription).")
+
+    func onInterstitialFailedLoad(_ interstitialAd: UMSInterstitialAd, error: UMSLoadError, message: String) {
+
     }
-    
-    public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-        self.loadAd(controller: self.controller!, isNow: false)
+
+    func onInterstitialShowed(_ interstitialAd: UMSInterstitialAd) {
+
     }
-    
-    
-    
+
+    func onInterstitialClicked(_ interstitialAd: UMSInterstitialAd) {
+
+    }
+
+    func onInterstitialClosed(_ interstitialAd: UMSInterstitialAd) {
+        self.loadAd(controller: self.controller!, now : false)
+    }
+
+    func onInterstitialFailedShow(_ interstitialAd: UMSInterstitialAd, error: UMSShowError, message: String) {
+
+    }
+
+
+
+
 }

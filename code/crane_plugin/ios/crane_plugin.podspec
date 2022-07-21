@@ -12,10 +12,12 @@ A new Flutter project.
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
-  s.source           = { :path => '.' }
+  s.source           = { :path => '.'}
   s.source_files = 'Classes/**/*'
-  s.source = { :git => 'git@github.com:Unity-Technologies/unity-mediation-cocoapods-prod.git'
-                  }
+  s.source = { :git => 'https://github.com/Unity-Technologies/unity-mediation-cocoapods-prod.git'}
+
+#  source 'https://github.com/CocoaPods/Specs.git'
+#  source 'https://github.com/Unity-Technologies/unity-mediation-cocoapods-prod.git'
 
   s.dependency 'Flutter'
   s.platform = :ios, '9.0'
@@ -24,11 +26,13 @@ A new Flutter project.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
 
-  s.dependency 'Google-Mobile-Ads-SDK'
+  #s.dependency 'Google-Mobile-Ads-SDK'
   s.dependency 'Firebase/Analytics'
-  s.dependency 'UnityMediationSdk'
-  s.dependency 'UnityMediationUnityAdapter'
-  s.dependency 'UnityMediationAdmobAdapter'
+
+  s.dependency 'UnityMediationSdk', '~> 0.5.0'
+  s.dependency 'UnityMediationAdmobAdapter', '~> 0.5.0'
+  s.dependency 'UnityMediationUnityAdapter', '~> 0.5.0'
+
 end
 
 

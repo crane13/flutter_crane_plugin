@@ -25,6 +25,9 @@ open class Const{
        public static var ADMOB_VIDEO: String = "ca-app-pub-3940256099942544/1712485313";
    public static var ADMOB_SPLASH: String = "ca-app-pub-7441199969844342/1605913250";
 
+    static let U_ID : String = "3265669";
+    static let U_POP : String = "iOS_Interstitial";
+    static let U_VIDEO: String = "iOS_Rewarded";
     
 //    public static var ADMOB_ID: String = "";
 //    public static var ADMOB_BANNER: String = "";
