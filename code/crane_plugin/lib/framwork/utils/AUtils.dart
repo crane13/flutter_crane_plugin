@@ -14,6 +14,8 @@ class AUtils {
 
   static bool _showA = true;
 
+  static bool aClosed = false;
+
   static void initA() async {
     if (PlatformUtils.isApple()) {
       bool shouldReview = await DataManager.shouldReview();
@@ -24,12 +26,16 @@ class AUtils {
   }
 
   static void showBannerEnable(bool show) {
+    if (aClosed) {
+      show = false;
+    }
 //    if (isShowA()) {
     FlutterGG.setShowBanner(show);
 //    }
   }
 
   static void showBanner() {
+    if (aClosed) return;
 //    if (isShowA()) {
     FlutterGG.showBannerAd();
     TrackUtils.trackEvent('showbanner');
@@ -38,6 +44,7 @@ class AUtils {
   }
 
   static Future<bool> showPop() async {
+    if (aClosed) return false;
     bool isShown = false;
     if (isEnable()) {
       int currentTime = currentTimeMillis();
@@ -70,6 +77,7 @@ class AUtils {
   }
 
   static Future<bool> showPopNow() async {
+    if (aClosed) return false;
     bool showed = false;
     if (isEnable()) {
       int currentTime = currentTimeMillis();
@@ -86,6 +94,7 @@ class AUtils {
   }
 
   static Future<bool> isVideoReady() async {
+    if (aClosed) return false;
     bool isReady = false;
     if (isEnable()) {
       isReady = await FlutterGG.isRewardVideoReady();
@@ -94,6 +103,7 @@ class AUtils {
   }
 
   static Future<bool> showVideo() async {
+    if (aClosed) return false;
     if (isEnable()) {
       lastSHowTime = currentTimeMillis();
       lastSHowTime_video = currentTimeMillis();
@@ -105,7 +115,7 @@ class AUtils {
 
   static Widget getAView(
       {double padding_h = 0, String size = 'banner', double maxHeight = 0}) {
-    if (isEnable()) {
+    if (isEnable() && !aClosed) {
       TrackUtils.trackEvent('showbanner_big');
       return FlutterGG.getAView(
           padding_h: padding_h, size: size, maxHeight: maxHeight);
