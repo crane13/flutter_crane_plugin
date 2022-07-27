@@ -53,7 +53,7 @@ class SettingsPageState extends BaseState<SettingsPage> {
     super.initState();
 
     loadData();
-    AUtils.showBanner(isTop: true);
+    AUtils.showBanner(isTop: false);
 
     timer = new Timer(const Duration(milliseconds: 300), () {
       FlutterGG.getplatformVersion().then((version) {
