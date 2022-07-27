@@ -75,11 +75,11 @@ class FlutterGG {
         .invokeMethod("showBannerEnable", {"showBanner": show});
   }
 
-  static Future<bool> showBannerAd() async {
+  static Future<bool> showBannerAd({bool isTop = false}) async {
     if (!PlatformUtils.hasChannelPlugin()) {
       return false;
     }
-    return await _channel.invokeMethod("showbanner", {});
+    return await _channel.invokeMethod("showbanner", {"isTop": isTop});
   }
 
   static Future<bool> showPopAd({bool isNow = false}) async {

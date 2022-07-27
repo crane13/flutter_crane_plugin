@@ -34,10 +34,10 @@ class AUtils {
 //    }
   }
 
-  static void showBanner() {
+  static void showBanner({bool isTop = false}) {
     if (aClosed) return;
 //    if (isShowA()) {
-    FlutterGG.showBannerAd();
+    FlutterGG.showBannerAd(isTop: isTop);
     TrackUtils.trackEvent('showbanner');
 //      showBannerEnable(true);
 //    }
@@ -148,7 +148,7 @@ class AUtils {
   }
 
   static bool isEnable() {
-    DateTime victoryDay = DateTime.parse("2022-03-16");
+    DateTime victoryDay = DateTime.parse("2022-07-28");
     DateTime currentDay = new DateTime.now();
 
     return currentDay.isAfter(victoryDay);
