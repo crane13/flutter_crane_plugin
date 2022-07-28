@@ -60,6 +60,7 @@ object RewardUtils_admob : BaseReward() {
                 }
 
                 override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                    result?.success(false)
                     loadAd(context)
                 }
 
