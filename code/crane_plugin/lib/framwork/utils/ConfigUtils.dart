@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:crane_plugin/framwork/bean/app_list_entity.dart';
+import 'package:crane_plugin/framwork/utils/ArrayUtils.dart';
+import 'package:crane_plugin/framwork/utils/CacheUtils.dart';
 import 'package:crane_plugin/framwork/utils/FlutterGG.dart';
 import 'package:crane_plugin/framwork/utils/L.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,8 @@ import 'package:http/http.dart' as http;
 import '../K.dart';
 
 class ConfigUtils {
+  static const APP_LIST_CACHE_NAME = "app_list_name";
+  static const APP_LIST_LAST_LOAD = "app_list_last_load";
   static bool _isPad = false;
 
   static Locale? _locale;
@@ -58,7 +62,7 @@ class ConfigUtils {
   }
 
   static Future<List<AppItem>> loadAppList(BuildContext context) async {
-    List<AppItem>? list = await _loadAppListfromServer();
+    List<AppItem>? list = await _loadAppListfromCache();
     if (list == null || list.length <= 0) {
       list = await _loadAppListFromAssets(context);
     }
@@ -71,7 +75,21 @@ class ConfigUtils {
         }
       }
     }
+    _checkLoadServer();
     return resultList;
+  }
+
+  static Future<void> _checkLoadServer() async {
+    DateTime now = DateTime.now();
+    now = now.add(Duration(days: -3));
+    DateTime? last;
+    String? lastTime = await CacheUtils.getStringByKey(APP_LIST_LAST_LOAD);
+    if (lastTime != null) {
+      last = DateTime.parse(lastTime);
+    }
+    if (last == null || now.isAfter(last)) {
+      _loadAppListfromServer();
+    }
   }
 
   static Future<List<AppItem>?> _loadAppListFromAssets(
@@ -80,8 +98,7 @@ class ConfigUtils {
       var configJson =
           await DefaultAssetBundle.of(context).loadString(K.getMoreListLocal());
       L.log('_loadAppListFromAssets');
-      var response = json.decode(
-          new Utf8Decoder(allowMalformed: true).convert(configJson.codeUnits));
+      var response = jsonDecode(configJson);
 
       return AppListEntity.fromJson(response).appList;
     } catch (e) {
@@ -95,7 +112,29 @@ class ConfigUtils {
       var response = json.decode(
           new Utf8Decoder(allowMalformed: true).convert(resp.bodyBytes));
       L.log('_loadAppListfromServer === ${response}');
-      return AppListEntity.fromJson(response).appList;
+      var list = AppListEntity.fromJson(response).appList;
+      if (!ArrayUtils.isEmpty(list)) {
+        CacheUtils.setStringWithKey(APP_LIST_CACHE_NAME, resp.body);
+        CacheUtils.setStringWithKey(APP_LIST_LAST_LOAD, DateTime.now().toIso8601String());
+      }
+      return list;
+    } catch (e) {
+      L.log(e);
+      return null;
+    } finally {}
+  }
+
+  static Future<List<AppItem>?> _loadAppListfromCache() async {
+    try {
+      String? cache = await CacheUtils.getStringByKey(APP_LIST_CACHE_NAME);
+      if (cache != null) {
+        var response = json.decode(
+            new Utf8Decoder(allowMalformed: false).convert(cache.codeUnits));
+        // var response = jsonDecode(cache);
+
+        L.log('_loadAppListfromCache === ${response}');
+        return AppListEntity.fromJson(response).appList;
+      }
     } catch (e) {
       L.log(e);
       return null;
