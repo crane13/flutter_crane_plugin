@@ -56,12 +56,16 @@ class FlutterGG {
         .invokeMethod("reportScore", {'rankId': rankId, 'score': score});
   }
 
-  static Future<bool> reportAchievements(String achievement) async {
-    if (!PlatformUtils.hasChannelPlugin()) {
+  static Future<bool> showAchievement() async {
+    return await _channel.invokeMethod("showAchievement", {});
+  }
+
+  static Future<bool> reportAchievementProgress(String id, double progress) async {
+    if (TextUtils.isEmpty(id)) {
       return false;
     }
-    return await _channel
-        .invokeMethod("reportAchievements", {'achievement': achievement});
+    return await _channel.invokeMethod(
+        "reportAchievementProgress", {'id': id, 'progress': progress});
   }
 
   /// ==============     Game Center end  ==================

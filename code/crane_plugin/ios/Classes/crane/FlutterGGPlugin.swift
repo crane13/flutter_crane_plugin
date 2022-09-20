@@ -90,10 +90,18 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
         case "showLeader":
             GameCenterHelper.helper.showLeader()
             result(true)
+        case "showAchievement":
+            GameCenterHelper.helper.showAchievement()
+            result(true)
         case "reportScore":
             let iScore = params["score"] as! Int
             let rankId = params["rankId"] as! String
             GameCenterHelper.helper.reportScore(rankId: rankId, score: iScore)
+            result(true)
+        case "reportAchievementProgress":
+            let progress = params["progress"] as! Double
+            let id = params["id"] as! String
+            GameCenterHelper.helper.reportAchievementProgress(id: id, progress: progress)
             result(true)
         case "isRewardVideoReady":
             result(self.isVideoReady())

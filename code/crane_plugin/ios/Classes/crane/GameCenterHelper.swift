@@ -71,6 +71,25 @@ public class GameCenterHelper: NSObject ,GKGameCenterControllerDelegate {
         gc.gameCenterDelegate = self
         self.viewController?.present(gc, animated: true, completion: nil)
     }
+
+    func showAchievement()  {
+            let vc = GKGameCenterViewController()
+            vc.gameCenterDelegate = self
+            vc.viewState = .achievements
+            self.viewController?.present(vc, animated: true, completion: nil)
+        }
+
+          func reportAchievementProgress(id: String, progress:Double) {
+              let achievement = GKAchievement(identifier: id)
+               achievement.percentComplete = progress
+               achievement.showsCompletionBanner = true
+               GKAchievement.report([achievement]) { (error) in
+                 print(error?.localizedDescription ?? "")
+               }
+
+             }
+
+
     
     func openSettings()
     {
