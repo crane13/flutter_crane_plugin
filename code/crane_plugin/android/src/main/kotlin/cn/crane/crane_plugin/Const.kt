@@ -14,11 +14,15 @@ object Const {
     var ADMOB_BANNER = "ca-app-pub-3940256099942544/6300978111"
     var ADMOB_POP = "ca-app-pub-3940256099942544/1033173712"
     var ADMOB_VIDEO = "ca-app-pub-3940256099942544/5224354917"
+    var ADMOB_SPLASH = "ca-app-pub-3940256099942544/5224354917"
 
 
     var U_ID = "12345"
     var U_POP : String = "12345"
     var U_REWARD : String = "12345"
+
+    var SHOW_PRIVACY : Boolean = false
+    var PORTRAIT : Boolean = true
 
 
 

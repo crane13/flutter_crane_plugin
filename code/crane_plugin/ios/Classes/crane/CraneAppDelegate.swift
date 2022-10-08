@@ -7,7 +7,9 @@ import UnityMediationSdk
 
 let kOverlayStyleUpdateNotificationName = "io.flutter.plugin.platform.SystemChromeOverlayNotificationName"
 let kOverlayStyleUpdateNotificationKey = "io.flutter.plugin.platform.SystemChromeOverlayNotificationKey"
-open class CraneAppDelegate: FlutterAppDelegate, UMSInitializationDelegate {
+open class CraneAppDelegate: FlutterAppDelegate, UMSInitializationDelegate, AppOpenAdManagerDelegate{
+    var canShowSplash: Bool = true
+
     open override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -25,6 +27,12 @@ open class CraneAppDelegate: FlutterAppDelegate, UMSInitializationDelegate {
         GameCenterHelper.helper.authenticateLocalPlayer(controller: controller);
 
         FlutterGGPlugin.registerWith(registry: self, viewController: controller)
+
+           if(self.canShowSplash){
+                    AppOpenAdManager.shared.loadAd()
+                    AppOpenAdManager.shared.appOpenAdManagerDelegate = self
+                }
+
 
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -50,7 +58,15 @@ open class CraneAppDelegate: FlutterAppDelegate, UMSInitializationDelegate {
         // 2.timer(必须在主线程中执行)
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.requestIDFA), userInfo: nil, repeats: false)
 
-       
+        if(self.canShowSplash){
+                   let rootViewController = application.windows.first(
+                       where: { $0.isKeyWindow })?.rootViewController
+                   if let rootViewController = rootViewController {
+                       // Do not show app open ad if the current view controller is SplashViewController.
+
+                       AppOpenAdManager.shared.showAdIfAvailable(viewController: rootViewController)
+                   }
+               }
 //      self.requestIDFA()
     }
 
@@ -84,6 +100,32 @@ open class CraneAppDelegate: FlutterAppDelegate, UMSInitializationDelegate {
     public func onInitializationFailed(_ errorCode: UMSSdkInitializationError, message: String!) {
            
        }
+
+        func appOpenAdManagerAdDidComplete(_ appOpenAdManager: AppOpenAdManager){
+
+           }
+
+           func shouldSplash() -> Bool {
+
+               let userDefault = UserDefaults.standard
+               let KEY_FIRST = "first_time"
+               var intValue: Int = userDefault.integer(forKey: KEY_FIRST)
+               if(intValue == nil){
+                   intValue = 0
+               }
+               if(intValue > 10){
+                   let duration = Int(Date().timeIntervalSince1970) - intValue
+                   if(duration > 3 * 24 * 60 * 60){
+                       return true
+                   }
+               }else{
+                   userDefault.set(Int(Date().timeIntervalSince1970), forKey: KEY_FIRST)
+               }
+
+               return false
+
+               //        return true
+           }
 }
 
 // extension FlutterViewController {

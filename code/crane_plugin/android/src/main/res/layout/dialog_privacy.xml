@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="50dp">
+
+    <LinearLayout
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_white_conner_4"
+        android:minWidth="270dp"
+        android:minHeight="300dp"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="用户协议与隐私协议"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#f2f2f2" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:lineSpacingExtra="5dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                tools:text="skdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdhskdjfhsakjdfhkashdfaksjdhfkashdfkashdfkahsdkfhakshdfkashdfkjshadfkhaskjdhfakhdfkashdfkahsdkfhaskdjhfkasdh"
+
+                />
+
+        </ScrollView>
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.5dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:background="#f2f2f2" />-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="退出" />
+
+            <Button
+                android:id="@+id/btn_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:text="同意" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
