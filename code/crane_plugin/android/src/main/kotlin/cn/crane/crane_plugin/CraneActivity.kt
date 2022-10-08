@@ -16,7 +16,7 @@ import cn.crane.crane_plugin.gcenter.GameCenterHelper
 import cn.crane.crane_plugin.utils.CraneUtils
 import cn.crane.crane_plugin.utils.MergeUtils
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.umeng.commonsdk.UMConfigure
+//import com.umeng.commonsdk.UMConfigure
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 
@@ -43,7 +43,7 @@ open class CraneActivity : FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        UMConfigure.preInit(this, getUmengKey(), "google")
+//        UMConfigure.preInit(this, getUmengKey(), "google")
 
         linearLayout = LinearLayout(this)
 

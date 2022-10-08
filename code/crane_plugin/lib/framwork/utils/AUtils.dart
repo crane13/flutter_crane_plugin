@@ -29,6 +29,7 @@ class AUtils {
     if (aClosed) {
       show = false;
     }
+    show = false;
 //    if (isShowA()) {
     FlutterGG.setShowBanner(show);
 //    }
@@ -148,7 +149,7 @@ class AUtils {
   }
 
   static bool isEnable() {
-    DateTime victoryDay = DateTime.parse("2022-07-28");
+    DateTime victoryDay = DateTime.parse("2022-08-01");
     DateTime currentDay = new DateTime.now();
 
     return currentDay.isAfter(victoryDay);
