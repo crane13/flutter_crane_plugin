@@ -67,4 +67,9 @@ dependencies {
 //    implementation "com.unity3d.mediation:facebook-adapter:0.4.0"
 //    implementation "com.unity3d.mediation:ironsource-adapter:0.4.0"
 //    implementation "com.unity3d.mediation:vungle-adapter:0.4.0"
+
+    def lifecycle_version = '2.3.1'
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 }

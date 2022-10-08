@@ -13,6 +13,7 @@ import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import cn.crane.crane_plugin.bview.BView_admob
 import cn.crane.crane_plugin.gcenter.GameCenterHelper
+import cn.crane.crane_plugin.privacy.PrivacyUtils
 import cn.crane.crane_plugin.utils.CraneUtils
 import cn.crane.crane_plugin.utils.MergeUtils
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -34,11 +35,6 @@ open class CraneActivity : FlutterActivity() {
         flutterEngine.plugins.add(CranePlugin())
         flutterEngine.plugins.add(FlutterGGPlugin(this))
         GGViewFactory.registerWith(flutterEngine, this)
-
-//        MobileAds.initialize(this) {}
-
-        MergeUtils.init()
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +66,12 @@ open class CraneActivity : FlutterActivity() {
             // Obtain the FirebaseAnalytics instance.
             mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         }
-
+        PrivacyUtils.check(this, object : PrivacyUtils.Callback {
+            override fun onAgreed() {
+                MergeUtils.init()
+                //        MobileAds.initialize(this) {}
+            }
+        })
 //        GameCenterHelper.getInstance().signIn(this)
     }
 
