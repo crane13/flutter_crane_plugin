@@ -29,6 +29,9 @@ class AUtils {
     if (aClosed) {
       show = false;
     }
+    if(!isEnable()){
+      return;
+    }
     show = false;
 //    if (isShowA()) {
     FlutterGG.setShowBanner(show);
@@ -38,6 +41,9 @@ class AUtils {
   static void showBanner({bool isTop = false}) {
     if (aClosed) return;
 //    if (isShowA()) {
+    if(!isEnable()){
+      return;
+    }
     FlutterGG.showBannerAd(isTop: isTop);
     TrackUtils.trackEvent('showbanner');
 //      showBannerEnable(true);
