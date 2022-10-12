@@ -57,11 +57,17 @@ class FlutterGG {
   }
 
   static Future<bool> showAchievement() async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return false;
+    }
     return await _channel.invokeMethod("showAchievement", {});
   }
 
   static Future<bool> reportAchievementProgress(String id, double progress) async {
     if (TextUtils.isEmpty(id)) {
+      return false;
+    }
+    if (!PlatformUtils.hasChannelPlugin()) {
       return false;
     }
     return await _channel.invokeMethod(
