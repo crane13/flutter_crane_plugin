@@ -20,7 +20,7 @@ A new Flutter project.
 #  source 'https://github.com/Unity-Technologies/unity-mediation-cocoapods-prod.git'
 
   s.dependency 'Flutter'
-  s.platform = :ios, '9.0'
+  s.platform = :ios, '10.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
@@ -29,9 +29,9 @@ A new Flutter project.
   #s.dependency 'Google-Mobile-Ads-SDK'
   s.dependency 'Firebase/Analytics'
 
-  s.dependency 'UnityMediationSdk', '~> 0.5.0'
-  s.dependency 'UnityMediationAdmobAdapter', '~> 0.5.0'
-  s.dependency 'UnityMediationUnityAdapter', '~> 0.5.0'
+  s.dependency 'UnityMediationSdk', '~> 1.0.1'
+  s.dependency 'UnityMediationAdmobAdapter', '~> 1.0.0'
+  s.dependency 'UnityMediationUnityAdapter', '~> 1.0.0'
 
 end
 
