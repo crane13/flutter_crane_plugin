@@ -13,6 +13,8 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
     private var controller: UIViewController?
     private var appId:String? = Const.ADMOB_ID
     private var posId:String? = Const.ADMOB_POP
+    private var isFirst:Bool? = true
+    private var startTime:Int = 0
     
     static let sharedInstance = PopUtils_amob()
     
@@ -26,23 +28,49 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
     }
     
     func loadAd(controller: UIViewController, isNow : Bool){
-
+       
+      
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID:self.posId!,
                                request: request,
                                completionHandler: { (ad, error) in
-                                if let error = error {
-                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                    return
-                                }
-                                self.interstitial = ad
-                                self.interstitial.fullScreenContentDelegate = self
-                                if(isNow)
-                                {
-                                    self.showAd(controller: controller, isNow : false)
-                                }
-                               })
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            self.interstitial = ad
+            self.interstitial.fullScreenContentDelegate = self
+            if(isNow)
+            {
+                self.showAd(controller: controller, isNow : false)
+            }
+        })
     }
+    
+    func loadAdSplash(controller: UIViewController){
+        startTime = Int(Date().timeIntervalSince1970)
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:self.posId!,
+                               request: request,
+                               completionHandler: { (ad, error) in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            self.interstitial = ad
+            self.interstitial.fullScreenContentDelegate = self
+            if(self.isFirst)
+            {
+                self.isFirst = false
+                let duration = Int(Date().timeIntervalSince1970) - intValue
+                if(duration < 5){
+                    self.showAd(controller: controller, isNow : false)
+                }
+              
+            }
+        })
+    }
+    
     
     func showAd(controller: UIViewController, isNow : Bool)  -> Bool{
         self.controller = controller
