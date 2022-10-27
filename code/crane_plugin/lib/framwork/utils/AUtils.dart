@@ -1,4 +1,3 @@
-import 'package:crane_plugin/framwork/utils/L.dart';
 import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:flutter/material.dart';
 
@@ -26,55 +25,47 @@ class AUtils {
   }
 
   static void showBannerEnable(bool show) {
-    if (aClosed) {
-      show = false;
-    }
-    if(!isEnable()){
+    if (!isEnable()) {
       return;
     }
-    show = false;
-//    if (isShowA()) {
+    if (!isShowA()) {
+      return;
+    }
     FlutterGG.setShowBanner(show);
-//    }
   }
 
   static void showBanner({bool isTop = false}) {
-    if (aClosed) return;
-//    if (isShowA()) {
-    if(!isEnable()){
+    if (!isEnable()) {
+      return;
+    }
+    if (!isShowA()) {
       return;
     }
     FlutterGG.showBannerAd(isTop: isTop);
     TrackUtils.trackEvent('showbanner');
-//      showBannerEnable(true);
-//    }
   }
 
   static Future<bool> showPop() async {
-    if (aClosed) return false;
+    if (!isEnable()) {
+      return false;
+    }
     bool isShown = false;
-    if (isEnable()) {
-      int currentTime = currentTimeMillis();
+    int currentTime = currentTimeMillis();
 //      1567045850517
 //      1567045852705
 
-      L.log('showPop currentTime : $currentTime');
-      L.log('showPop lastSHowTime : $lastSHowTime');
+    int duration = currentTime - lastSHowTime;
+    if (duration < DURATION) {
+      return isShown;
+    }
 
-      int duration = currentTime - lastSHowTime;
-      L.log('showPop duration : $duration');
-      if (duration < DURATION) {
-        return isShown;
-      }
-
-      isShown = await FlutterGG.showPopAd();
-      if (isShown == null) {
-        isShown = false;
-      }
-      if (isShown) {
-        lastSHowTime = currentTime;
-        TrackUtils.trackEvent('showPop');
-      }
+    isShown = await FlutterGG.showPopAd();
+    if (isShown == null) {
+      isShown = false;
+    }
+    if (isShown) {
+      lastSHowTime = currentTime;
+      TrackUtils.trackEvent('showPop');
     }
     return isShown;
   }
@@ -84,57 +75,47 @@ class AUtils {
   }
 
   static Future<bool> showPopNow() async {
-    if (aClosed) return false;
-    bool showed = false;
-    if (isEnable()) {
-      int currentTime = currentTimeMillis();
-      int duration = currentTime - lastSHowTime_video;
-      if (duration < DURATION) {
-        return showed;
-      }
-
-      showed = await FlutterGG.showPopAd(isNow: true);
-      lastSHowTime = currentTimeMillis();
-      TrackUtils.trackEvent('showPopNow');
+    if (!isEnable()) {
+      return false;
     }
+    bool showed = false;
+    int currentTime = currentTimeMillis();
+    int duration = currentTime - lastSHowTime_video;
+    if (duration < DURATION) {
+      return showed;
+    }
+
+    showed = await FlutterGG.showPopAd(isNow: true);
+    lastSHowTime = currentTimeMillis();
+    TrackUtils.trackEvent('showPopNow');
     return showed;
   }
 
   static Future<bool> isVideoReady() async {
-    if (aClosed) return false;
-    bool isReady = false;
-    if (isEnable()) {
-      isReady = await FlutterGG.isRewardVideoReady();
+    if (!isEnable()) {
+      return false;
     }
-    return isReady;
+    return await FlutterGG.isRewardVideoReady();
   }
 
   static Future<bool> showVideo() async {
-    if (aClosed) return false;
-    if (isEnable()) {
-      lastSHowTime = currentTimeMillis();
-      lastSHowTime_video = currentTimeMillis();
-      TrackUtils.trackEvent('showVideo');
-      return await FlutterGG.showRewardAd();
+    if (!isEnable()) {
+      return false;
     }
-    return true;
+    lastSHowTime = currentTimeMillis();
+    lastSHowTime_video = currentTimeMillis();
+    TrackUtils.trackEvent('showVideo');
+    return await FlutterGG.showRewardAd();
   }
 
   static Widget getAView(
       {double padding_h = 0, String size = 'banner', double maxHeight = 0}) {
-    if (isEnable() && !aClosed) {
+    if (isEnable()) {
       TrackUtils.trackEvent('showbanner_big');
       return FlutterGG.getAView(
           padding_h: padding_h, size: size, maxHeight: maxHeight);
     }
     return Text('');
-  }
-
-  static bool isShowA() {
-    if (!isEnable()) {
-      return false;
-    }
-    return _showA;
   }
 
   static void showReviewOrPop({bool popNow = true}) {
@@ -154,7 +135,14 @@ class AUtils {
     });
   }
 
+  static bool isShowA() {
+    return _showA;
+  }
+
   static bool isEnable() {
+    if (aClosed) {
+      return false;
+    }
     DateTime victoryDay = DateTime.parse("2022-08-01");
     DateTime currentDay = new DateTime.now();
 
