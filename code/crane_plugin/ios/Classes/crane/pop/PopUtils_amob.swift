@@ -59,10 +59,10 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
             }
             self.interstitial = ad
             self.interstitial.fullScreenContentDelegate = self
-            if(self.isFirst)
+            if(self.isFirst ?? false)
             {
                 self.isFirst = false
-                let duration = Int(Date().timeIntervalSince1970) - intValue
+                let duration = Int(Date().timeIntervalSince1970) - self.startTime
                 if(duration < 5){
                     self.showAd(controller: controller, isNow : false)
                 }
@@ -84,9 +84,9 @@ open class PopUtils_amob: NSObject, GADFullScreenContentDelegate{
         return shown
     }
     
-    public func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-    }
+//    public func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//        print("Ad did present full screen content.")
+//    }
     
     public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Ad failed to present full screen content with error \(error.localizedDescription).")

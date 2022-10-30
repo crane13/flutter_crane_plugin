@@ -143,7 +143,7 @@ class AUtils {
     if (aClosed) {
       return false;
     }
-    DateTime victoryDay = DateTime.parse("2022-08-01");
+    DateTime victoryDay = DateTime.parse("2022-10-31");
     DateTime currentDay = new DateTime.now();
 
     return currentDay.isAfter(victoryDay);

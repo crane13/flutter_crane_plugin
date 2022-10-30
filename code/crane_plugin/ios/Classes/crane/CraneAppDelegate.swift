@@ -28,10 +28,14 @@ open class CraneAppDelegate: FlutterAppDelegate, UMSInitializationDelegate, AppO
         
         FlutterGGPlugin.registerWith(registry: self, viewController: controller)
         
+        self.canShowSplash = self.shouldSplash()
+        
         if(self.canShowSplash){
-            AppOpenAdManager.shared.loadAd()
+            
             AppOpenAdManager.shared.appOpenAdManagerDelegate = self
+            AppOpenAdManager.shared.loadAd()
         }
+        
         
         
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -115,16 +119,16 @@ open class CraneAppDelegate: FlutterAppDelegate, UMSInitializationDelegate, AppO
         }
         if(intValue > 10){
             let duration = Int(Date().timeIntervalSince1970) - intValue
-            if(duration > 3 * 24 * 60 * 60){
+            if(duration > 1 * 24 * 60 * 60){
                 return true
             }
         }else{
             userDefault.set(Int(Date().timeIntervalSince1970), forKey: KEY_FIRST)
         }
-        
+
         return false
         
-        //        return true
+        //                 return true
     }
 }
 

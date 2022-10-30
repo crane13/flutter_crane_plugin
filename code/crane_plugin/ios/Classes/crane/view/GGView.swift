@@ -76,12 +76,12 @@ public class GGView : NSObject, FlutterPlatformView, FlutterStreamHandler, GADBa
             
             if(self.isLarge())
             {
-                self.adView = GADBannerView(adSize: kGADAdSizeMediumRectangle)
+                self.adView = GADBannerView(adSize: GADAdSizeMediumRectangle)
 
                 
                 
             }else{
-                self.adView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+                self.adView = GADBannerView(adSize: GADAdSizeBanner)
             }
             
             self.adView.adUnitID = self.admob_bannerId

@@ -48,6 +48,10 @@ class CraneJumpUtils {
     FlutterGG.showRank(0);
   }
 
+  static void jumpAchievementPage(BuildContext context) {
+    FlutterGG.showAchievement();
+  }
+
   static void jumpLoadingPage(BuildContext context) {
     Navigator.of(context).push(PageRouteBuilder(
         opaque: false,

@@ -26,19 +26,12 @@ A new Flutter project.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
 
-
-
-  #Umeng
-  s.dependency 'UMCommon'
-  s.dependency 'UMDevice'
-  s.dependency 'UMAPM'
-
   s.dependency 'UnityMediationSdk', '~> 1.0.1'
   s.dependency 'UnityMediationAdmobAdapter', '~> 1.0.0'
   s.dependency 'UnityMediationUnityAdapter', '~> 1.0.0'
 
-    #s.dependency 'Google-Mobile-Ads-SDK'
-    s.dependency 'Firebase/Analytics'
+  #s.dependency 'Google-Mobile-Ads-SDK'
+  s.dependency 'Firebase/Analytics'
 
 end
 
