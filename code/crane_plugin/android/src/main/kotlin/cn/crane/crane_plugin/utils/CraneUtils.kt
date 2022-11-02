@@ -3,18 +3,23 @@ package cn.crane.crane_plugin.utils
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import cn.crane.crane_plugin.R
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 object CraneUtils {
 
-    fun isHuaweiMate(context: Context?) : Boolean{
-
-        return false
+    private fun isHuaweiMateX(): Boolean {
+        return Build.MODEL.lowercase().contains("TAH-AN00m".lowercase())
     }
+
     fun isPad(context: Context?): Boolean {
+
         try {
+            if (isHuaweiMateX()) {
+                return false
+            }
             val dm = context?.resources?.displayMetrics
             if (dm != null) {
                 val x = (dm.widthPixels / dm.xdpi).toDouble().pow(2.0)
@@ -32,9 +37,8 @@ object CraneUtils {
     fun getAppVersionName(context: Context?): String {
         var appVersionName = ""
         try {
-            val packageInfo = context!!.applicationContext
-                    .packageManager
-                    .getPackageInfo(context.packageName, 0)
+            val packageInfo =
+                context!!.applicationContext.packageManager.getPackageInfo(context.packageName, 0)
             appVersionName = packageInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
         }
@@ -57,8 +61,7 @@ object CraneUtils {
             sendIntent.putExtra(Intent.EXTRA_TEXT, str)
             context.startActivity(
                 Intent.createChooser(
-                    sendIntent,
-                    context.getString(R.string.title_share_to)
+                    sendIntent, context.getString(R.string.title_share_to)
                 )
             )
         }

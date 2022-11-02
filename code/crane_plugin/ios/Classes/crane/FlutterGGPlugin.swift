@@ -142,6 +142,12 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
                         safeBottom -= 10
                         }
 
+ let keyWindow = UIApplication.shared.connectedScenes.map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.first
+    let orientation = keyWindow?.windowScene?.interfaceOrientation
+    let isLandscape = orientation?.isLandscape ?? false
+    if(isLandscape){
+    safeBottom = 0
+    }
             let isTop = (params["isTop"] as! Bool)
             var y = viewFrame.height - 50 - safeBottom
             if(isTop){

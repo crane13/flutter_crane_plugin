@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi
 import cn.crane.crane_plugin.bview.BView_admob
 import cn.crane.crane_plugin.gcenter.GameCenterHelper
 import cn.crane.crane_plugin.privacy.PrivacyUtils
+import cn.crane.crane_plugin.utils.CheckUtils
 import cn.crane.crane_plugin.utils.CraneUtils
 import cn.crane.crane_plugin.utils.MergeUtils
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -62,17 +63,23 @@ open class CraneActivity : FlutterActivity() {
 
         decorView = window.decorView
 
-        if (isSupportFirebase()) {
+        if (isSupportFirebase() && CheckUtils.isEnable()) {
             // Obtain the FirebaseAnalytics instance.
             mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         }
         PrivacyUtils.check(this, object : PrivacyUtils.Callback {
             override fun onAgreed() {
-                MergeUtils.init()
-                //        MobileAds.initialize(this) {}
+                initSdks()
             }
         })
 //        GameCenterHelper.getInstance().signIn(this)
+    }
+
+    fun initSdks(){
+        if(!CheckUtils.isEnable()){
+            return
+        }
+        MergeUtils.init()
     }
 
     fun loadBanner() {
