@@ -75,7 +75,7 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             }
             result(appVersion)
         case "getPackageName":
-           let bundleID = Bundle.main.bundleIdentifier
+            let bundleID = Bundle.main.bundleIdentifier
             result(bundleID)
         case "isPad":
             let isPad = Bool(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
@@ -130,22 +130,22 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             view.isHidden = false;
             let viewFrame : CGRect = contoller.view.frame
             
-               var safeBottom :CGFloat = 0.0;
-                        if #available(iOS 11.0, *) {
-                            safeBottom = contoller.view?.safeAreaInsets.bottom ?? 0.0
-
-                        } else {
-
-                        }
-                        if(safeBottom > 0)
-                        {
-                        safeBottom -= 10
-                        }
-
+            var safeBottom :CGFloat = 0.0;
+            if #available(iOS 11.0, *) {
+                safeBottom = contoller.view?.safeAreaInsets.bottom ?? 0.0
+                
+            } else {
+                
+            }
+            if(safeBottom > 0)
+            {
+                safeBottom -= 10
+            }
+            
             let isTop = (params["isTop"] as! Bool)
             var y = viewFrame.height - 50 - safeBottom
             if(isTop){
-            y = 0
+                y = 0
             }
             view.frame = CGRect(x: (UIScreen.main.bounds.width - 320) / 2, y: y , width: 320, height: 50)
             
@@ -159,15 +159,29 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             
         case "showRewardAd":
             self.showVideo(result: result)
+        case "lanchView":
+            
+            let content = (params["page"] as! String)
+            print("Splash : App open ad is not ready yet. \(content)")
+            if let url = URL(string: content) {
+                if UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+            result(true)
         case "share":
             let content = (params["content"] as! String)
             let url = (params["url"] as! String)
-
+            
             let shareUrl = URL(string: url)
             let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [content, shareUrl], applicationActivities: nil)
             contoller.present(activityViewController, animated: true, completion: nil)
-             result(true)
-
+            result(true)
+            
         default:
             result(successed)
         }

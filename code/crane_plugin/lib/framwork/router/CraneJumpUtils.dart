@@ -7,7 +7,8 @@ import 'package:crane_plugin/framwork/utils/PlatformUtils.dart';
 import 'package:crane_plugin/framwork/utils/track/TrackUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+// import 'package:url_launcher/url_launcher_string.dart';
 
 import '../K.dart';
 
@@ -39,9 +40,10 @@ class CraneJumpUtils {
   }
 
   static void openUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {}
+    // if (await canLaunchUrlString(url)) {
+    //   await launchUrlString(url);
+    // } else {}
+    FlutterGG.lanchView(url);
   }
 
   static void jumpRankPage(BuildContext context) {

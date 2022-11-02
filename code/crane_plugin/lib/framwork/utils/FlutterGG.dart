@@ -63,7 +63,8 @@ class FlutterGG {
     return await _channel.invokeMethod("showAchievement", {});
   }
 
-  static Future<bool> reportAchievementProgress(String id, double progress) async {
+  static Future<bool> reportAchievementProgress(
+      String id, double progress) async {
     if (TextUtils.isEmpty(id)) {
       return false;
     }
@@ -189,6 +190,16 @@ class FlutterGG {
       return '';
     }
     return await _channel.invokeMethod("getPackageName", {});
+  }
+
+  static Future<String> lanchView(String page) async {
+    if (!PlatformUtils.hasChannelPlugin()) {
+      return '';
+    }
+    if (TextUtils.isEmpty(page)) {
+      return "";
+    }
+    return await _channel.invokeMethod("lanchView", {'page', page});
   }
 
   static Future<String> share(String shareContent, String url) async {
