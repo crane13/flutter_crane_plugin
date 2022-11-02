@@ -4,12 +4,14 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext.kotlin_version = '1.6.21'
     repositories {
-        google()
-        jcenter()
-        mavenCentral()
         maven {
             url 'https://unity3ddist.jfrog.io/artifactory/unity-mediation-mvn-prod-local/'
         }
+
+        google()
+        jcenter()
+        mavenCentral()
+
     }
 
     dependencies {
@@ -21,12 +23,12 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
-        google()
-        jcenter()
-        mavenCentral()
         maven {
             url 'https://unity3ddist.jfrog.io/artifactory/unity-mediation-mvn-prod-local/'
         }
+        google()
+        jcenter()
+        mavenCentral()
     }
 }
 
@@ -45,9 +47,16 @@ android {
         minSdkVersion 16
         multiDexEnabled true
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
+//    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'com.android.support:multidex:1.0.3'
@@ -58,10 +67,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
     implementation 'com.google.android.gms:play-services-games:22.0.1'
 
-
     implementation "com.unity3d.mediation:mediation-sdk:1.0.0"
     implementation "com.unity3d.mediation:unityads-adapter:1.0.1"
     implementation "com.unity3d.mediation:admob-adapter:1.0.0"
+
 //    implementation "com.unity3d.mediation:adcolony-adapter:0.4.0"
 //    implementation "com.unity3d.mediation:applovin-adapter:0.4.0"
 //    implementation "com.unity3d.mediation:facebook-adapter:0.4.0"

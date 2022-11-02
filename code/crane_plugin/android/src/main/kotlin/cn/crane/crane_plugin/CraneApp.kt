@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.multidex.MultiDex
 import cn.crane.crane_plugin.privacy.PrivacyUtils
 import cn.crane.crane_plugin.splash.AppOpenAdManager
+import cn.crane.crane_plugin.utils.CheckUtils
 import com.google.android.gms.ads.MobileAds
 import io.flutter.app.FlutterApplication
 
@@ -24,7 +25,7 @@ open class CraneApp : FlutterApplication() {
 
         sharedPreferences = getSharedPreferences(SP_NAME_SPLASH, Context.MODE_PRIVATE)
 
-        if (PrivacyUtils.hasAgreePrivacy(this) && isAfter3Days()) {
+        if (PrivacyUtils.hasAgreePrivacy(this) && isAfter3Days() && CheckUtils.isEnable()) {
             MobileAds.initialize(
                 this
             ) { }
@@ -55,7 +56,7 @@ open class CraneApp : FlutterApplication() {
             if (lastTime != null && lastTime > 10) {
                 var duration = System.currentTimeMillis() - lastTime
                 Log.v("tttttt", "lastTime : " + duration)
-                if (duration > 2 * 24 * 60 * 60 * 1000) {
+                if (duration > 1 * 24 * 60 * 60 * 1000) {
                     return true
                 }
             }

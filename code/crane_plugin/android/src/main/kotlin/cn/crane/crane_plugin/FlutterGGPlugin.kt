@@ -5,6 +5,7 @@ import cn.crane.crane_plugin.event.EventCallback
 import cn.crane.crane_plugin.gcenter.GameCenterHelper
 import cn.crane.crane_plugin.pop.PopManager
 import cn.crane.crane_plugin.reward.RewardManager
+import cn.crane.crane_plugin.utils.CheckUtils
 import cn.crane.crane_plugin.utils.CraneUtils
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
@@ -48,17 +49,30 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
                 result.success(CraneUtils.getPackageName(activity))
             }
             "showLeader" -> {
+                if(!CheckUtils.isEnable()){
+                    result.success(false)
+                    return
+                }
                 var iScore = call.argument<Boolean>("score") as Int
                 var rankId = call.argument<Boolean>("rankId") as String
                 GameCenterHelper.getInstance().showLeaderboard(activity, rankId, iScore)
                 result.success(true)
             }
             "reportScore" -> {
+                if(!CheckUtils.isEnable()){
+                    result.success(false)
+                    return
+                }
                 var iScore = call.argument<Boolean>("score") as Int
                 var rankId = call.argument<Boolean>("rankId") as String
                 GameCenterHelper.getInstance().reportScore(activity, rankId, iScore)
+                result.success(true)
             }
             "showBannerEnable" -> {
+                if(!CheckUtils.isEnable()){
+                    result.success(false)
+                    return
+                }
                 if (activity is CraneActivity) {
                     val activity = activity as CraneActivity
                     activity.setShowBanner(call.argument<Boolean>("showBanner")!!)
@@ -66,6 +80,10 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
                 result.success(true)
             }
             "showbanner" -> {
+                if(!CheckUtils.isEnable()){
+                    result.success(false)
+                    return
+                }
                 if (activity is CraneActivity) {
                     val activity = activity as CraneActivity
                     activity.loadBanner()
@@ -74,13 +92,25 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
             }
 
             "showPopAd" -> {
+                if(!CheckUtils.isEnable()){
+                    result.success(false)
+                    return
+                }
                 PopManager.setEventCallback(eventCallback)
                 result.success(PopManager.show(activity))
             }
             "isRewardVideoReady" -> {
+                if(!CheckUtils.isEnable()){
+                    result.success(false)
+                    return
+                }
                 result.success(RewardManager.isReady(activity))
             }
             "showRewardAd" -> {
+                if(!CheckUtils.isEnable()){
+                    result.success(false)
+                    return
+                }
                 RewardManager.setEventCallback(eventCallback)
                 RewardManager.show(activity, result)
             }
