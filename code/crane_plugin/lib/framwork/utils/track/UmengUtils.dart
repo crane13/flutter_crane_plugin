@@ -10,11 +10,11 @@ class UmengUtils {
     UMENG_KEY_ANDROID = androidKey;
   }
 
-  static Future<void> initUmeng() async {
+  static Future<void> initUmeng({bool preInit = false}) async {
     Future.delayed(Duration(seconds: 1), () async {
       if (PlatformUtils.isAndroid() || PlatformUtils.isIOS()) {
         final bool data = await FlUMeng().init(
-            preInit: true,
+            preInit: preInit,
             androidAppKey: UMENG_KEY_ANDROID,
             iosAppKey: UMENG_KEY_IOS,
             channel: 'channel');

@@ -199,7 +199,10 @@ class FlutterGG {
     if (TextUtils.isEmpty(page)) {
       return "";
     }
-    return await _channel.invokeMethod("lanchView", {'page', page});
+    Map map = new Map();
+    map["page"] = page;
+    // {"page", page}
+    return await _channel.invokeMethod("lanchView", map);
   }
 
   static Future<String> share(String shareContent, String url) async {

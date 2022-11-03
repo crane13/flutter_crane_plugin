@@ -126,6 +126,11 @@ class FlutterGGPlugin : MethodCallHandler, FlutterPlugin {
                 CraneUtils.share(activity, content + url)
                 result.success(true)
             }
+            "lanchView" -> {
+                var content: String = call.argument<String>("page") as String
+                CraneUtils.opneUrl(activity, content )
+                result.success("true")
+            }
             else -> result.notImplemented()
         }
 

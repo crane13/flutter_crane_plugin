@@ -1,9 +1,12 @@
 package cn.crane.crane_plugin.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
+import android.text.TextUtils
 import cn.crane.crane_plugin.R
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -64,6 +67,19 @@ object CraneUtils {
                     sendIntent, context.getString(R.string.title_share_to)
                 )
             )
+        }
+    }
+
+    fun opneUrl(context: Context?, url: String?) {
+        if (context != null && !TextUtils.isEmpty(url)) {
+            var intent = Intent()
+            intent.data = Uri.parse(url)
+            if (context !is Activity) {
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.action = "android.intent.action.VIEW"
+            context.startActivity(intent)
         }
     }
 
