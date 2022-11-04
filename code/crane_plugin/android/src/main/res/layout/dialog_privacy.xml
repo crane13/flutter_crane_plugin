@@ -8,13 +8,13 @@
     android:padding="50dp">
 
     <LinearLayout
+        android:id="@+id/bg_layout"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/bg_white_conner_4"
         android:minWidth="270dp"
-        android:minHeight="300dp"
-
+        android:minHeight="350dp"
         android:orientation="vertical">
 
         <TextView
@@ -41,7 +41,7 @@
             <TextView
                 android:id="@+id/tv_content"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:lineSpacingExtra="5dp"
                 android:paddingLeft="15dp"
                 android:paddingTop="15dp"

@@ -3,12 +3,14 @@ package cn.crane.crane_plugin.privacy
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Html
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import cn.crane.crane_plugin.CraneApp
 import cn.crane.crane_plugin.R
 
 class PrivacyDialog : Dialog {
@@ -36,8 +38,20 @@ class PrivacyDialog : Dialog {
         initViews()
     }
 
+    private fun isPortrait(): Boolean {
+        return context?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
+    }
+
     private fun initViews() {
         val tvContent = findViewById<TextView>(R.id.tv_content)
+        val bgLayout = findViewById<View>(R.id.bg_layout)
+
+
+        if (!isPortrait()) {
+            bgLayout.layoutParams.width = (CraneApp.getMaxW() * 0.5f).toInt()
+        }else{
+            bgLayout.layoutParams.width = (270 * CraneApp.fDensity).toInt()
+        }
 
         tvContent.text = Html.fromHtml(text_content)
         TextViewUtils.dealwithLink(

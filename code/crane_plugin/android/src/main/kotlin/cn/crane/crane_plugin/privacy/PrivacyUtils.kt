@@ -19,7 +19,7 @@ object PrivacyUtils {
         }
         sharedPreferences =
             context.applicationContext.getSharedPreferences(SHPRE_NAME, Context.MODE_PRIVATE)
-        val agreed = sharedPreferences?.getBoolean(KEY_HAS_AGREE, false)
+        var agreed = sharedPreferences?.getBoolean(KEY_HAS_AGREE, false)
         if (agreed != null && !agreed) {
             showDialog(context, callback)
         } else {

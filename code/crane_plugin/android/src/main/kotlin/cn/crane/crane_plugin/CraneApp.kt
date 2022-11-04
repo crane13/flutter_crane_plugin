@@ -50,6 +50,10 @@ open class CraneApp : FlutterApplication() {
 
         var appOpenManager: AppOpenAdManager? = null
 
+        fun getMaxW(): Int {
+            return Math.max(screenW, screenH)
+        }
+
         fun isAfter3Days(): Boolean {
             var lastTime = sharedPreferences?.getLong(KEY_FIRST_INSTALL_TIME, 0)
             Log.v("tttttt", "lastTime : " + lastTime)
