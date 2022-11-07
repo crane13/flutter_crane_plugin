@@ -11,6 +11,7 @@ class K {
   static var IS_OVERSEA = true;
 
   static var IOS_APPID = '';
+  static var TAP_APPID = '';
 
   static var _channel = '';
 
@@ -102,7 +103,8 @@ class K {
       if (IS_OVERSEA) {
         return 'https://play.google.com/store/apps/details?id=$packageName';
       } else {
-        return 'https://www.coolapk.com/game/$packageName';
+        // return 'https://www.coolapk.com/game/$packageName';
+        return 'https://www.taptap.cn/app/$TAP_APPID';
       }
     }
   }

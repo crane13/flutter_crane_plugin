@@ -6,7 +6,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
-import cn.crane.crane_plugin.bview.BViewManager
+import cn.crane.crane_plugin.utils.CheckUtils
 import com.google.android.gms.ads.*
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
@@ -46,6 +46,7 @@ class GGView : PlatformView, MethodCallHandler, EventChannel.StreamHandler {
     }
 
     fun loadBanner(context: Context?, linearLayout: LinearLayout?): View? {
+        if(!CheckUtils.isEnable()) return null
         val adRequest: AdRequest = if (Const.TEST_DEVICE) {
             RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("132F365BB511B8350BC1081E2BB87D15"));
             AdRequest.Builder()

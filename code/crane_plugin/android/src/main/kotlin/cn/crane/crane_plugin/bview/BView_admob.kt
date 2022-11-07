@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.LinearLayout
 import cn.crane.crane_plugin.Const
 import cn.crane.crane_plugin.CraneApp
+import cn.crane.crane_plugin.utils.CheckUtils
 import com.google.android.gms.ads.*
 import java.util.*
 
@@ -13,6 +14,7 @@ object BView_admob : BaseBView() {
 
 
     override fun loadView(context: Context, linearLayout: LinearLayout, isLarge: Boolean) {
+        if(!CheckUtils.isEnable()) return
         val adRequest: AdRequest = if (Const.TEST_DEVICE) {
             RequestConfiguration.Builder()
                 .setTestDeviceIds(Arrays.asList("132F365BB511B8350BC1081E2BB87D15"));

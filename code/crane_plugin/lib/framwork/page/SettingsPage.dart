@@ -333,6 +333,9 @@ class SettingsPageState extends BaseState<SettingsPage> {
         return;
       }
     }
+    if (PlatformUtils.isAndroid() && !K.IS_OVERSEA) {
+      return;
+    }
     ConfigUtils.loadAppList(context).then((list) {
       setState(() {
         appList = list;

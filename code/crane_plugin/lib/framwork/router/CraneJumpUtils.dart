@@ -1,5 +1,4 @@
 import 'package:crane_plugin/framwork/page/LoadingPage.dart';
-import 'package:crane_plugin/framwork/page/MoreGamePage.dart';
 import 'package:crane_plugin/framwork/page/SettingsPage.dart';
 import 'package:crane_plugin/framwork/page/TosPage.dart';
 import 'package:crane_plugin/framwork/utils/FlutterGG.dart';
@@ -34,7 +33,8 @@ class CraneJumpUtils {
     if (PlatformUtils.isApple()) {
       openUrl('https://apps.apple.com/developer/id1061441649');
     } else {
-      jump(context, MoreGamePage());
+      openUrl('https://www.taptap.cn/developer/84820');
+      // jump(context, MoreGamePage());
     }
     TrackUtils.trackEvent('jumpMoreAppPage');
   }

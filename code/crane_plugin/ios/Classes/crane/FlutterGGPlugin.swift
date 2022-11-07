@@ -129,23 +129,29 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
             let view = self.ggView.view();
             view.isHidden = false;
             let viewFrame : CGRect = contoller.view.frame
-               var safeBottom :CGFloat = 0.0;
-                        if #available(iOS 11.0, *) {
-                            safeBottom = contoller.view?.safeAreaInsets.bottom ?? 0.0
-
-                        } else {
-
-                        }
-                        if(safeBottom >= 10)
-                        {
-                        safeBottom -= 10
-                        }
-
-         let keyWindow = UIApplication.shared.connectedScenes.map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.first
-            let orientation = keyWindow?.windowScene?.interfaceOrientation
-            let isLandscape = orientation?.isLandscape ?? false
+            var safeBottom :CGFloat = 0.0;
+            if #available(iOS 11.0, *) {
+                safeBottom = contoller.view?.safeAreaInsets.bottom ?? 0.0
+                
+            } else {
+                
+            }
+            if(safeBottom >= 10)
+            {
+                safeBottom -= 10
+            }
+            
+            var isLandscape = false
+            if #available(iOS 13.0, *) {
+                let keyWindow = UIApplication.shared.connectedScenes.map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.first
+                let orientation = keyWindow?.windowScene?.interfaceOrientation
+                isLandscape = orientation?.isLandscape ?? false
+            } else {
+                // Fallback on earlier versions
+            }
+            
             if(isLandscape){
-            safeBottom = 0
+                safeBottom = 0
             }
             let isTop = (params["isTop"] as! Bool)
             var y = viewFrame.height - 50 - safeBottom
@@ -153,7 +159,7 @@ class FlutterGGPlugin: NSObject, FlutterStreamHandler{
                 y = 0
             }
             view.frame = CGRect(x: (UIScreen.main.bounds.width - 320) / 2, y: y , width: 320, height: 50)
-            view.alpha = 0.9
+            view.alpha = 0.8
             
             contoller.view.addSubview(view)
             result(true)
