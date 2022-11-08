@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.text.TextUtils
@@ -23,19 +24,26 @@ object CraneUtils {
             if (isHuaweiMateX()) {
                 return false
             }
+
             val dm = context?.resources?.displayMetrics
             if (dm != null) {
                 val x = (dm.widthPixels / dm.xdpi).toDouble().pow(2.0)
                 val y = (dm.heightPixels / dm.ydpi).toDouble().pow(2.0)
                 val screenInches = sqrt(x + y)
-                // 屏幕大于6尺寸则为Pad
-                return screenInches >= 6.0
+                // 屏幕大于7尺寸则为Pad
+                return screenInches >= 7.0 || isPad11(context)
             }
         } catch (e: Exception) {
         }
         return false
     }
 
+    fun isPad11(context: Context?): Boolean {
+        context?.resources?.configuration?.let {
+            return it.screenLayout.and(Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE
+        }
+        return false
+    }
 
     fun getAppVersionName(context: Context?): String {
         var appVersionName = ""
