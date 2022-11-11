@@ -1,0 +1,99 @@
+[
+  {
+    "id": 1,
+    "row": 6,
+    "col": 6,
+    "mineCount": 5,
+    "nameZh": "入门级",
+    "name": "Easy Level",
+    "rankId": "easy_level"
+  },
+  {
+    "id": 2,
+    "row": 9,
+    "col": 8,
+    "nameZh": "初级",
+    "name": "Junior Level",
+    "mineCount": 12,
+    "rankId": "junior_level"
+  },
+  {
+    "id": 3,
+    "row": 16,
+    "col": 16,
+    "nameZh": "中级",
+    "name": "Intermediate Level",
+    "mineCount": 40,
+    "rankId": "intermediate_level"
+  },
+  {
+    "id": 4,
+    "row": 16,
+    "col": 30,
+    "nameZh": "高级",
+    "name": "High Level",
+    "mineCount": 99,
+    "rankId": "high_level"
+  },
+  {
+    "id": 5,
+    "row": 18,
+    "col": 30,
+    "nameZh": "困难级",
+    "name": "Hard Level",
+    "mineCount": 112,
+    "rankId": "hard_level"
+  },
+  {
+    "id": 6,
+    "row": 20,
+    "col": 30,
+    "nameZh": "专业级",
+    "name": "Professional Level",
+    "mineCount": 126,
+    "rankId": "professional_level"
+  },
+  {
+    "id": 7,
+    "row": 22,
+    "col": 30,
+    "nameZh": "大师级",
+    "name": "Master Level",
+    "mineCount": 139,
+    "rankId": "master_level"
+  },
+  {
+    "id": 8,
+    "row": 24,
+    "col": 30,
+    "nameZh": "专家级",
+    "name": "Expert Level",
+    "mineCount": 158,
+    "rankId": "expert_level"
+  },
+  {
+    "id": 9,
+    "row": 30,
+    "col": 30,
+    "nameZh": "疯狂级",
+    "name": "Crazy Level",
+    "mineCount": 198,
+    "rankId": "crazy_level"
+  },
+  {
+    "id": 10,
+    "row": 50,
+    "col": 50,
+    "nameZh": "大神级",
+    "name": "Great God Level",
+    "mineCount": 500,
+    "rankId": "great_god_level"
+  },
+  {
+    "id": -1,
+    "row": 5,
+    "col": 5,
+    "mineCount": 5,
+    "rankId": ""
+  }
+]
