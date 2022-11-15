@@ -2,4 +2,5 @@
 <resources>
     <string name="server_client_id"></string>
     <string name="title_share_to">Share to</string>
+    <string name="app_name">App</string>
 </resources>

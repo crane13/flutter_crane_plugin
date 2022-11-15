@@ -66,7 +66,7 @@ dependencies {
 
     implementation 'com.android.support:multidex:1.0.3'
 
-    implementation 'com.pangle.cn:ads-sdk-pro:4.9.0.8'
+    api 'com.pangle.cn:ads-sdk-pro:4.9.0.8'
 
 
 //    implementation 'com.google.android.gms:play-services-ads:21.0.0'

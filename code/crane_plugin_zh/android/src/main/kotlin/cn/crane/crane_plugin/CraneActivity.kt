@@ -97,6 +97,7 @@ open class CraneActivity : FlutterActivity() {
             init()
         }
         super.onStart()
+        TTUtils.requestPermissionIfNecessary(this)
     }
 
 
