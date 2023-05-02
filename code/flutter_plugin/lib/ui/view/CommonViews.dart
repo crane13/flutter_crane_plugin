@@ -75,7 +75,7 @@ class CommonViews {
       decoration:
           BoxDecoration(border: Border.all(color: Colors.white, width: 1)),
       child: Stack(
-        overflow: Overflow.clip,
+        // overflow: Overflow.clip,
         fit: StackFit.loose,
         alignment: Alignment.center,
         children: <Widget>[

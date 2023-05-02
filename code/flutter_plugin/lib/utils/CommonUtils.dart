@@ -30,8 +30,9 @@ class CommonUtils {
 
   static void showToast(BuildContext context, String message) {
     if (!isStringEmpty(message)) {
-      Toast.show(message, context,
-          duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+      // Toast.show(message, context,
+      //     duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+      Toast.show(message, gravity: Toast.center);
     }
   }
 

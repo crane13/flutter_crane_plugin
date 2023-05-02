@@ -35,17 +35,17 @@ dependencies:
 #      path: packages/share
 
   share: ^2.0.4
-  url_launcher: ^6.0.9
-  toast: ^0.1.5
+  url_launcher: ^6.1.8
+  toast: ^0.3.0
 
-  path_provider: ^2.0.2
+  path_provider: ^2.0.12
 
-  shared_preferences: ^2.0.6
+  shared_preferences: ^2.0.17
 
-  http: ^0.13.3
-  flutter_spinkit: ^5.0.0
+  http: ^0.13.5
+  flutter_spinkit: ^5.1.0
 
-  umeng_common_sdk: ^1.2.3
+  umeng_common_sdk: ^1.2.5
 
 dev_dependencies:
   flutter_test:
