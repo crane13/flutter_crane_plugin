@@ -58,15 +58,35 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    maven { url 'https://artifact.bytedance.com/repository/AwemeOpenSDK' }
+
+}
+
+
 dependencies {
-//    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    api fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'com.android.support:multidex:1.0.3'
+    api(name: 'open_ad_sdk', ext: 'aar')
+//    api(name: 'tools_release', ext: 'aar')
 
-    api 'com.pangle.cn:ads-sdk-pro:4.9.0.8'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+//    api 'com.pangle.cn:ads-sdk-pro:4.9.0.8'
 
 
 //    implementation 'com.google.android.gms:play-services-ads:21.0.0'

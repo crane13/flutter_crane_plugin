@@ -54,17 +54,34 @@ public class TTUtils {
         }
     }
 
+//    private static TTAdConfig buildConfig(Context context) {
+//        String id = Const.INSTANCE.getTT_ID();
+//        Log.v("tttttt", "buildConfig : " + id);
+//        return new TTAdConfig.Builder().appId(id).useTextureView(true) //使用TextureView控件播放视频,默认为SurfaceView,当有SurfaceView冲突的场景，可以使用TextureView
+//                .appName(context.getString(R.string.app_name)).titleBarTheme(TTAdConstant.TITLE_BAR_THEME_DARK).allowShowNotify(true) //是否允许sdk展示通知栏提示
+//                .allowShowPageWhenScreenLock(true) //是否在锁屏场景支持展示广告落地页
+//                .debug(true) //测试阶段打开，可以通过日志排查问题，上线时去除该调用
+//                .directDownloadNetworkType(TTAdConstant.NETWORK_STATE_WIFI, TTAdConstant.NETWORK_STATE_3G) //允许直接下载的网络状态集合
+//                .supportMultiProcess(false)//是否支持多进程
+//                .asyncInit(true).needClearTaskReset()
+//                //.httpStack(new MyOkStack3())//自定义网络库，demo中给出了okhttp3版本的样例，其余请自行开发或者咨询工作人员。
+//                .build();
+//    }
+
     private static TTAdConfig buildConfig(Context context) {
         String id = Const.INSTANCE.getTT_ID();
-        Log.v("tttttt", "buildConfig : " + id);
-        return new TTAdConfig.Builder().appId(id).useTextureView(true) //使用TextureView控件播放视频,默认为SurfaceView,当有SurfaceView冲突的场景，可以使用TextureView
-                .appName(context.getString(R.string.app_name)).titleBarTheme(TTAdConstant.TITLE_BAR_THEME_DARK).allowShowNotify(true) //是否允许sdk展示通知栏提示
-                .allowShowPageWhenScreenLock(true) //是否在锁屏场景支持展示广告落地页
+        return new TTAdConfig.Builder()
+//                .appId("5001121")
+//                .appId("5074839")
+                .appId(id)
+                .useTextureView(true) //使用TextureView控件播放视频,默认为SurfaceView,当有SurfaceView冲突的场景，可以使用TextureView
+                .allowShowNotify(true) //是否允许sdk展示通知栏提示
                 .debug(true) //测试阶段打开，可以通过日志排查问题，上线时去除该调用
+
                 .directDownloadNetworkType(TTAdConstant.NETWORK_STATE_WIFI, TTAdConstant.NETWORK_STATE_3G) //允许直接下载的网络状态集合
                 .supportMultiProcess(false)//是否支持多进程
-                .asyncInit(true).needClearTaskReset()
-                //.httpStack(new MyOkStack3())//自定义网络库，demo中给出了okhttp3版本的样例，其余请自行开发或者咨询工作人员。
+                .needClearTaskReset()
+//                .injectionAuth(TTLiveTokenHelper.getInstance().useHostAuth() ? new TTInjectionAuthImpl() : null)
                 .build();
     }
 
