@@ -61,7 +61,7 @@ public class CranepluginPlugin : FlutterPlugin, MethodCallHandler {
         if (call != null) {
             Log.v(TAG, "onMethodCall : " + call.method)
             when (call.method) {
-                "getPlatformVersion" -> result.success(getAppVersionName(registrar.activity()))
+                "getPlatformVersion" -> result.success(getAppVersionName(registrar.activity()!!))
                 "registerSid" -> {
                 }
 //                "showBannerEnable" -> {

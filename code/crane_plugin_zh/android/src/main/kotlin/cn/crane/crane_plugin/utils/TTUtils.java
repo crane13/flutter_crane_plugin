@@ -38,7 +38,7 @@ public class TTUtils {
 //            TraceService.sShouldStopService = false;
 //            DaemonEnv.startServiceMayBind(TraceService.class);
 
-            TTAdSdk.init(context, buildConfig(context), new TTAdSdk.InitCallback() {
+            TTAdSdk.init(context, buildConfig(context.getApplicationContext()), new TTAdSdk.InitCallback() {
 
                 @Override
                 public void success() {
